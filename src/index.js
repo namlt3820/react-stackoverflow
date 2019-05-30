@@ -4,4 +4,3 @@ import App from './App';
 import 'antd/dist/antd.css'
 import 'bootstrap/dist/css/bootstrap.css';
 ReactDOM.render(<App />, document.getElementById('root'));
-

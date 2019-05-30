@@ -4,10 +4,11 @@ import QuestionStats from "./QuestionStats";
 
 class QuestionItem extends Component {
     render() {
+        const { statsQuestion, summaryQuestion, tags } = this.props.questionItem;
         return (
             <div className="question-item">
-                <QuestionStats />
-                <QuestionSummary />
+                <QuestionStats statsQuestion={statsQuestion} />
+                <QuestionSummary summaryQuestion={summaryQuestion} tags={tags} />
             </div>
         );
     }

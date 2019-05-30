@@ -6,8 +6,10 @@ class ForgotPassWord extends Component {
     render() {
         return (
             <div className="auth-page">
-                <CustomInputAuth lable="Email" type="email" />
-                <CustomButton content="Send recovery email" />
+                <div className="forgot-password">
+                    <CustomInputAuth lable="Email" type="email" />
+                    <CustomButton content="Send recovery email" />
+                </div>
             </div>
         );
     }

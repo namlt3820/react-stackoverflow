@@ -23,6 +23,31 @@
 }
 /* end Auth Page */
 
+/* style for Header */
+.top-bar {
+    margin: 10px 0;
+    /* padding: 0 50px; */
+}
+.top-bar .container-fluid {
+    display: flex;
+    justify-content: space-between;
+}
+.top-bar .form-search {
+    max-width: 100%;
+    width: 50%;
+}
+.top-bar .menu-right {
+    display: flex;
+    width: 450px;
+    justify-content: space-between;
+}
+.top-bar .menu-right .btn-authen {
+    display: flex;
+    justify-content: space-around;
+    width: 110px;
+}
+/* end style Header */
+
 /* style for Home Page */
 .question-list {
     display: flex;
@@ -30,6 +55,7 @@
     align-items: center;
     justify-content: center;
     height: 600px;
+    padding-right: 320px;
 }
 .question-item {
     display: flex;
@@ -71,7 +97,7 @@
     overflow: hidden;
 }
 .question-item .summary h3 {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
 }
 .question-item .tags {

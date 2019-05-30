@@ -19,11 +19,11 @@ function App() {
                 <Main>
                     <Switch>
                         <Route exact path="/" component={Home} />
-                        <Route exact path="/login" component={Login} />
-                        <Route exact path="/register" component={SignUp} />
-                        <Route exact path="/forgot-password" component={ForgotPassWord} />
-                        <Route exact path="/active" component={ActiveCode} />
-                        <Route exact path="/change-password" component={ChangPassWord} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/register" component={SignUp} />
+                        <Route path="/forgot-password" component={ForgotPassWord} />
+                        <Route path="/active" component={ActiveCode} />
+                        <Route path="/change-password" component={ChangPassWord} />
                     </Switch>
                 </Main>
             </BrowserRouter>

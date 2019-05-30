@@ -5,7 +5,7 @@ const Main = ({ children }) => {
     return (
         <div>
             <Header />
-            <div>{children}</div>
+            <div id="content">{children}</div>
         </div>
     );
 };

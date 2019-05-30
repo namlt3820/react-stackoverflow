@@ -6,8 +6,10 @@ class ActiveCode extends Component {
     render() {
         return (
             <div className="auth-page">
-                <CustomInputAuth lable="Active Code" />
-                <CustomButton content="Active" />
+                <div className="active">
+                    <CustomInputAuth lable="Active Code" />
+                    <CustomButton content="Active" />
+                </div>
             </div>
         );
     }

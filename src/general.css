@@ -1,4 +1,7 @@
 /* style for Auth Page */
+#content {
+    background: #eff0f1;
+}
 .auth-page {
     height: 600px;
     display: flex;
@@ -6,8 +9,27 @@
     justify-content: center;
     align-items: center;
 }
+.auth-page .login,
+.auth-page .active,
+.auth-page .signup,
+.auth-page .forgot-password,
+.auth-page .change-password {
+    padding: 20px;
+    background: #ffffff;
+}
+.auth-page .social {
+    margin-bottom: 50px;
+}
+.auth-page .btn-social {
+    margin-bottom: 10px;
+}
+.auth-page .btn-social .btn {
+    width: 340px;
+}
 .auth-page .input-group-prepend {
     padding: 5px;
+    justify-content: space-between;
+    font-size: 14px;
 }
 .auth-page .mb-3 .form-control {
     width: 300px;
@@ -34,12 +56,13 @@
 }
 .top-bar .form-search {
     max-width: 100%;
-    width: 50%;
+    width: 40%;
 }
 .top-bar .menu-right {
     display: flex;
     width: 450px;
     justify-content: space-between;
+    align-items: center;
 }
 .top-bar .menu-right .btn-authen {
     display: flex;
@@ -55,7 +78,7 @@
     align-items: center;
     justify-content: center;
     height: 600px;
-    padding-right: 320px;
+    padding-right: 220px;
 }
 .question-item {
     display: flex;

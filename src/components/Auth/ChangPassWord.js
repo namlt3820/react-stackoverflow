@@ -6,10 +6,12 @@ class ChangPassWord extends Component {
     render() {
         return (
             <div className="auth-page">
-                <CustomInputAuth lable="Current Password" type="password" />
-                <CustomInputAuth lable="New Password" type="password" />
-                <CustomInputAuth lable="Confirm Password" type="password" />
-                <CustomButton content="Change Password" />
+                <div className="change-password">
+                    <CustomInputAuth lable="Current Password" type="password" />
+                    <CustomInputAuth lable="New Password" type="password" />
+                    <CustomInputAuth lable="Confirm Password" type="password" />
+                    <CustomButton content="Change Password" />
+                </div>
             </div>
         );
     }

@@ -5,13 +5,13 @@ class MenuRight extends Component {
     render() {
         return (
             <div className="menu-right">
-                <i className="far fa-user">Avatar</i>
                 <button type="button" className="btn btn-primary">
                     Add Question
                 </button>
+                <i className="far fa-user">Avatar</i>
                 <div className="dropdown">
                     <button
-                        className="btn btn-secondary dropdown-toggle"
+                        className="btn dropdown-toggle"
                         type="button"
                         id="dropdownMenuButton"
                         data-toggle="dropdown"

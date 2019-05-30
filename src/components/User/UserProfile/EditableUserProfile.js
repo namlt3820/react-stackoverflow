@@ -13,21 +13,26 @@ class EditableUserProfile extends Component {
       votes: "2000",
       aboutMe:
         "I'm happy being a part of this community. I've learned so much from this site.",
-      avatar: avatar
+      avatar: avatar,
+      email: "johnsmith999@gmail.com"
     },
     isEditOpen: false
   };
-  openEditForm = () => this.setState({ isEditOpen: true })
-  closeEditForm = () => this.setState({ isEditOpen: false })
-  changeUserProfile = (user) => this.setState({ user: user })
+  openEditForm = () => this.setState({ isEditOpen: true });
+  closeEditForm = () => this.setState({ isEditOpen: false });
+  changeUserProfile = () => this.setState({ isEditOpen: false });
   render() {
     const { isEditOpen, user } = this.state;
     return (
       <div>
         {!isEditOpen ? (
-          <UserProfile user={user} openEditForm={this.openEditForm}/>
+          <UserProfile user={user} openEditForm={this.openEditForm} />
         ) : (
-          <UserProfileForm user={user} closeEditForm={this.closeEditForm} changeUserProfile={this.changeUserProfile}/>
+          <UserProfileForm
+            user={user}
+            closeEditForm={this.closeEditForm}
+            changeUserProfile={this.changeUserProfile}
+          />
         )}
       </div>
     );

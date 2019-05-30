@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Tabs } from 'antd';
 import EditableUserProfile from './UserProfile'
-
+import UserActivityTabs from './UserActivity'
 const { TabPane } = Tabs;
 
 class UserTabs extends Component {
@@ -13,7 +13,7 @@ class UserTabs extends Component {
             <EditableUserProfile />
           </TabPane>
           <TabPane tab="User Activity" key="useractivity">
-            Content of user activity
+            <UserActivityTabs />
           </TabPane>
         </Tabs> 
       </div>

@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import User from './components/User'
-import QuestionList from "./components/Home/QuestionList";
-import "./general.css";
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="container mt-4">
         <User />
-        <QuestionList />
       </div>
     )
   }

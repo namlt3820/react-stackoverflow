@@ -7,7 +7,7 @@ const { TabPane } = Tabs;
 class UserTabs extends Component {
   render() {
     return (
-      <div>
+      <div style={{paddingTop: '4rem', paddingBottom: '4rem'}} className="container">
         <Tabs defaultActiveKey="userprofile" tabPosition="left" >
           <TabPane tab="User Profile" key="userprofile">
             <EditableUserProfile />

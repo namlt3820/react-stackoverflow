@@ -1,4 +1,5 @@
 import React from "react";
+import User from './components/User'
 import Home from "./components/Questions/Home";
 import Login from "./components/Auth/Login";
 import SignUp from "./components/Auth/SignUp";
@@ -22,6 +23,7 @@ function App() {
                         <Route path="/forgot-password" component={ForgotPassWord} />
                         <Route path="/active" component={ActiveCode} />
                         <Route path="/change-password" component={ChangPassWord} />
+                        <Route path="/my-profile" component={User} />
                     </Switch>
                 </Main>
             </BrowserRouter>

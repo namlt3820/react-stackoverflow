@@ -5,12 +5,12 @@ import './Header.css'
 class Header extends Component {
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light px-4">
         <NavLink className="navbar-brand text-info mr-5" to="/">
           Q / A
         </NavLink>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
@@ -18,31 +18,31 @@ class Header extends Component {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon" />
+          <span className="navbar-toggler-icon" />
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav w-100">
-            <form class="form-inline my-2 my-lg-0 mr-auto">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav w-100">
+            <form className="form-inline my-2 my-lg-0 mr-auto">
               <input
-                class="form-control mr-sm-2 header__search"
+                className="form-control mr-sm-2 header__search"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
               />
               <button
-                class="btn btn-outline-primary my-2 my-sm-0"
+                className="btn btn-outline-primary my-2 my-sm-0"
                 type="submit"
               >
                 Ask Question
               </button>
             </form>
-            <li class="nav-item">
+            <li className="nav-item">
               <NavLink className="nav-link" to="/tags">Tags</NavLink>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 id="navbarNews"
                 role="button"
@@ -52,14 +52,14 @@ class Header extends Component {
               >
                 News
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarNews">
+              <div className="dropdown-menu" aria-labelledby="navbarNews">
                 <NavLink className="dropdown-item" to="/my-topics">Questions Update</NavLink>
                 <NavLink className="dropdown-item" to="/my-questions">Topics Update</NavLink>
               </div>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 id="navbarUserDropdown"
                 role="button"
@@ -69,17 +69,17 @@ class Header extends Component {
               >
                 User
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarUserDropdown">
+              <div className="dropdown-menu" aria-labelledby="navbarUserDropdown">
                 <NavLink className="dropdown-item" to="/my-topics">My Topics</NavLink>
                 <NavLink className="dropdown-item" to="/my-questions">My Questions</NavLink>
                 <NavLink className="dropdown-item" to="/my-profile">My Profile</NavLink>
                 <NavLink className="dropdown-item" to="/change-password">Change Password</NavLink>
               </div>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <NavLink className="nav-link" to="/login">Login</NavLink>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <NavLink className="nav-link" to="/register">Register</NavLink>
             </li>
           </ul>

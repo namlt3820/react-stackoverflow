@@ -1,8 +1,8 @@
-.n__question-list {
+.n__topic-list {
   display: flex;
   flex-direction: column;
 }
-.n__question-item {
+.n__topic-item {
   display: flex;
   border: 1px solid #c1c1c1;
   padding: 1.5rem;
@@ -10,16 +10,16 @@
   border-radius: .1rem;
   flex-wrap: wrap;
 }
-.n__question-item .cp {
+.n__topic-item .cp {
   display: flex;
   justify-content: flex-start;
   flex-wrap: nowrap;
   padding: 0 8px 0 0;
   font-size: 14px;
 }
-.n__question-item .cp .votes,
-.n__question-item .cp .status,
-.n__question-item .cp .views {
+.n__topic-item .cp .votes,
+.n__topic-item .cp .status,
+.n__topic-item .cp .views {
   display: inline-block;
   min-width: 38px;
   margin-right: 1rem;
@@ -27,28 +27,28 @@
   color: #848d95;
   text-align: center;
 }
-.n__question-item .cp .mini-counts {
+.n__topic-item .cp .mini-counts {
   font-size: 17px;
   font-weight: 300;
   color: #6a737c;
   margin-bottom: 4px;
 }
-.n__question-item .summary {
+.n__topic-item .summary {
   flex: 1 auto;
   width: auto;
   float: none;
   margin: 0;
   overflow: hidden;
 }
-.n__question-item .summary h3 {
+.n__topic-item .summary h3 {
   font-size: 15px;
   font-weight: 400;
 }
-.n__question-item .tags {
+.n__topic-item .tags {
   line-height: 18px;
   float: left;
 }
-.n__question-item .tags .post-tag {
+.n__topic-item .tags .post-tag {
   display: inline-block;
   padding: 0.4em 0.5em;
   margin: 2px 2px 2px 0;
@@ -65,13 +65,13 @@
   background-color: #e1ecf4;
   border-color: #e1ecf4;
 }
-.n__question-item .started {
+.n__topic-item .started {
   width: auto;
   line-height: inherit;
   padding-top: 4px;
   float: right;
 }
-.n__question-item .started .started-link {
+.n__topic-item .started .started-link {
   font-size: 12px;
   color: #9199a1;
 }

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-class QuestionSummary extends Component {
+class TopicSummary extends Component {
     render() {
-        const { dataTime, title, user } = this.props.summaryQuestion;
+        const { dataTime, title, user } = this.props.summaryTopic;
         const { tags } = this.props;
         return (
             <div className="summary">
                 <h3>
-                    <a href="/" className="n__question-hyperlink">
+                    <a href="/" className="n__topic-hyperlink">
                         {title}
                     </a>
                 </h3>
@@ -31,4 +31,4 @@ class QuestionSummary extends Component {
     }
 }
 
-export default QuestionSummary;
+export default TopicSummary;

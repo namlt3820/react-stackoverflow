@@ -5,7 +5,7 @@ class QuestionList extends Component {
     render() {
         const listQuestion = data;
         return (
-            <div className="question-list">
+            <div className="n__question-list">
                 {listQuestion.map((item, index) => {
                     return <QuestionItem questionItem={item} key={index} />;
                 })}

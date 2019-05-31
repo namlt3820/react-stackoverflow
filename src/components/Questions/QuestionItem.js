@@ -6,7 +6,7 @@ class QuestionItem extends Component {
     render() {
         const { statsQuestion, summaryQuestion, tags } = this.props.questionItem;
         return (
-            <div className="question-item">
+            <div className="n__question-item">
                 <QuestionStats statsQuestion={statsQuestion} />
                 <QuestionSummary summaryQuestion={summaryQuestion} tags={tags} />
             </div>

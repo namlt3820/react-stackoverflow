@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import CustomInputAuth from "./CustomInputAuth";
-import CustomButton from "./CustomButton";
-import CutomButtonSocial from "./CutomButtonSocial";
+import CustomInputAuth from "./input/CustomInputAuth";
+import CustomButton from "./button/CustomButton";
+import CustomButtonSocial from "./button/CustomButtonSocial";
 class Login extends Component {
     render() {
         const { match } = this.props;
         return (
             <div className="auth-page">
                 <div className="social">
-                    <CutomButtonSocial content="Google" match={match} />
-                    <CutomButtonSocial content="Facebook" match={match} />
+                    <CustomButtonSocial content="Google" match={match} />
+                    <CustomButtonSocial content="Facebook" match={match} />
                 </div>
                 <div className="login">
                     <CustomInputAuth lable="Email" type="email" />

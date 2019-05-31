@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import CustomInputAuth from "./CustomInputAuth";
-import CustomButton from "./CustomButton";
-import CutomButtonSocial from "./CutomButtonSocial";
+import CustomInputAuth from "./input/CustomInputAuth";
+import CustomButton from "./button/CustomButton";
+import CustomButtonSocial from "./button/CustomButtonSocial";
 
 class SignUp extends Component {
     render() {
         return (
             <div className="auth-page">
                 <div className="social">
-                    <CutomButtonSocial content="Google" />
-                    <CutomButtonSocial content="Facebook" />
+                    <CustomButtonSocial content="Google" />
+                    <CustomButtonSocial content="Facebook" />
                 </div>
                 <div className="signup">
                     <CustomInputAuth lable="Display Name" type="text" />

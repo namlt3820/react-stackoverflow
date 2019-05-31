@@ -1,5 +1,5 @@
 import React from "react";
-import QuestionList from "./QuestionList";
+import QuestionList from "../Questions/QuestionList";
 
 const Home = props => (
     <div>

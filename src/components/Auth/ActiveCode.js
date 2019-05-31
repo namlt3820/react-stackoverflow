@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import CustomInputAuth from "./CustomInputAuth";
-import CustomButton from "./CustomButton";
+import CustomInputAuth from "./input/CustomInputAuth";
+import CustomButton from "./button/CustomButton";
 
 class ActiveCode extends Component {
     render() {

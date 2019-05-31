@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class CutomButtonSocial extends Component {
+class CustomButtonSocial extends Component {
     render() {
         const { content, match } = this.props;
         return (
@@ -13,4 +13,4 @@ class CutomButtonSocial extends Component {
     }
 }
 
-export default CutomButtonSocial;
+export default CustomButtonSocial;

@@ -9,7 +9,7 @@ class Login extends Component {
             <div className="auth-page">
                 <div className="social">
                     <CutomButtonSocial content="Google" match={match} />
-                    <CutomButtonSocial content="Facebook" />
+                    <CutomButtonSocial content="Facebook" match={match} />
                 </div>
                 <div className="login">
                     <CustomInputAuth lable="Email" type="email" />

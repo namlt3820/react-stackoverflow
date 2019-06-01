@@ -1,34 +1,37 @@
 import React, { Component } from "react";
+import data from "../../data/data.json";
+import _ from "lodash";
 
 class TopicSummary extends Component {
-    render() {
-        const { dataTime, title, user } = this.props.summaryTopic;
-        const { tags } = this.props;
-        return (
-            <div className="summary">
-                <h3>
-                    <a href="/" className="n__topic-hyperlink">
-                        {title}
-                    </a>
-                </h3>
-                <div className="tags t-python t-matplotlib t-statistics t-seaborn">
-                    {tags.map((tag, index) => {
-                        return (
-                            <a href="/" className="post-tag" title="" rel="tag" key={index}>
-                                {tag}
-                            </a>
-                        );
-                    })}
-                </div>
-                <div className="started">
-                    <a href="/" className="started-link">
-                        modified <span className="relativetime">{dataTime} </span>
-                    </a>
-                    <a href="/">{user}</a>
-                </div>
-            </div>
-        );
-    }
+  render() {
+    const { createdAt, title, tags } = this.props.topic;
+    const tagsDetail = _.flatten(
+      tags.map(id => data.tags.filter(tag => tag.id === id))
+    );
+    return (
+      <div className="summary">
+        <h3>
+          <a href="/" className="n__question-hyperlink" style={{ 
+  color: "#ff3232"}}>
+            {title}
+          </a>
+        </h3>
+        <div className="tags t-python t-matplotlib t-statistics t-seaborn">
+          {tagsDetail.map(tag => {
+            return (
+              <a href="/" className="post-tag" key={tag.id}>
+                {tag.name}
+              </a>
+            );
+          })}
+        </div>
+        <div className="started">
+          <span className="started-link">Created at: </span>
+          <a href="/"> {createdAt}</a>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default TopicSummary;

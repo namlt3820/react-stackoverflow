@@ -1,52 +1,226 @@
-[
+{
+  "users": [
     {
-        "id": 1,
-        "statsQuestion": { "votes": 10, "answers": 10, "views": 12 },
-        "summaryQuestion": {
-            "title": "Statistical significance on barplot using matplotlib / seaborn?",
-            "user": "thinhmt",
-            "dataTime": "12:00 am"
-        },
-        "tags": ["python", "javascript"]
+      "id": "1",
+      "name": "thinhmt",
+      "votes": "1000"
     },
     {
-        "id": 2,
-        "statsQuestion": { "votes": 0, "answers": 0, "views": 12 },
-        "summaryQuestion": {
-            "title": "Tom and Jerry",
-            "user": "tom",
-            "dataTime": "1:00 pm"
-        },
-        "tags": ["python", "matplotlib", "statistics"]
+      "id": "2",
+      "name": "tom",
+      "votes": "100"
     },
     {
-        "id": 3,
-        "statsQuestion": { "votes": 1, "answers": 1, "views": 15 },
-        "summaryQuestion": {
-            "title": "How to read complex objects from json file in .net core",
-            "user": "mimi",
-            "dataTime": "2:00 pm"
-        },
-        "tags": ["python", "javascript", "statistics", "seaborn"]
+      "id": "3",
+      "name": "mimi",
+      "votes": "150"
     },
     {
-        "id": 4,
-        "statsQuestion": { "votes": 10, "answers": 10, "views": 12 },
-        "summaryQuestion": {
-            "title": "How to Display form once and then add form on button click in Formly",
-            "user": "thinhmt",
-            "dataTime": "12:00 am"
-        },
-        "tags": ["python", "react", "statistics"]
-    },
-    {
-        "id": 5,
-        "statsQuestion": { "votes": 10, "answers": 10, "views": 12 },
-        "summaryQuestion": {
-            "title": "Javascript alert is not working in Update Panel in asp.net",
-            "user": "thinhmt",
-            "dataTime": "12:00 am"
-        },
-        "tags": ["python", "matplotlib"]
+      "id": "4",
+      "name": "John Smith",
+      "votes": "2000"
     }
-]
+  ],
+  "user": {
+    "profile": {
+      "id": "4",
+      "name": "John Smith",
+      "location": "America",
+      "joinDate": "12-2016",
+      "age": "25",
+      "votes": "2000",
+      "aboutMe": "I'm happy being a part of this community. I've learned so much from this site.",
+      "avatar": "",
+      "email": "johnsmith999@gmail.com"
+    },
+    "questions": {
+      "created": ["7", "8", "9", "10"],
+      "followed": ["1", "2", "3", "4", "5", "6"]
+    },
+    "topics": ["1", "2"]
+  },
+  "tags": [
+    {
+      "id": "1",
+      "name": "react"
+    },
+    {
+      "id": "2",
+      "name": "vue"
+    },
+    {
+      "id": "3",
+      "name": "angular"
+    },
+    {
+      "id": "4",
+      "name": "express"
+    },
+    {
+      "id": "5",
+      "name": "node"
+    },
+    {
+      "id": "6",
+      "name": "php"
+    },
+    {
+      "id": "7",
+      "name": "mysql"
+    },
+    {
+      "id": "8",
+      "name": "mongodb"
+    },
+    {
+      "id": "9",
+      "name": "python"
+    },
+    {
+      "id": "10",
+      "name": "bootstrap"
+    },
+    {
+      "id": "11",
+      "name": "nextjs"
+    },
+    {
+      "id": "12",
+      "name": "graphql"
+    },
+    {
+      "id": "13",
+      "name": "rest-api"
+    },
+    {
+      "id": "14",
+      "name": "materialize"
+    },
+    {
+      "id": "15",
+      "name": "nutxjs"
+    }
+  ],
+  "questions": [
+    {
+      "id": "1",
+      "votes": "10",
+      "answers": "10",
+      "views": "100",
+      "title": "Can I make API call in shouldComponentUpdate phase in React?",
+      "author": "1",
+      "lastUpdated": "07/07/19 at 12:00",
+      "tags": ["1", "12"]
+    },
+    {
+      "id": "2",
+      "votes": "30",
+      "answers": "10",
+      "views": "50",
+      "title": "What is the difference between vue-router and react-router?",
+      "author": "2",
+      "lastUpdated": "05/06/19 at 13:00",
+      "tags": ["1", "2"]
+    },
+    {
+      "id": "3",
+      "votes": "34",
+      "answers": "5",
+      "views": "15",
+      "title": "Is Angular framework one-way or two-way data binding?",
+      "author": "3",
+      "lastUpdated": "01/03/19 at 14:00",
+      "tags": ["1", "2", "3"]
+    },
+    {
+      "id": "4",
+      "votes": "67",
+      "answers": "9",
+      "views": "12",
+      "title": "Can someone explain to me the concept of express middleware? Is it the same as ruby middleware?",
+      "author": "1",
+      "lastUpdated": "14/02/19 at 7:00",
+      "tags": ["4", "5"]
+    },
+    {
+      "id": "5",
+      "votes": "10",
+      "answers": "10",
+      "views": "12",
+      "title": "What are some useful Node.js built-in modules that developers usually use?",
+      "author": "2",
+      "lastUpdated": "18/03/19 at 9:00",
+      "tags": ["5"]
+    },
+    {
+      "id": "6",
+      "votes": "55",
+      "answers": "6",
+      "views": "112",
+      "title": "Which is better framework for new developers to use? Nextjs or NutxJs?",
+      "author": "3",
+      "lastUpdated": "11/04/19 at 18:00",
+      "tags": ["11", "15"]
+    },
+    {
+      "id": "7",
+      "votes": "45",
+      "answers": "15",
+      "views": "150",
+      "title": "What is the difference between relational database and document database?",
+      "author": "4",
+      "lastUpdated": "13/05/19 at 22:00",
+      "tags": ["5", "6", "7", "8"]
+    },
+    {
+      "id": "8",
+      "votes": "45",
+      "answers": "20",
+      "views": "130",
+      "title": "What are some popular IDEs that I can use in my python projects?",
+      "author": "4",
+      "lastUpdated": "23/04/19 at 11:30",
+      "tags": ["9"]
+    },
+    {
+      "id": "9",
+      "votes": "10",
+      "answers": "10",
+      "views": "12",
+      "title": "Which is more suitable framework for small and personal projects? Twitter Bootstrap or Google Materialize?",
+      "author": "4",
+      "lastUpdated": "25/05/19 at 8:00",
+      "tags": ["10", "14"]
+    },
+    {
+      "id": "10",
+      "votes": "60",
+      "answers": "4",
+      "views": "230",
+      "title": "Can I transform the network communication part in my app from rest api to grapql?",
+      "author": "4",
+      "lastUpdated": "21/04/19 at 17:30",
+      "tags": ["12", "13"]
+    }
+  ],
+  "topics": [
+    {
+      "id": 1,
+      "votes": "120",
+      "questions": ["1", "2", "3", "6"],
+      "views": 150,
+      "title": "Front End Frameworks",
+      "createdAt": "05:00 am",
+      "tags": ["1", "2", "3", "10", "11", "14", "15"]
+    },
+    {
+      "id": 2,
+      "votes": 100,
+      "questions": ["4", "5", "7", "8"],
+      "views": 200,
+      "title": "Back End Frameworks",
+      "createdAt": "12:00 am",
+      "tags": ["4", "5", "6", "7", "8", "12", "13"]
+    }
+  ]
+}

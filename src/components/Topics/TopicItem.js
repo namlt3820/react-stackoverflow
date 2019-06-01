@@ -3,15 +3,15 @@ import TopicSummary from "./TopicSummary";
 import TopicStats from "./TopicStats";
 
 class TopicItem extends Component {
-    render() {
-        const { statsTopic, summaryTopic, tags } = this.props.topicItem;
-        return (
-            <div className="n__topic-item">
-                <TopicStats statsTopic={statsTopic} />
-                <TopicSummary summaryTopic={summaryTopic} tags={tags} />
-            </div>
-        );
-    }
+  render() {
+    const topic = this.props.topic
+    return (
+      <div className="n__question-item">
+        <TopicStats topic={topic} />
+        <TopicSummary  topic={topic}  />
+      </div>
+    );
+  }
 }
 
 export default TopicItem;

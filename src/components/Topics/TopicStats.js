@@ -2,24 +2,24 @@ import React, { Component } from "react";
 
 class TopicStats extends Component {
     render() {
-        const { answers, views, votes } = this.props.statsTopic;
+        const { questions, views, votes } = this.props.topic;
         return (
             <div className="cp">
                 <div className="votes">
                     <div className="mini-counts">
-                        <span title="0 votes">{votes}</span>
+                        <span>{votes}</span>
                     </div>
                     <div>votes</div>
                 </div>
                 <div className="status unanswered">
                     <div className="mini-counts">
-                        <span title="0 answers">{answers}</span>
+                        <span>{questions.length}</span>
                     </div>
-                    <div>answers</div>
+                    <div>questions</div>
                 </div>
                 <div className="views">
                     <div className="mini-counts">
-                        <span title="13 views">{views}</span>
+                        <span>{views}</span>
                     </div>
                     <div>views</div>
                 </div>

@@ -1,7 +1,5 @@
 /* style for Auth Page */
-#content {
-    background: #eff0f1;
-}
+
 .auth-page {
     height: 600px;
     display: flex;

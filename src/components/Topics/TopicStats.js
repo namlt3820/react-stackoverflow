@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-class QuestionStats extends Component {
+class TopicStats extends Component {
     render() {
-        const { answers, views, votes } = this.props.question;
+        const { questions, views, votes } = this.props.topic;
         return (
             <div className="cp">
                 <div className="votes">
@@ -13,9 +13,9 @@ class QuestionStats extends Component {
                 </div>
                 <div className="status unanswered">
                     <div className="mini-counts">
-                        <span>{answers}</span>
+                        <span>{questions.length}</span>
                     </div>
-                    <div>answers</div>
+                    <div>questions</div>
                 </div>
                 <div className="views">
                     <div className="mini-counts">
@@ -28,4 +28,4 @@ class QuestionStats extends Component {
     }
 }
 
-export default QuestionStats;
+export default TopicStats;

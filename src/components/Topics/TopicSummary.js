@@ -2,17 +2,17 @@ import React, { Component } from "react";
 import data from "../../data/data.json";
 import _ from "lodash";
 
-class QuestionSummary extends Component {
+class TopicSummary extends Component {
   render() {
-    const { lastUpdated, title, author, tags } = this.props.question;
+    const { createdAt, title, tags } = this.props.topic;
     const tagsDetail = _.flatten(
       tags.map(id => data.tags.filter(tag => tag.id === id))
     );
-    const authorName = data.users.filter(user => user.id === author)[0].name;
     return (
       <div className="summary">
         <h3>
-          <a href="/" className="n__question-hyperlink">
+          <a href="/" className="n__question-hyperlink" style={{ 
+  color: "#ff3232"}}>
             {title}
           </a>
         </h3>
@@ -26,14 +26,12 @@ class QuestionSummary extends Component {
           })}
         </div>
         <div className="started">
-          <span className="started-link">Author: </span>
-          <a href="/"> {authorName}</a>
-          <span className="started-link">, Last updated: </span>
-          <a href="/"> {lastUpdated}</a>
+          <span className="started-link">Created at: </span>
+          <a href="/"> {createdAt}</a>
         </div>
       </div>
     );
   }
 }
 
-export default QuestionSummary;
+export default TopicSummary;

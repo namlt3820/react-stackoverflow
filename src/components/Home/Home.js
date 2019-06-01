@@ -1,9 +1,11 @@
 import React from "react";
-import QuestionList from "../Questions/QuestionList";
+import QuestionList from "./QuestionList";
+import data from '../../data/data.json'
 
-const Home = props => (
+const QuestionListHome = data.questions.filter(question => question.author !== data.user.profile.id)
+const Home = () => (
     <div>
-        <QuestionList />
+        <QuestionList list={QuestionListHome}/>
     </div>
 );
 

@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import QuestionItem from "./QuestionItem";
-import data from "../../data/data.json";
 class QuestionList extends Component {
     render() {
-        const listQuestion = data;
+        const listQuestion = this.props.list;
         return (
-            <div className="question-list">
-                {listQuestion.map((item, index) => {
-                    return <QuestionItem questionItem={item} key={index} />;
+            <div className="n__question-list">
+                {listQuestion.map((question) => {
+                    return <QuestionItem question={question} key={question.id} />;
                 })}
             </div>
         );

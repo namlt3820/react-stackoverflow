@@ -1,9 +1,27 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { Menu, Dropdown, Badge } from "antd";
+import Notify from "../Notify";
+import HeaderNotify from "../Notify/HeaderNotify";
+
 import "./Header.css";
 
 class Header extends Component {
     render() {
+        const menu = (
+            <Menu>
+                <HeaderNotify />
+                <Menu.Item>
+                    <Notify />
+                </Menu.Item>
+                <Menu.Item>
+                    <Notify />
+                </Menu.Item>
+                <Menu.Item>
+                    <Notify />
+                </Menu.Item>
+            </Menu>
+        );
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light px-4">
                 <NavLink className="navbar-brand text-info mr-5" to="/">
@@ -34,6 +52,16 @@ class Header extends Component {
                                 Ask Question
                             </button>
                         </form>
+                        <li className="nav-item">
+                            <Dropdown overlay={menu} placement="topCenter" trigger={["click"]}>
+                                <a className="ant-dropdown-link" href="#">
+                                    <Badge count={5}>
+                                        <span className="head-example" />
+                                    </Badge>
+                                </a>
+                            </Dropdown>
+                        </li>
+
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/tags">
                                 Tags

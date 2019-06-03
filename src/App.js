@@ -8,10 +8,17 @@ import ActiveCode from "./components/Auth/ActiveCode";
 import ChangPassWord from "./components/Auth/ChangPassWord";
 import QuestionList from './components/Questions/QuestionList'
 import TopicList from './components/Topics/TopicList'
+import MyTopic from "./components/MyTopic/MyTopic";
+import MyQuestion from "./components/MyQuestion/MyQuestion";
 import Main from "./components/Layout/Main";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./general.css";
 import "./App.css";
+import AskQuestion from "./components/AskQuestion/AskQuestion";
+
+
+
+
 
 function App() {
     return (
@@ -26,8 +33,11 @@ function App() {
                         <Route path="/active" component={ActiveCode} />
                         <Route path="/change-password" component={ChangPassWord} />
                         <Route path="/my-profile" component={User} />
-                        <Route path="/my-questions" component={QuestionList}/>
-                        <Route path="/my-topics" component={TopicList}/>
+                        {/* <Route path="/my-questions" component={QuestionList}/> */}
+                        {/* <Route path="/my-topics" component={TopicList}/> */}
+                        <Route path="/ask-question" component={AskQuestion}/>
+                        <Route path="/my-questions" component={MyQuestion}/>
+                        <Route path="/my-topics" component={MyTopic}/>
                     </Switch>
                 </Main>
             </BrowserRouter>

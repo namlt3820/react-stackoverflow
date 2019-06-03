@@ -154,3 +154,181 @@
 }
 
 /* end Home Page */
+
+
+
+/* Style MyTopic */
+.link-tag{
+    display: inline-block;
+    padding: .4em .5em;
+    margin: 2px 2px 2px 0;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    transition: all .15s ease-in-out;
+    font-size: 12px;
+    color: #39739d;
+    background-color: #E1ECF4;
+    border-color: #E1ECF4;
+  }
+  
+  a.link-tag:hover{
+    text-decoration: none;
+    color: #33658a;
+    background-color: #cee0ed;
+    border-color: #cee0ed;
+  }
+  
+  .list-group-item-hover:hover{
+    z-index: 1;
+    color: #495057;
+    text-decoration: none;
+    background-color: #f8f9fa;
+  }
+  
+  .btn:hover{
+    cursor: pointer;
+  }
+  
+  .avaUser{
+    width: 100%;
+    height: 100%;
+  }
+  
+  img{width: 100%; height: 100%;}
+  
+  .table td, .table th {border: none; padding: 0;}
+  .table td.userAva{
+    width: 70px;
+    height: 70px;
+  }
+  .table td.userName{
+    padding-top: 25px;
+    padding-left: 20px;
+  }
+  
+  .table tr.userItem{
+    display: block;
+    margin: 8px 0px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    padding: 10px;
+    position: relative;
+  }
+  
+  .table td.iconClose{
+    position: absolute;
+    right: 10px;
+    top: 8px;
+  }
+  .table td.iconClose:hover{cursor: pointer;}
+  
+  @media (max-width: 1024px){
+    .avaUser{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+  }
+/* End Style MyTopic */
+
+/* Start Style My Question */
+.link-tag{
+    display: inline-block;
+    padding: .4em .5em;
+    margin: 2px 2px 2px 0;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    transition: all .15s ease-in-out;
+    font-size: 12px;
+    color: #39739d;
+    background-color: #E1ECF4;
+    border-color: #E1ECF4;
+  }
+  
+  a.link-tag:hover{
+    text-decoration: none;
+    color: #33658a;
+    background-color: #cee0ed;
+    border-color: #cee0ed;
+  }
+  
+  .list-group-item-hover:hover{
+    z-index: 1;
+    color: #495057;
+    text-decoration: none;
+    background-color: #f8f9fa;
+  }
+  
+  .btn:hover{
+    cursor: pointer;
+  }
+  
+  .avaUser{
+    width: 100%;
+    height: 100%;
+  }
+  
+  img{width: 100%; height: 100%;}
+  
+  .table td, .table th {border: none; padding: 0;}
+  .table td.userAva{
+    width: 70px;
+    height: 70px;
+  }
+  .table td.userName{
+    padding-top: 25px;
+    padding-left: 20px;
+  }
+  
+  .table tr.userItem{
+    display: block;
+    margin: 8px 0px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    padding: 10px;
+    position: relative;
+  }
+  
+  .table td.iconClose{
+    position: absolute;
+    right: 10px;
+    top: 8px;
+  }
+  .table td.iconClose:hover{cursor: pointer;}
+  
+  @media (max-width: 1024px){
+    .avaUser{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+  }
+/* End Style My Question */
+
+/* Start Style Ask Question */
+.form-group .edit-text{
+    height: 40px;
+    border: 1px solid #ced4da;
+    border-bottom: none;
+    border-radius: .25rem;
+  }
+  .form-group .edit-text .fa-hover:hover{
+    background-color: #0000001c;
+  }
+  .form-group .edit-text .fa-hover:visited{
+    background-color: #0000001c;
+  }
+  
+/* End Style Ask Question */

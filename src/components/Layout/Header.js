@@ -34,7 +34,8 @@ class Header extends Component {
                 className="btn btn-outline-primary my-2 my-sm-0"
                 type="submit"
               >
-                Ask Question
+                
+                <NavLink className="nav-link" to="/ask-question">Ask Question</NavLink>
               </button>
             </form>
             <li className="nav-item">
@@ -43,7 +44,7 @@ class Header extends Component {
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
-                href="#"
+                href="true"
                 id="navbarNews"
                 role="button"
                 data-toggle="dropdown"
@@ -60,7 +61,7 @@ class Header extends Component {
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
-                href="#"
+                href="true"
                 id="navbarUserDropdown"
                 role="button"
                 data-toggle="dropdown"

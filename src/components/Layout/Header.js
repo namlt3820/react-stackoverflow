@@ -21,86 +21,72 @@ class Header extends Component {
                     <span className="navbar-toggler-icon" />
                 </button>
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav w-100">
-                        <form className="form-inline my-2 my-lg-0 mr-auto">
-                            <input
-                                className="form-control mr-sm-2 header__search"
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search"
-                            />
-                            <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">
-                                Ask Question
-                            </button>
-                        </form>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/tags">
-                                Tags
-                            </NavLink>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a
-                                className="nav-link dropdown-toggle"
-                                href="/"
-                                id="navbarNews"
-                                role="button"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                News
-                            </a>
-                            <div className="dropdown-menu" aria-labelledby="navbarNews">
-                                <NavLink className="dropdown-item" to="/my-topics">
-                                    Questions Update
-                                </NavLink>
-                                <NavLink className="dropdown-item" to="/my-questions">
-                                    Topics Update
-                                </NavLink>
-                            </div>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a
-                                className="nav-link dropdown-toggle"
-                                href="/"
-                                id="navbarUserDropdown"
-                                role="button"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                User
-                            </a>
-                            <div className="dropdown-menu" aria-labelledby="navbarUserDropdown">
-                                <NavLink className="dropdown-item" to="/my-topics">
-                                    My Topics
-                                </NavLink>
-                                <NavLink className="dropdown-item" to="/my-questions">
-                                    My Questions
-                                </NavLink>
-                                <NavLink className="dropdown-item" to="/my-profile">
-                                    My Profile
-                                </NavLink>
-                                <NavLink className="dropdown-item" to="/change-password">
-                                    Change Password
-                                </NavLink>
-                            </div>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/login">
-                                Login
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/register">
-                                Register
-                            </NavLink>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        );
-    }
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav w-100">
+            <form className="form-inline my-2 my-lg-0 mr-auto">
+              <input
+                className="form-control mr-sm-2 header__search"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button
+                className="btn btn-outline-primary my-2 my-sm-0"
+                type="submit"
+              >
+                
+                <NavLink className="nav-link" to="/ask-question">Ask Question</NavLink>
+              </button>
+            </form>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/tags">Tags</NavLink>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="true"
+                id="navbarNews"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                News
+              </a>
+              <div className="dropdown-menu" aria-labelledby="navbarNews">
+                <NavLink className="dropdown-item" to="/my-topics">Questions Update</NavLink>
+                <NavLink className="dropdown-item" to="/my-questions">Topics Update</NavLink>
+              </div>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="true"
+                id="navbarUserDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                User
+              </a>
+              <div className="dropdown-menu" aria-labelledby="navbarUserDropdown">
+                <NavLink className="dropdown-item" to="/my-topics">My Topics</NavLink>
+                <NavLink className="dropdown-item" to="/my-questions">My Questions</NavLink>
+                <NavLink className="dropdown-item" to="/my-profile">My Profile</NavLink>
+                <NavLink className="dropdown-item" to="/change-password">Change Password</NavLink>
+              </div>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/login">Login</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/register">Register</NavLink>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    );
+  }
 }
 export default Header;

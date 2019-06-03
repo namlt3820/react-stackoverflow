@@ -1,7 +1,7 @@
 /* style for Auth Page */
 
 .auth-page {
-    height: 600px;
+    /* height: 600px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,7 +13,7 @@
 .auth-page .forgot-password,
 .auth-page .change-password {
     padding: 20px;
-    background: #ffffff;
+    background: #f8f9fa;
 }
 .auth-page .social {
     margin-bottom: 50px;
@@ -23,6 +23,15 @@
 }
 .auth-page .btn-social .btn {
     width: 340px;
+    font-size: 13px;
+}
+.auth-page .btn-social .btn-fb {
+    background: #314a85;
+    color: #ffffff;
+}
+.auth-page .btn-social .btn-gg {
+    background: #f7f7f7;
+    color: rgba(0, 0, 0, 0.5);
 }
 .auth-page .input-group-prepend {
     padding: 5px;
@@ -75,7 +84,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 600px;
+    /* height: 600px; */
     padding-right: 220px;
 }
 .question-item {

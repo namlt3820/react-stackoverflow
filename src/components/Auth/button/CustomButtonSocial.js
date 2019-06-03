@@ -5,7 +5,10 @@ class CustomButtonSocial extends Component {
         const { content, match } = this.props;
         return (
             <div className="btn-social">
-                <button type="button" className={content === "Facebook" ? `btn btn-primary` : `btn btn-light`}>
+                <div>
+                    <i className="fab fa-google-play" />
+                </div>
+                <button type="button" className={content === "Facebook" ? `btn btn-fb` : `btn btn-gg`}>
                     {match ? `Login with ${content}` : `Sign up with ${content}`}
                 </button>
             </div>

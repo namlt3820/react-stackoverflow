@@ -42,63 +42,108 @@
   "tags": [
     {
       "id": "1",
-      "name": "react"
+      "name": "react",
+      "description": "React is a JavaScript library for building user interfaces. It uses a declarative paradigm and aims to be both efficient and flexible.",
+      "questions": "150",
+      "followers": "80"
     },
     {
       "id": "2",
-      "name": "vue"
+      "name": "vue",
+      "description": "Vue.js is an open-source, progressive Javascript framework for building user interfaces that aim to be incrementally adoptable. Vue.js is mainly used for front-end development and requires an intermediate level of HTML and CSS.",
+      "questions": "45",
+      "followers": "50"
     },
     {
       "id": "3",
-      "name": "angular"
+      "name": "angular",
+      "description": "AngularJS is a JavaScript-based open-source front-end web framework mainly maintained by Google and by a community of individuals and corporations to address many of the challenges encountered in developing SPAs.",
+      "questions": "100",
+      "followers": "75"
     },
     {
       "id": "4",
-      "name": "express"
+      "name": "express",
+      "description": "Express is a minimal and flexible Node.js web application framework, providing a robust set of features for building web applications.",
+      "questions": "80",
+      "followers":"30"
     },
     {
       "id": "5",
-      "name": "node"
+      "name": "node",
+      "description": "Node.js is an event-based, non-blocking, asynchronous I/O runtime that uses Google's V8 JavaScript engine and libuv library. It is used for developing applications that make heavy use of the ability to run JavaScript both on the client, as well as on server side.",
+      "questions": "60",
+      "followers": "125"
     },
     {
       "id": "6",
-      "name": "php"
+      "name": "php",
+      "description": "PHP (PHP: Hypertext Preprocessor) is a widely used, high-level, dynamic, object-oriented and interpreted scripting language primarily designed for server-side web development.",
+      "questions": "66",
+      "followers": "100"
     },
     {
       "id": "7",
-      "name": "mysql"
+      "name": "mysql",
+      "description": "MySQL is a free, open source Relational Database Management System (RDBMS) that uses Structured Query Language (SQL).",
+      "questions": "99",
+      "followers": "30"
     },
     {
       "id": "8",
-      "name": "mongodb"
+      "name": "mongodb",
+      "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schema.",
+      "questions": "20",
+      "followers":"44"
     },
     {
       "id": "9",
-      "name": "python"
+      "name": "python",
+      "description": "Python is an interpreted, high-level, general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant whitespace.",
+      "questions": "77",
+      "followers": "99"
     },
     {
       "id": "10",
-      "name": "bootstrap"
+      "name": "bootstrap",
+      "description": "Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS- and JavaScript-based design templates for typography, forms, buttons, navigation and other interface components.",
+      "questions": "115",
+      "followers": "67"
     },
     {
       "id": "11",
-      "name": "nextjs"
+      "name": "nextjs",
+      "description": "A JavaScript framework that allows server-rendered by default, automatic code splitting for faster page loads, simple client-side routing (page based), Webpack-based dev environment which supports Hot Module Replacement (HMR).",
+      "questions": "33",
+      "followers": "24"
     },
     {
       "id": "12",
-      "name": "graphql"
+      "name": "graphql",
+      "description": "GraphQL is an open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data. GraphQL was developed internally by Facebook in 2012 before being publicly released in 2015.",
+      "questions": "62",
+      "followers": "49"
     },
     {
       "id": "13",
-      "name": "rest-api"
+      "name": "rest-api",
+      "description": "Representational State Transfer (REST) is a software architectural style that defines a set of constraints to be used for creating Web services, , provide interoperability between computer systems on the Internet",
+      "questions": "100",
+      "followers": "80"
     },
     {
       "id": "14",
-      "name": "materialize"
+      "name": "materialize",
+      "description": "Materialize is a UI component library created with CSS, JavaScript, and HTML. Materialize UI components help in constructing attractive, consistent, and functional web pages and web apps, while adhering to modern web design principles such as browser portability, device independence, and graceful degradation.",
+      "questions": "43",
+      "followers": "79"
     },
     {
       "id": "15",
-      "name": "nutxjs"
+      "name": "nutxjs",
+      "description": "Nuxt.js is a free and open source web application framework based on Vue.js, Node.js, Express.js, Webpack and Babel.js. The framework is advertised as \"meta-framework for universal applications\".",
+      "questions": "88",
+      "followers": "109"
     }
   ],
   "questions": [

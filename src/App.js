@@ -11,6 +11,7 @@ import TopicList from './components/Topics/TopicList'
 import MyTopic from "./components/MyTopic/MyTopic";
 import MyQuestion from "./components/MyQuestion/MyQuestion";
 import Main from "./components/Layout/Main";
+import TagList from './components/Tags'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./general.css";
 import "./App.css";
@@ -33,11 +34,10 @@ function App() {
                         <Route path="/active" component={ActiveCode} />
                         <Route path="/change-password" component={ChangPassWord} />
                         <Route path="/my-profile" component={User} />
-                        {/* <Route path="/my-questions" component={QuestionList}/> */}
-                        {/* <Route path="/my-topics" component={TopicList}/> */}
                         <Route path="/ask-question" component={AskQuestion}/>
                         <Route path="/my-questions" component={MyQuestion}/>
                         <Route path="/my-topics" component={MyTopic}/>
+                        <Route path="/tags" component={TagList} />
                     </Switch>
                 </Main>
             </BrowserRouter>

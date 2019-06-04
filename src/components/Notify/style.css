@@ -1,0 +1,16 @@
+.notify {
+    padding: 10px 0px;
+    border-top: 1px solid #dadada;
+}
+.notify .notify-item {
+    display: flex;
+}
+.notify .notify-item .notify-title {
+    font-size: 14px;
+}
+.notify .notify-item .notify-time {
+    padding-left: 10px;
+}
+.header-notify {
+    margin-left: 10px;
+}

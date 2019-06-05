@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import CustomInputAuth from "../../components/Core/input/CustomInputAuth";
-import CustomButton from "../../components/Core/button/CustomButton";
+import CustomInputAuth from "../../components/Cores/input/CustomInputAuth";
+import CustomButton from "../../components/Cores/button/CustomButton";
 
-class ChangPassWord extends Component {
+class ChangePassWord extends Component {
     render() {
         return (
             <div className="auth-page">
@@ -17,4 +17,4 @@ class ChangPassWord extends Component {
     }
 }
 
-export default ChangPassWord;
+export default ChangePassWord;

@@ -11,7 +11,7 @@ const Tag = ({ tag: { name, description, questions, followers } }) => (
             title={name}
             extra={
                 <Tooltip title={`${questions} Questions, ${followers} Followers`}>
-                    <a href="#" style={{ fontSize: "0.9rem" }}>
+                    <a href="/" style={{ fontSize: "0.9rem" }}>
                         {questions} <i className="fa fa-question" />, {followers} <i className="fa fa-user" />
                     </a>
                 </Tooltip>

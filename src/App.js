@@ -1,21 +1,9 @@
 import React from "react";
-import User from "./components/User";
-import Home from "./pages/Home/Home";
-import Login from "./pages/Auth/Login";
-import SignUp from "./pages/Auth/SignUp";
-import ForgotPassWord from "./pages/Auth/ForgotPassWord";
-import ActiveCode from "./pages/Auth/ActiveCode";
-import ChangPassWord from "./pages/Auth/ChangPassWord";
-// import QuestionList from './components/Questions/QuestionList'
-// import TopicList from './components/Topics/TopicList'
-import MyTopic from "./components/MyTopic/MyTopic";
-import MyQuestion from "./components/MyQuestion/MyQuestion";
 import Main from "./layout/Main";
-import TagList from "./components/Tags";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { routes } from "./routers/router";
 import "./general.css";
 import "./App.css";
-import AskQuestion from "./components/AskQuestion/AskQuestion";
 
 function App() {
     return (
@@ -23,17 +11,9 @@ function App() {
             <BrowserRouter>
                 <Main>
                     <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/login" component={Login} />
-                        <Route path="/register" component={SignUp} />
-                        <Route path="/forgot-password" component={ForgotPassWord} />
-                        <Route path="/active" component={ActiveCode} />
-                        <Route path="/change-password" component={ChangPassWord} />
-                        <Route path="/my-profile" component={User} />
-                        <Route path="/ask-question" component={AskQuestion} />
-                        <Route path="/my-questions" component={MyQuestion} />
-                        <Route path="/my-topics" component={MyTopic} />
-                        <Route path="/tags" component={TagList} />
+                        {routes.map((route, index) => {
+                            return <Route exact path={route.path} component={route.component} key={index} />;
+                        })}
                     </Switch>
                 </Main>
             </BrowserRouter>

@@ -1,7 +1,7 @@
 import React from "react";
 import Main from "./layout/Main";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { routes } from "./routers/router";
+import routers from "./routers/index";
 import "./general.css";
 import "./App.css";
 
@@ -11,8 +11,8 @@ function App() {
             <BrowserRouter>
                 <Main>
                     <Switch>
-                        {routes.map((route, index) => {
-                            return <Route exact path={route.path} component={route.component} key={index} />;
+                        {routers.map((router, index) => {
+                            return <Route exact path={router.path} component={router.component} key={index} />;
                         })}
                     </Switch>
                 </Main>

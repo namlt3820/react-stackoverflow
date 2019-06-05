@@ -10,7 +10,7 @@ import MyQuestion from "../components/MyQuestion/MyQuestion";
 import TagList from "../components/Tags";
 import AskQuestion from "../components/AskQuestion/AskQuestion";
 
-export const routes = [
+const routers = [
     {
         path: "/",
         component: Home
@@ -56,3 +56,5 @@ export const routes = [
         component: TagList
     }
 ];
+
+export default routers;

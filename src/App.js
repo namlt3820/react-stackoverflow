@@ -1,6 +1,6 @@
 import React from "react";
 import User from "./components/User";
-import Home from "./components/Home/Home";
+import Home from "./pages/Home/Home";
 import Login from "./pages/Auth/Login";
 import SignUp from "./pages/Auth/SignUp";
 import ForgotPassWord from "./pages/Auth/ForgotPassWord";

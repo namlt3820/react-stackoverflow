@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import CustomInputAuth from "../../components/Cores/input/CustomInputAuth";
 import CustomButton from "../../components/Cores/button/CustomButton";
 import CustomButtonSocial from "../../components/Cores/button/CustomButtonSocial";
+import './style.css'
+
 class SignUp extends Component {
     render() {
         return (

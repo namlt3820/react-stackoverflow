@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CustomInputAuth from "../../components/Cores/input/CustomInputAuth";
 import CustomButton from "../../components/Cores/button/CustomButton";
+import './style.css'
 
 class ForgotPassWord extends Component {
     render() {

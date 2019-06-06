@@ -10,7 +10,7 @@ const Main = ({ children }) => {
         style={{ paddingTop: "0rem", paddingBottom: "4rem" }}
         className="container-fluid"
       >
-        <div className="my-4">
+        <div className="my-4 container">
           <div className="">{children}</div>
         </div>
       </div>

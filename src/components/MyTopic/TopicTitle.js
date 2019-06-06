@@ -8,7 +8,7 @@ class TopicTitle extends Component {
             <div className="container-fluid card-header">
                 <div className="row">
                     <div className="col-8">
-                    <a href="true"><h5>The best way to model a one-to-many relationship in hibernate</h5></a>
+                    <a href="/my-questions"><h5>The best way to model a one-to-many relationship in hibernate</h5></a>
                     </div>
                     <div className="col-3">
                     <div className="btn-group float-right">

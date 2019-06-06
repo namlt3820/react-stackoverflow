@@ -1,0 +1,13 @@
+.form-group .edit-text{
+    height: 40px;
+    border: 1px solid #ced4da;
+    border-bottom: none;
+    border-radius: .25rem;
+  }
+  .form-group .edit-text .fa-hover:hover{
+    background-color: #0000001c;
+  }
+  .form-group .edit-text .fa-hover:visited{
+    background-color: #0000001c;
+  }
+  

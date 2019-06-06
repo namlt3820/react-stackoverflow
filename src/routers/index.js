@@ -5,10 +5,11 @@ import SignUp from "../pages/Auth/SignUp";
 import ForgotPassWord from "../pages/Auth/ForgotPassWord";
 import ActiveCode from "../pages/Auth/ActiveCode";
 import ChangePassWord from "../pages/Auth/ChangePassWord";
-import MyTopic from "../components/MyTopic/MyTopic";
-import MyQuestion from "../components/MyQuestion/MyQuestion";
+import MyTopic from "../components/MyTopic";
+import MyQuestion from "../components/MyQuestion";
 import TagList from "../components/Tags";
-import AskQuestion from "../components/AskQuestion/AskQuestion";
+import AskQuestion from "../components/AskQuestion";
+import QuestionDetail from "../components/QuestionDetails";
 
 const routers = [
     {
@@ -50,6 +51,10 @@ const routers = [
     {
         path: "/my-topics",
         component: MyTopic
+    },
+    {
+        path: "/question-detail",
+        component: QuestionDetail
     },
     {
         path: "/tags",

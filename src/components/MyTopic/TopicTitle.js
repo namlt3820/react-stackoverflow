@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DeleteButton from './DeleteButton';
 import EditButton from './EditButton';
+import { NavLink } from "react-router-dom";
 
 class TopicTitle extends Component {
     render() {
@@ -8,7 +9,7 @@ class TopicTitle extends Component {
             <div className="container-fluid card-header">
                 <div className="row">
                     <div className="col-8">
-                    <a href="/my-questions"><h5>The best way to model a one-to-many relationship in hibernate</h5></a>
+                    <NavLink to="/topic-detail"><h5>The best way to model a one-to-many relationship in hibernate</h5></NavLink>
                     </div>
                     <div className="col-3">
                     <div className="btn-group float-right">

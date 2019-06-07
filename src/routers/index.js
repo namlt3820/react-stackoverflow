@@ -6,10 +6,11 @@ import ForgotPassWord from "../pages/Auth/ForgotPassWord";
 import ActiveCode from "../pages/Auth/ActiveCode";
 import ChangePassWord from "../pages/Auth/ChangePassWord";
 import MyTopic from "../components/MyTopic";
-import MyQuestion from "../components/MyQuestion";
 import TagList from "../pages/Tags";
 import AskQuestion from "../components/AskQuestion";
 import QuestionDetail from "../components/QuestionDetails";
+import TopicDetail from "../components/TopicDetail";
+import MyQuestion from "../components/MyQuestion";
 
 const routers = [
     {
@@ -45,12 +46,16 @@ const routers = [
         component: AskQuestion
     },
     {
-        path: "/my-questions",
-        component: MyQuestion
+        path: "/topic-detail",
+        component: TopicDetail
     },
     {
         path: "/my-topics",
         component: MyTopic
+    },
+    {
+        path: "/my-questions",
+        component: MyQuestion
     },
     {
         path: "/question-detail",

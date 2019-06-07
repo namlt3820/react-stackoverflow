@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import QuestionList from './QuestionList';
-import UserList from './UserList';
+import QuestionList from '../TopicDetail/QuestionList';
 
 class MyQuestion extends Component {
     render() {
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    <QuestionList/>
-                    <UserList/>
-                </div>
+            <div>
+                <QuestionList/>
             </div>
         );
     }

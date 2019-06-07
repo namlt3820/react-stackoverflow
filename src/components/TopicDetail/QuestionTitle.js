@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import EditQuestion from './EditQuestion';
 import DeleteQuestion from './DeleteQuestion';
+import { NavLink } from "react-router-dom";
+
 
 class QuestionTitle extends Component {
     render() {
@@ -8,7 +10,7 @@ class QuestionTitle extends Component {
             <div className="container-fluid card-header">
             <div className="row">
                 <div className="col-8">
-                <a href="/question-detail"><h5>The best way to model a one-to-many relationship in hibernate</h5></a>
+                <NavLink to="/question-detail"><h5>The best way to model a one-to-many relationship in hibernate</h5></NavLink>
                 </div>
                 <div className="col-3">
                 <div className="btn-group float-right">

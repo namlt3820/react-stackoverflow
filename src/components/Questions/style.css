@@ -1,7 +1,6 @@
 .n__question-list {
     display: flex;
     flex-direction: column;
-    padding: 30px 100px;
 }
 .n__question-item {
     display: flex;

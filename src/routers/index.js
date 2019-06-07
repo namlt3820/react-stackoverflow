@@ -1,12 +1,12 @@
 import User from "../pages/User";
-import Home from "../pages/Home/Home";
+import Home from "../pages/Home";
 import Login from "../pages/Auth/Login";
 import SignUp from "../pages/Auth/SignUp";
 import ForgotPassWord from "../pages/Auth/ForgotPassWord";
 import ActiveCode from "../pages/Auth/ActiveCode";
 import ChangePassWord from "../pages/Auth/ChangePassWord";
 import MyTopic from "../components/MyTopic";
-import TagList from "../pages/Tags";
+import Tags from "../pages/Tags";
 import AskQuestion from "../components/AskQuestion";
 import QuestionDetail from "../components/QuestionDetails";
 import TopicDetail from "../components/TopicDetail";
@@ -63,7 +63,7 @@ const routers = [
     },
     {
         path: "/tags",
-        component: TagList
+        component: Tags
     }
 ];
 

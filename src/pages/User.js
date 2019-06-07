@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { Tabs } from 'antd';
-import EditableUserProfile from './UserProfile'
-import UserActivityTabs from './UserActivity'
+import EditableUserProfile from '../components/User/UserProfile'
+import UserActivity from '../components/User/UserActivity'
 const { TabPane } = Tabs;
 
-class UserTabs extends Component {
+class User extends Component {
   render() {
     return (
       <div>
@@ -13,7 +13,7 @@ class UserTabs extends Component {
             <EditableUserProfile />
           </TabPane>
           <TabPane tab="User Activity" key="useractivity">
-            <UserActivityTabs />
+            <UserActivity />
           </TabPane>
         </Tabs> 
       </div>
@@ -21,4 +21,4 @@ class UserTabs extends Component {
   }
 }
 
-export default UserTabs
+export default User

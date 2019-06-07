@@ -1,6 +1,6 @@
 .avaComment{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
   }
   .commentBox{
@@ -8,7 +8,7 @@
     border-radius: .25rem;
   }
   .usernameComment{
-    padding-top: 15px;
+    padding-top: 10px;
     padding-left: 20px;
   }
   .non-margin{
@@ -17,3 +17,10 @@
   .non-padding{
     padding: 0px;
   }
+  button{
+      outline: none;
+  }
+  a{
+      outline: none;
+  }
+  .contentComment{padding: 5px 5px 0px 15px}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Tabs } from "antd";
-import QuestionList from "../../Questions";
-import TopicList from "../../Topics";
+import QuestionList from "../../../components/Questions";
+import TopicList from "../../../components/Topics";
 import { Link } from "react-router-dom";
 import data from "../../../data/data.json";
 import _ from "lodash";

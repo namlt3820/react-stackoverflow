@@ -1,4 +1,4 @@
-import User from "../components/User";
+import User from "../pages/User";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Auth/Login";
 import SignUp from "../pages/Auth/SignUp";
@@ -7,7 +7,7 @@ import ActiveCode from "../pages/Auth/ActiveCode";
 import ChangePassWord from "../pages/Auth/ChangePassWord";
 import MyTopic from "../components/MyTopic";
 import MyQuestion from "../components/MyQuestion";
-import TagList from "../components/Tags";
+import TagList from "../pages/Tags";
 import AskQuestion from "../components/AskQuestion";
 import QuestionDetail from "../components/QuestionDetails";
 

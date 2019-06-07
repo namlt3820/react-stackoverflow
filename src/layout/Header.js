@@ -49,7 +49,7 @@ class Header extends Component {
                                 aria-label="Search"
                             />
                             <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">
-                            <NavLink to="/ask-question">Ask Question</NavLink>
+                                <NavLink to="/ask-question">Ask Question</NavLink>
                             </button>
                         </form>
                         {/* <li className="nav-item">

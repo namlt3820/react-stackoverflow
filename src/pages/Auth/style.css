@@ -1,50 +1,53 @@
 .auth-page {
-  /* height: 600px; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    /* height: 600px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .auth-page .login,
 .auth-page .active,
 .auth-page .signup,
 .auth-page .forgot-password,
 .auth-page .change-password {
-  padding: 20px;
-  background: #f8f9fa;
+    padding: 20px;
+    background: #f8f9fa;
 }
 .auth-page .social {
-  margin-bottom: 50px;
+    margin-bottom: 50px;
 }
 .auth-page .btn-social {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .auth-page .btn-social .btn {
-  width: 340px;
-  font-size: 13px;
+    width: 340px;
+    font-size: 13px;
 }
 .auth-page .btn-social .btn-fb {
-  background: #314a85;
-  color: #ffffff;
+    background: #314a85;
+    color: #ffffff;
 }
 .auth-page .btn-social .btn-gg {
-  background: #f7f7f7;
-  color: rgba(0, 0, 0, 0.5);
+    background: #f7f7f7;
+    color: rgba(0, 0, 0, 0.5);
 }
 .auth-page .input-group-prepend {
-  padding: 5px;
-  justify-content: space-between;
-  font-size: 14px;
+    padding: 5px;
+    justify-content: space-between;
+    font-size: 14px;
 }
 .auth-page .mb-3 .form-control {
-  width: 300px;
+    width: 300px;
 }
 .auth-page .btn-auth .btn {
-  width: 300px;
+    width: 300px;
+    height: 38px;
+    background: #0069d9;
+    color: #ffffff;
 }
 .auth-page .label-auth {
-  color: #130e0e;
-  line-height: 16px;
-  font-size: 15px;
-  font-weight: 700;
+    color: #130e0e;
+    line-height: 16px;
+    font-size: 15px;
+    font-weight: 700;
 }

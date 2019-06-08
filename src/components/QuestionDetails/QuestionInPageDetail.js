@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TitleQuestion from './TitleQuestion';
-import QuestionContent from '../MyQuestion/QuestionContent';
+import QuestionContent from '../TopicDetail/QuestionContent';
 import LikeReplay from './LikeReplay';
 
 class QuestionInPageDetail extends Component {
@@ -16,11 +16,9 @@ class QuestionInPageDetail extends Component {
                 <hr className="non-margin"/>
                 <LikeReplay/>
                 </div>
-               
             </div>
                 </div>
             </div>
-                
             </div>
         );
     }

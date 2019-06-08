@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import QuestionList from '../TopicDetail/QuestionList';
+import './../components/MyQuestion/style.css'
+import QuestionList from './../components/TopicDetail/QuestionList';
 
 class MyQuestion extends Component {
     render() {

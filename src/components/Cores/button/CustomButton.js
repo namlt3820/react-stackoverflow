@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-
+import { Button } from "antd";
 class CustomButton extends Component {
     render() {
-        const { content } = this.props;
+        const { content, handleClick, loading } = this.props;
         return (
             <div className="btn-auth">
-                <button type="button" className="btn btn-primary">
+                <Button type="button" className="btn" onClick={handleClick} loading={loading}>
+                    {/* Component Parent passing prop handleClick for Component Child */}
                     {content}
-                </button>
+                </Button>
             </div>
         );
     }

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Row } from "antd";
-import Tag from "./Tag";
-import TagNav from "./TagNav";
-import data from "../../data/data.json";
+import Tag from "../components/Tags/Tag";
+import TagNav from "../components/Tags/TagNav";
+import data from "../data/data.json";
 
-class TagList extends Component {
+class Tags extends Component {
     render() {
         return (
             <div>
@@ -19,4 +19,4 @@ class TagList extends Component {
     }
 }
 
-export default TagList;
+export default Tags;

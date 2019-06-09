@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import CustomInputAuth from "../../components/Cores/input/CustomInputAuth";
 import CustomButton from "../../components/Cores/button/CustomButton";
-import CustomButtonSocial from "../../components/Cores/button/CustomButtonSocial";
+import Facebook from "../../components/Social/FaceBook";
+import GoogleLogin from "../../components/Social/Google";
 import "./style.css";
 
 class Login extends Component {
@@ -26,8 +27,8 @@ class Login extends Component {
         return (
             <div className="auth-page">
                 <div className="social">
-                    <CustomButtonSocial content="Google" match={match} />
-                    <CustomButtonSocial content="Facebook" match={match} />
+                    <GoogleLogin content="Google" match={match} />
+                    <Facebook />
                 </div>
                 <div className="login">
                     <CustomInputAuth lable="Email" type="email" />

@@ -47,11 +47,6 @@ const routers = [
         path: "/tags",
         component: TagList
     },
-    // {
-    //     path: "/tags",
-    //     component: Tags
-    // },
-    //path Nhất
     {
         path: "/my-topics",
         component: MyTopic

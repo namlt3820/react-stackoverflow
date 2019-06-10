@@ -3,22 +3,23 @@ import DeleteButton from './DeleteButton';
 import EditButton from './EditButton';
 import { NavLink } from "react-router-dom";
 
-class TopicTitle extends Component {
+class Title extends Component {
     render() {
+        const { navLink } = this.props
         return (
             <div className="container-fluid card-header">
                 <div className="row">
                     <div className="col-8">
-                    <NavLink to="/topic-detail"><h5>The best way to model a one-to-many relationship in hibernate</h5></NavLink>
+                    <NavLink to={navLink}><h5>The best way to model a one-to-many relationship in hibernate</h5></NavLink>
                     </div>
                     <div className="col-3">
                     <div className="btn-group float-right">
-                        <EditButton/>
-                        <DeleteButton/>
+                        <EditButton className={"btn btn-warning "+this.props.classNameHidden} datatoggle="modal" datatarget="#modelId"/>
+                        <DeleteButton className={"btn btn-danger "+ this.props.classNameHidden}/>
                     </div>
                     </div>
-                    <div className="col-1" style={{position: 'absolute', right: 0, top: 0}}>
-                    <div className="btn">
+                    <div className="col-1" style={{position: 'relative'}}>
+                    <div className="btn" style={{position: 'absolute', right: 0, top: 0}}>
                         <i className="fa fa-heart-o fa-2x" aria-hidden="true" />
                     </div>
                     </div>
@@ -28,4 +29,4 @@ class TopicTitle extends Component {
     }
 }
 
-export default TopicTitle;
+export default Title;

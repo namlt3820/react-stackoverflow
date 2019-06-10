@@ -29,7 +29,7 @@ class GoogleLogin extends Component {
             clientid: config.google, //Google client Id
             cookiepolicy: "single_host_origin",
             requestvisibleactions: "http://schema.org/AddAction",
-            scope: "public_profile,email"
+            scope: "https://www.googleapis.com/auth/plus.login email"
         });
     };
 
@@ -63,7 +63,6 @@ class GoogleLogin extends Component {
                 return;
             } else if (e.id) {
                 //Profile data
-                alert("Successfull login from google : " + e.displayName);
                 console.log(e);
                 return;
             }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import QuestionComment from './QuestionComment';
-import QuestionInPageDetail from './QuestionInPageDetail';
+import './../components/QuestionDetails/style.css'
+import QuestionComment from './../components/QuestionDetails/QuestionComment';
+import QuestionInPageDetail from './../components/QuestionDetails/QuestionInPageDetail';
 
 class QuestionDetail extends Component {
     render() {
@@ -8,7 +9,6 @@ class QuestionDetail extends Component {
             <div>
                 <QuestionInPageDetail/>
                 <QuestionComment/>
-                
             </div>
         );
     }

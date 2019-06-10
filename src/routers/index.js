@@ -5,12 +5,14 @@ import SignUp from "../pages/Auth/SignUp";
 import ForgotPassWord from "../pages/Auth/ForgotPassWord";
 import ActiveCode from "../pages/Auth/ActiveCode";
 import ChangePassWord from "../pages/Auth/ChangePassWord";
-import MyTopic from "../components/MyTopic";
-import Tags from "../pages/Tags";
-import AskQuestion from "../components/AskQuestion";
-import QuestionDetail from "../components/QuestionDetails";
-import TopicDetail from "../components/TopicDetail";
-import MyQuestion from "../components/MyQuestion";
+import TagList from "../pages/Tags";
+//import Nhất
+import MyTopic from "../pages/MyTopic";
+import TopicDetail from "../pages/TopicDetail";
+import MyQuestion from "../pages/MyQuestion";
+import QuestionDetail from "../pages/QuestionDetail";
+import AskQuestion from "../pages/AskQuestion";
+
 
 export const routers = [
     {
@@ -22,16 +24,21 @@ export const routers = [
         component: User
     },
     {
-        path: "/ask-question",
-        component: AskQuestion
+        path: "/tags",
+        component: TagList
+    },
+    // {
+    //     path: "/tags",
+    //     component: Tags
+    // },
+    //path Nhất
+    {
+        path: "/my-topics",
+        component: MyTopic
     },
     {
         path: "/topic-detail",
         component: TopicDetail
-    },
-    {
-        path: "/my-topics",
-        component: MyTopic
     },
     {
         path: "/my-questions",
@@ -42,8 +49,8 @@ export const routers = [
         component: QuestionDetail
     },
     {
-        path: "/tags",
-        component: Tags
+        path: "/ask-question",
+        component: AskQuestion
     }
 ];
 

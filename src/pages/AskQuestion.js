@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import SelectedTopic from './SelectedTopic';
-import QuestionTitleAsk from './QuestionTitleAsk';
-import QuestionContentAsk from './QuestionContentAsk';
-import QuestionTags from './QuestionTags';
-import CreateButtonQuestion from './CreateButtonQuestion';
+import './../components/AskQuestion/style.css'
+import SelectedTopic from './../components/AskQuestion/SelectedTopic';
+import QuestionTitleAsk from './../components/AskQuestion/QuestionTitleAsk';
+import QuestionContentAsk from './../components/AskQuestion/QuestionContentAsk';
+import QuestionTags from './../components/AskQuestion/QuestionTags';
+import CreateButtonQuestion from './../components/AskQuestion/CreateButtonQuestion';
 
 class AskQuestion extends Component {
     render() {

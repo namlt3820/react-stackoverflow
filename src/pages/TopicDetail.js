@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import QuestionList from './QuestionList';
-import UserList from './UserList';
+import './../components/TopicDetail/style.css'
+import QuestionList from './../components/TopicDetail/QuestionList';
+import UserList from './../components/TopicDetail/UserList';
 
 class TopicDetail extends Component {
     render() {

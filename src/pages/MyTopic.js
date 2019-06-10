@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import CreateForm from './CreateForm';
-import TopicListDetail from './TopicListDetail';
+import './../components/MyTopic/style.css'
+import CreateForm from './../components/MyTopic/CreateForm';
+import TopicListDetail from './../components/MyTopic/TopicListDetail';
 
 class MyTopic extends Component {
     render() {

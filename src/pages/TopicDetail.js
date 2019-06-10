@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './../components/TopicDetail/style.css'
-import QuestionList from './../components/TopicDetail/QuestionList';
 import UserList from './../components/TopicDetail/UserList';
+import TopicDetailList from '../components/TopicDetail/TopicDetailList';
 
 class TopicDetail extends Component {
     render() {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <QuestionList/>
+                    <TopicDetailList/>
                     <UserList/>
                 </div>
             </div>

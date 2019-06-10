@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import TitleQuestion from './TitleQuestion';
-import QuestionContent from '../TopicDetail/QuestionContent';
 import LikeReplay from './LikeReplay';
-// import QuestionContent from "../MyQuestion/MyQuestion";
+import Content from '../CoComponent/Content';
+import Title from '../CoComponent/Title';
+import TopicDetailFooter from '../TopicDetail/TopicDetailFooter';
 
 class QuestionInPageDetail extends Component {
     render() {
@@ -12,11 +12,16 @@ class QuestionInPageDetail extends Component {
                     <div className="row">
                         <div className="col">
                             <div className="card mt-2 mb-2">
-                                <TitleQuestion />
-                                <QuestionContent />
+                                <Title navLink="question-detail" classNameHidden="d-none"/>
+                                <Content/>
+                                <TopicDetailFooter/>
                                 <hr className="non-margin" />
                                 <LikeReplay />
-                            </div>
+                                </div>
+                                {/* <TitleQuestion />
+                                <Content/>
+                                <hr className="non-margin" />
+                                <LikeReplay /> */}
                         </div>
                     </div>
                 </div>

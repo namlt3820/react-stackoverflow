@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 
-class QuestionContent extends Component {
+class TopicDetailFooter extends Component {
     render() {
         return (
-            <div className="card-body" style={{paddingBottom: '5px'}}>
-            <p className="card-text">With supporting text below as a natural lead-in to additional content.
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis, eum quibusdam. Eum quo ut
-                suscipit sit vero adipisci repellendus distinctio, asperiores consequatur accusantium
-                laudantium voluptate cupiditate aspernatur numquam ducimus minus!</p>
-            <div className="btn-group w-100">
+            <div className="card-body" style={{paddingBottom: '5px', paddingTop: '5px'}}>
+                <div>
+                <div className="btn-group w-100">
                 <i className="fa fa-calendar" aria-hidden="true"> 20/5/2019</i>
                 <i className="fa fa-comments ml-4" aria-hidden="true"> 25</i>
                 <i className="fa fa-eye ml-4" aria-hidden="true"> 30 </i>
@@ -26,9 +23,10 @@ class QuestionContent extends Component {
                 <a className="link-tag" href="true">python</a>
             </div>
             </div>
-
+            </div>
+            
         );
     }
 }
 
-export default QuestionContent;
+export default TopicDetailFooter;

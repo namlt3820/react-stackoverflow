@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FaceBookLogin from "react-facebook-login";
 import CustomIcon from "../../components/Cores/button/CustomIcon";
-
+import config from "../../config/configSocial";
 class FaceBook extends Component {
     state = {
         isLoggedIn: false,
@@ -28,7 +28,7 @@ class FaceBook extends Component {
         } else {
             fbContent = (
                 <FaceBookLogin
-                    appId="307053806905390"
+                    appId={config.facebook}
                     // autoLoad={true}
                     fields="name, email, picture"
                     onClick={this.handleClick}

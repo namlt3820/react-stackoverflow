@@ -8,7 +8,7 @@ class LikeReplay extends Component {
                     <i className="fa fa-thumbs-o-up" aria-hidden="true"> Like</i>
                 </div>
                 <div className="btn" role="button">
-                    <i className="fa fa-reply-all" aria-hidden="true"> Replay</i>
+                    <i className="fa fa-reply-all" aria-hidden="true"> Reply</i>
                 </div>
             </div>
         );

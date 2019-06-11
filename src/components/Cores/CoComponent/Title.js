@@ -5,12 +5,12 @@ import { NavLink } from "react-router-dom";
 
 class Title extends Component {
     render() {
-        const { navLink } = this.props
+        const { navLink, title } = this.props
         return (
             <div className="container-fluid card-header">
                 <div className="row">
                     <div className="col-8">
-                    <NavLink to={navLink}><h5>The best way to model a one-to-many relationship in hibernate</h5></NavLink>
+                    <NavLink to={navLink}><h5>{title}</h5></NavLink>
                     </div>
                     <div className="col-3">
                     <div className="btn-group float-right">

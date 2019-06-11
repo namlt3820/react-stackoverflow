@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TopicDetailUnit from './TopicDetailUnit';
-import EditFormModal from '../CoComponent/EditFormModal';
+import EditFormModal from '../Cores/CoComponent/EditFormModal';
 
 class TopicDetailList extends Component {
     render() {

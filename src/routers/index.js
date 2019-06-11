@@ -14,30 +14,10 @@ import QuestionDetail from "../pages/QuestionDetail";
 import AskQuestion from "../pages/AskQuestion";
 
 
-const routers = [
+export const routers = [
     {
         path: "/",
         component: Home
-    },
-    {
-        path: "/login",
-        component: Login
-    },
-    {
-        path: "/register",
-        component: SignUp
-    },
-    {
-        path: "/forgot-password",
-        component: ForgotPassWord
-    },
-    {
-        path: "/active",
-        component: ActiveCode
-    },
-    {
-        path: "/change-password",
-        component: ChangePassWord
     },
     {
         path: "/my-profile",
@@ -69,4 +49,25 @@ const routers = [
     }
 ];
 
-export default routers;
+export const routersAuth = [
+    {
+        path: "/login",
+        component: Login
+    },
+    {
+        path: "/register",
+        component: SignUp
+    },
+    {
+        path: "/forgot-password",
+        component: ForgotPassWord
+    },
+    {
+        path: "/active",
+        component: ActiveCode
+    },
+    {
+        path: "/change-password",
+        component: ChangePassWord
+    }
+];

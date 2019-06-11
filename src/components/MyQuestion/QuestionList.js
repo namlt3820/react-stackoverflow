@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import data from './../../data/data(2).json'
-import EditFormModal from '../CoComponent/EditFormModal';
+import EditFormModal from '../Cores/CoComponent/EditFormModal';
 import QuestionUnit from './QuestionUnit.js';
 
 class QuestionList extends Component {

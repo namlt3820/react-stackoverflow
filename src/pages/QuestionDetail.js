@@ -5,6 +5,7 @@ import QuestionInPageDetail from './../components/QuestionDetails/QuestionInPage
 
 class QuestionDetail extends Component {
     render() {
+        console.log('this.props', this.props)
         return (
             <div>
                 <QuestionInPageDetail/>

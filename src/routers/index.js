@@ -40,7 +40,7 @@ export const routers = [
         component: MyQuestion
     },
     {
-        path: "/question-detail",
+        path: "/my-question/:slug.:id.html",
         component: QuestionDetail
     },
     {

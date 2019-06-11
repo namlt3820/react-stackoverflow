@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import data from './../../data/data(2).json'
 import LikeReplay from './LikeReplay';
-import Content from '../CoComponent/Content';
-import Title from '../CoComponent/Title';
+import Content from '../Cores/CoComponent/Content';
+import Title from '../Cores/CoComponent/Title';
 import TopicDetailFooter from '../TopicDetail/TopicDetailFooter';
 
 class QuestionInPageDetail extends Component {

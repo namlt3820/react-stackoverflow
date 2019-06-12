@@ -5,6 +5,7 @@ import Content from '../Cores/CoComponent/Content';
 
 class TopicDetailUnit extends Component {
 
+    
     styleURL = (str) => {
         // Chuyển hết sang chữ thường
         str = str.toLowerCase();     
@@ -28,22 +29,23 @@ class TopicDetailUnit extends Component {
         return str;
     }
 
-    mappingData = () => this.props.topicDetail.questions.map((question, index) => {
-        this.props.topicDetail.questions.map((value, key) => {
+    mappingData = () => this.props.data.questions.map((question, index) => {
+        return this.props.topicDetail.questions.map((value, key) => {
             if (question.id === value.id) {
-                // console.log('question.id, value.id', question.id +"==="+  value.id)
                 return <div className="card mt-2 mb-2 list-group-item-hover" key={key}>
-                            <Title
-                            navLink={"/topic-detail/" + this.styleURL(value.title)+ "." + value.id + ".html"}
-                            title={value.title}/>
-                            <Content/>
-                            <TopicDetailFooter/>
-                        </div>
+                    <Title navLink={"/topic-detail/" + this.styleURL(question.title)+ "." + question.id + ".html"} title={question.title}/>
+                    <Content content={question.content}/>
+                    <TopicDetailFooter
+                    createdAt={question.createdAt}
+                    comment={question.comment}
+                    views={question.views}
+                    votes={question.votes}
+                    author={question.creator.name}
+                    mappingTags={question.tags.map((value, key) => (<a key={key} className="link-tag" href="true">{value.title}</a>))}/>
+                </div>
             }
         })
     })
-    // mappingData = () => 
-
 
     render() {
         console.log('this.props.topicDetail.questions', this.props.topicDetail.questions)

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button } from "antd";
 class CustomButton extends Component {
   render() {
-    const { content, handleClick, loading, style } = this.props;
+    const { content, handleClick, loading, style, disabled } = this.props;
     return (
       <div className="btn-auth">
         <Button
@@ -12,6 +12,7 @@ class CustomButton extends Component {
           loading={loading}
           type="primary"
           style={style}
+          disabled={disabled}
         >
           {/* Component Parent passing prop handleClick for Component Child */}
           {content}

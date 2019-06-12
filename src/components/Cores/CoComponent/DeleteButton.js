@@ -5,7 +5,7 @@ class DeleteButton extends Component {
         const { className } = this.props
         return (
                 <div className={className}>
-                    <i className="fa fa-trash"> Xóa</i>
+                    <i className="fa fa-trash">Xóa</i>
                 </div>
         );
     }

@@ -32,7 +32,7 @@ export const routers = [
         component: MyTopic
     },
     {
-        path: "/topic-detail",
+        path: "/my-topics/:slug.:id.html",
         component: TopicDetail
     },
     {
@@ -41,6 +41,10 @@ export const routers = [
     },
     {
         path: "/my-question/:slug.:id.html",
+        component: QuestionDetail
+    },
+    {
+        path: "/topic-detail/:slug.:id.html",
         component: QuestionDetail
     },
     {

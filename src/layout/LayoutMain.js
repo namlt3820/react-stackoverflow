@@ -7,7 +7,7 @@ const LayoutMain = ({ children }) => {
             <Header />
             <div id="content" style={{ paddingTop: "0rem", paddingBottom: "4rem" }} className="container-fluid">
                 <div className="container my-4">
-                    <div className="">{children}</div>
+                    {children}
                 </div>
             </div>
         </div>

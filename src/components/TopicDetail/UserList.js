@@ -7,7 +7,7 @@ class UserList extends Component {
         return (
             <div className="col-12 col-lg-3 col-xl-4 list-user mt-2">
                 <SearchUser/>
-                <TableUser/>
+                <TableUser topicParticipants={this.props.topicParticipants}/>
             </div>
         );
     }

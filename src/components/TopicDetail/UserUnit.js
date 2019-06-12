@@ -10,7 +10,7 @@ class UserUnit extends Component {
                     </div>
                 </td>
                 <td className="userName">
-                    <p>Michael Scofield</p>
+                    <p>{this.props.name.first + " " + this.props.name.last}</p>
                 </td>
                 <td className="iconClose"><i className="fa fa-window-close" aria-hidden="true"></i></td>
             </tr>

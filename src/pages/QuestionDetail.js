@@ -25,7 +25,6 @@ mappingData = () => this.state.dataQuestion.questions.map((value, key) => {
     render() {
         return (
             <div>
-                
                 {this.mappingData()}
             </div>
         );

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import CustomInput from ".././components/Cores/input/Input";
+import CustomButton from ".././components/Cores/button/CustomButton";
 // import { Menu, Dropdown, Badge } from "antd";
 // import Notify from "../Notify";
 // import HeaderNotify from "../Notify/HeaderNotify";
@@ -7,6 +9,16 @@ import { NavLink } from "react-router-dom";
 import "./style.css";
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { search: "" };
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(e) {
+        e.preventDefault();
+        const { name, value } = e.target;
+        this.setState({ [name]: value });
+    }
     render() {
         // const menu = (
         //     <Menu>
@@ -22,6 +34,12 @@ class Header extends Component {
         //         </Menu.Item>
         //     </Menu>
         // );
+        const styledInput = {
+            marginRight: "10px",
+            minWidth: "600px"
+        };
+
+        const { search } = this.state;
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light px-4">
                 <NavLink className="navbar-brand text-info mr-5" to="/">
@@ -42,15 +60,18 @@ class Header extends Component {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav w-100">
                         <form className="form-inline my-2 my-lg-0 mr-auto">
-                            <input
-                                className="form-control mr-sm-2 header__search"
-                                type="search"
+                            <CustomInput
                                 placeholder="Search"
-                                aria-label="Search"
+                                style={styledInput}
+                                name="search"
+                                value={search}
+                                handleChange={this.handleChange}
+                                type="search"
                             />
-                            <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">
+                            {/* <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">
                                 <NavLink to="/ask-question">Ask Question</NavLink>
-                            </button>
+                            </button> */}
+                            <CustomButton content="Ask Question" />
                         </form>
                         {/* <li className="nav-item">
                             <Dropdown overlay={menu} placement="topCenter" trigger={["click"]}>

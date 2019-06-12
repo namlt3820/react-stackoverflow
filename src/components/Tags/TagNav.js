@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CustomButton from "../Cores/button/CustomButton_v2";
-import CustomInput from "../Cores/input/input_v2";
+import CustomInput from "../Cores/input/Input_v2";
 
 class TagNav extends Component {
   state = {

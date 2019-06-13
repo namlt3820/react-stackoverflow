@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Row } from "antd";
 import Tag from "../components/Tags/Tag";
-import TagNav from "../components/Tags/TagNav";
+import TagFilter from "../components/Tags/TagFilter";
 import loadingGif from "../assets/images/loading.gif";
+import ReactPaginate from "react-paginate";
 import client from "../services/client";
 
+const PER_PAGE = 10;
 const Loading = () => (
   <img
     src={loadingGif}
@@ -24,20 +26,66 @@ const TagsRow = ({ taglist }) => (
 class Tags extends Component {
   state = {
     loading: true,
-    tags: []
+    tags: [],
+    mode: "",
+    offset: 0,
+    pageCount: 0
+  };
+  loadPagesFromServer = () => {
+    const { offset, mode } = this.state;
+    return new Promise((resolve, reject) => {
+      this.setState({ loading: true });
+      setTimeout(() => {
+        resolve(client.loadPagesFromServer({ limit: PER_PAGE, offset, mode }));
+      }, 1000);
+    }).then(response => {
+      this.setState({
+        loading: false,
+        tags: response.data,
+        pageCount: response.meta.pageCount
+      });
+    });
+  };
+  onPageClick = data => {
+    let selected = data.selected;
+    let offset = selected * PER_PAGE;
+    this.setState({ offset }, () => this.loadPagesFromServer());
   };
   componentDidMount() {
-    this.setState({loading: true})
-    const tags = client.fetchTags()
-    setTimeout(() => {this.setState({ tags: tags, loading: false })}, 1000);
+    this.loadPagesFromServer();
   }
+  onFilterClick = mode => {
+    this.setState({ mode }, () => this.loadPagesFromServer());
+  };
   render() {
     const { loading, tags } = this.state;
     return (
       <div>
-        <TagNav />
+        <TagFilter
+          onFilterClick={this.onFilterClick}
+          paginate={
+            <ReactPaginate
+              previousLabel={"previous"}
+              nextLabel={"next"}
+              breakLabel={"..."}
+              pageCount={this.state.pageCount}
+              pageLinkClassName={"page-link"}
+              previousClassName={"page-link"}
+              nextClassName={"page-link"}
+              breakClassName={'page-link'}
+              containerClassName={"pagination"}
+              pageClassName={"page-item"}
+              marginPagesDisplayed={1}
+              pageRangeDisplayed={1}
+              onPageChange={this.onPageClick}
+              activeClassName={"active"}
+            />
+          }
+        />
         {loading ? (
-          <Loading />
+          <div className="d-flex justify-content-center">
+            <Loading />
+          </div>
         ) : (
           <div>
             <TagsRow taglist={tags} />

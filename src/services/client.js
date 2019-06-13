@@ -1,9 +1,13 @@
 import db from "../data/db.json";
 
-const fetchTags = () => {
-  return db.tags
-};
-
+const loadPagesFromServer = ({limit, offset, mode}) => {
+  return {
+    data: db.tags.slice(offset, offset + limit),
+    meta: {
+      pageCount: Math.ceil(db.tags.length / limit)
+    }
+  }
+}
 export default {
-  fetchTags
+  loadPagesFromServer
 };

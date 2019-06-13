@@ -35,7 +35,9 @@ class TopicItem extends Component {
                 <div className="card mt-2 mb-2 list-group-item-hover">
                     <Title
                     navLink={"/my-topics/" + this.styleURL(this.props.topicItem.title)+ "." + this.props.topicItem.id + ".html"}
-                    title={this.props.topicItem.title}/>
+                    title={this.props.topicItem.title}
+                    topicNeedEdit={() => this.props.topicNeedEdit()}
+                    deleteTopic={() => this.props.deleteTopic()}/>
                     <Content
                     content={this.props.topicItem.content}/>
                     <TopicFooter

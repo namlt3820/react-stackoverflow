@@ -15,16 +15,17 @@ export default class Input extends Component {
         handleChange({ name, value, error });
     };
     render() {
-        const { type, name, value, placeholder } = this.props;
+        const { type, name, value, placeholder, defaultValue } = this.props;
         return (
             <div>
                 <input
                     className="form-control"
                     type={type}
                     name={name}
-                    value={value}
+                    // value={value}
                     onChange={this.onChange}
                     placeholder={placeholder}
+                    defaultValue={defaultValue}
                 />
                 <span style={{ color: "red" }}>{this.state.error}</span>
             </div>

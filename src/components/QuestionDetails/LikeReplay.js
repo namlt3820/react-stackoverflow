@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { relative } from 'path';
 
 class LikeReplay extends Component {
     render() {

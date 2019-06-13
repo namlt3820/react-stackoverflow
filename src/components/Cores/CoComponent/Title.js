@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import DeleteButton from './DeleteButton';
-import EditButton from './EditButton';
 import { NavLink } from "react-router-dom";
+import CustomButton from '../button/CustomButton_v2';
 
 class Title extends Component {
     render() {
-        const { navLink, title } = this.props
+        const { navLink, title } = this.props,
+        styleButtonEdit = {
+            backgroundColor: "#faad14",
+            borderColor: "#faad14"
+        },
+        styleButtonDelete = {
+            color: "#fff",
+            backgroundColor: "#c82333",
+            borderColor: "#bd2130"
+        };
         return (
             <div className="container-fluid card-header">
                 <div className="row">
@@ -14,8 +22,17 @@ class Title extends Component {
                     </div>
                     <div className="col-3">
                     <div className="btn-group float-right">
-                        <EditButton className={"btn btn-warning "+this.props.classNameHidden} datatoggle="modal" datatarget="#modelId"/>
-                        <DeleteButton className={"btn btn-danger "+ this.props.classNameHidden}/>
+                        <CustomButton
+                        handleClick={() => this.props.topicNeedEdit()} 
+                        className={" btn btn-warning "+this.props.classNameHidden} 
+                        datatoggle="modal" datatarget="#modelId" 
+                        style={styleButtonEdit} 
+                        content={<i className="fa fa-edit"> Sửa</i>}/>
+                        <CustomButton
+                        handleClick={() => this.props.deleteTopic()}
+                        className={"btn btn-danger "+ this.props.classNameHidden} 
+                        style={styleButtonDelete} 
+                        content={<i className="fa fa-trash">Xóa</i>}/>
                     </div>
                     </div>
                     <div className="col-1" style={{position: 'relative'}}>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class Input extends Component {
     render() {
-        const { type, name, value, handleChange, placeholder, style } = this.props;
+        const { type, name, value, handleChange, placeholder, style, defaultValue } = this.props;
 
         return (
             <input
@@ -13,7 +13,8 @@ export default class Input extends Component {
                 placeholder={placeholder}
                 onChange={handleChange}
                 style={style}
-            />
+                defaultValue={defaultValue}
+                />
         );
     }
 }

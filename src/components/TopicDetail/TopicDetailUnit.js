@@ -43,7 +43,7 @@ class TopicDetailUnit extends Component {
                     author={question.creator.name}
                     mappingTags={question.tags.map((value, key) => (<a key={key} className="link-tag" href="true">{value.title}</a>))}/>
                 </div>
-            }
+            } else {return null;}
         })
     })
 

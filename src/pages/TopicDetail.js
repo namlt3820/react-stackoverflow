@@ -18,7 +18,7 @@ class TopicDetail extends Component {
                 <TopicDetailList topicDetail={value} data={data}/>
                 <UserList topicParticipants={value}/>
             </div>
-        }
+        } else {return null;}
     })
     
     render() {

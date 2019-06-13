@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import TopicUnit from './TopicUnit';
-import data from './../../data/data(2).json'
 
 class TopicListDetail extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            dataTopic: data
-        }
-    }
-    mappingData = () => this.state.dataTopic.topics.map((value, key) => (
+    
+    mappingData = () => this.props.dataTopic.map((value, key) => (
             <TopicUnit
             key={key}
-            topicItem={value}/>
+            topicItem={value}
+            topicNeedEdit={(topicNeedEdit) => this.props.topicNeedEdit(value)}
+            deleteTopic={(idNeedDelete) => this.props.deleteTopic(value.id)}
+            />
         )
     )
     

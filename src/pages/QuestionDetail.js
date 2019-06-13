@@ -18,7 +18,7 @@ mappingData = () => this.state.dataQuestion.questions.map((value, key) => {
             <QuestionInPageDetail questionDetail={value}/>
             <QuestionComment answersQuestion={value}/>
         </div>
-    }
+    }else{return null};
 })
     
 

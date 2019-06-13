@@ -17,9 +17,9 @@ export default class Input extends Component {
   render() {
     const { type, name, value, placeholder } = this.props;
     return (
-      <div>
+      <div className="w-100">
         <input
-          className="form-control"
+          className="form-control w-100"
           type={type}
           name={name}
           value={value}

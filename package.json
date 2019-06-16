@@ -9,17 +9,20 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "lodash": "^4.17.11",
+    "moment": "^2.24.0",
     "popper.js": "^1.15.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-facebook-login": "^4.1.1",
     "react-lines-ellipsis": "^0.14.1",
+    "react-paginate": "^6.3.0",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "validator": "^11.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import {combineValidations} from './validation'
+
 export default class Input extends Component {
   state = {
     value: this.props.value,
@@ -10,7 +12,7 @@ export default class Input extends Component {
   onChange = e => {
     const { handleChange, validate, name } = this.props,
       value = e.target.value,
-      error = validate ? validate(value) : false;
+      error = validate ? combineValidations(validate)(value) : false;
     this.setState({ value, error });
     handleChange({ name, value, error });
   };

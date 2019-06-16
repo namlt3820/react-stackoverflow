@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import data from "../../data/data.json";
-import _ from "lodash";
+import moment from 'moment'
 
 class QuestionSummary extends Component {
   render() {
-    const { lastUpdated, title, author, tags } = this.props.question;
-    const tagsDetail = _.flatten(
-      tags.map(id => data.tags.filter(tag => tag.id === id))
-    );
-    const authorName = data.users.filter(user => user.id === author)[0].name;
+    const { lastEdited, title, creator, tags } = this.props.question;
     return (
       <div className="summary">
         <h3>
@@ -17,19 +13,19 @@ class QuestionSummary extends Component {
           </a>
         </h3>
         <div className="tags t-python t-matplotlib t-statistics t-seaborn">
-          {tagsDetail.map(tag => {
+          {tags.map(tag => {
             return (
-              <a href="/" className="post-tag" key={tag.id}>
-                {tag.name}
+              <a href={tag.id} className="post-tag" key={tag.id}>
+                {tag.title}
               </a>
             );
           })}
         </div>
         <div className="started">
           <span className="started-link">Author: </span>
-          <a href="/"> {authorName}</a>
+          <a href={creator.id}> {creator.name}</a>
           <span className="started-link">, Last updated: </span>
-          <a href="/"> {lastUpdated}</a>
+          <a href="/"> {moment(lastEdited).format("MMM Do YYYY")}</a>
         </div>
       </div>
     );

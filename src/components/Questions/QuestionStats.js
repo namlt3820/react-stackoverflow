@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class QuestionStats extends Component {
     render() {
-        const { answers, views, votes } = this.props.question;
+        const { views, votes } = this.props.question;
         return (
             <div className="cp">
                 <div className="votes">
@@ -13,7 +13,7 @@ class QuestionStats extends Component {
                 </div>
                 <div className="status unanswered">
                     <div className="mini-counts">
-                        <span>{answers}</span>
+                        <span>{Math.floor(Math.random() * 100)}</span>
                     </div>
                     <div>answers</div>
                 </div>

@@ -1,6 +1,20 @@
 import db from "../data/db.json";
 
-const loadPagesFromServer = ({ limit, offset, mode }) => ({
+const loadQuestions = ({limit, offset}) => ({
+  data: db.questions.slice(offset, offset+ limit),
+  meta: {
+    pageCount: Math.ceil(db.questions.length / limit)
+  }
+})
+
+const searchQuestion = ({limit, title}) => {
+  var result = {meta: {}};
+  result.data = db.questions.filter(question => question.title.includes(title));
+  result.meta.pageCount = Math.ceil(result.data.length / limit)
+  return result;
+}
+
+const loadTags = ({ limit, offset, mode }) => ({
   data: db.tags.slice(offset, offset + limit),
   meta: {
     pageCount: Math.ceil(db.tags.length / limit)
@@ -15,6 +29,8 @@ const searchTag = ({ limit, title }) => {
 };
 
 export default {
-  loadPagesFromServer,
+  loadQuestions,
+  searchQuestion,
+  loadTags,
   searchTag
 };

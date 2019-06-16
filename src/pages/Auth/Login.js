@@ -4,7 +4,8 @@ import Facebook from "../../components/Social/FaceBook";
 import GoogleLogin from "../../components/Social/Google";
 import Lable from "../../components/Cores/lable/Lable";
 import Input from "../../components/Cores/input/Input_v2";
-import isEmail from "validator/lib/isEmail";
+import { isRequired, isEmail } from "../../components/Cores/input/validation";
+import LayoutAuth from "../../layout/LayoutAuth";
 import "./style.css";
 
 class Login extends Component {
@@ -31,16 +32,16 @@ class Login extends Component {
     }, 3000);
   }
   handleChange({ name, value, error }) {
-    const {fields, fieldErrors} = this.state
+    const { fields, fieldErrors } = this.state;
     fields[name] = value;
     fieldErrors[name] = error;
     this.setState({ fields, fieldErrors });
   }
   validate = () => {
-    const {fields, fieldErrors} = this.state,
-      errMessages = Object.keys(fieldErrors).filter(k => fieldErrors[k])
+    const { fields, fieldErrors } = this.state,
+      errMessages = Object.keys(fieldErrors).filter(k => fieldErrors[k]);
     if (!fields.email || !fields.password || errMessages.length) return true;
-    return false
+    return false;
   };
   render() {
     let { loading, email, password } = this.state;
@@ -51,43 +52,46 @@ class Login extends Component {
         type: "email",
         name: "email",
         value: email,
-        validate: value => (isEmail(value) ? false : "Invalid Email")
+        validate: [isRequired("Email Required"), isEmail("Invalid Email")]
       },
       {
         lable: "Password",
         type: "password",
         name: "password",
         value: password,
-        validate: value => (value ? false : "Password Required")
+        validate: [isRequired("Password Required")]
       }
     ];
+    const header = {};
     return (
-      <div className="auth-page">
-        <div className="social">
-          <GoogleLogin content="Google" match={match} />
-          <Facebook />
+      <LayoutAuth header={header}>
+        <div className="auth-page">
+          <div className="social">
+            <GoogleLogin content="Google" match={match} />
+            <Facebook />
+          </div>
+          <div className="login">
+            {formLogin.map((item, index) => (
+              <div className="mb-3" key={index}>
+                <Lable lable={item.lable} match={match} />
+                <Input
+                  type={item.type}
+                  name={item.name}
+                  value={item.value}
+                  handleChange={this.handleChange}
+                  validate={item.validate}
+                />
+              </div>
+            ))}
+            <CustomButton
+              content="Login"
+              handleClick={this.handleClick}
+              loading={loading}
+              disabled={this.validate()}
+            />
+          </div>
         </div>
-        <div className="login">
-          {formLogin.map((item, index) => (
-            <div className="mb-3" key={index}>
-              <Lable lable={item.lable} match={match} />
-              <Input
-                type={item.type}
-                name={item.name}
-                value={item.value}
-                handleChange={this.handleChange}
-                validate={item.validate}
-              />
-            </div>
-          ))}
-          <CustomButton
-            content="Login"
-            handleClick={this.handleClick}
-            loading={loading}
-            disabled={this.validate()}
-          />
-        </div>
-      </div>
+      </LayoutAuth>
     );
   }
 }

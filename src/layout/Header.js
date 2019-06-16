@@ -12,7 +12,6 @@ class Header extends Component {
     const {
       placeholder,
       searchValue,
-      onInputChange,
       onSearchClick
     } = this.props;
     return (

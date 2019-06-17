@@ -7,17 +7,27 @@ import LayoutMain from "../layout/LayoutMain";
 import Loading from "../components/Cores/loading";
 
 class MyTopic extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            dataTopic: data.topics,
-            statusForm: true,
-            title: '',
-            content: '',
-            topicNeedEdit: {},
-            contentButton: "Create New Topic",
-            handleClick:  () => {}
-        }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         dataTopic: data.topics,
+    //         statusForm: true,
+    //         title: '',
+    //         content: '',
+    //         topicNeedEdit: {},
+    //         contentButton: "Create New Topic",
+    //         handleClick:  () => {}
+    //     }
+    // }
+    
+    state = {
+        dataTopic: data.topics,
+        statusForm: true,
+        title: '',
+        content: '',
+        topicNeedEdit: {},
+        contentButton: "Create New Topic",
+        handleClick:  () => {}
     }
 
     isChange = (event) => {
@@ -45,19 +55,7 @@ class MyTopic extends Component {
         }
     }
 
-    topicNeedEdit = (topicNeedEdit) => {
-        this.setState({
-            topicNeedEdit: topicNeedEdit,
-            contentButton: "Save Edit",
-            title: topicNeedEdit.title,
-            content: topicNeedEdit.content
-        });
-    }
-
     editTopic  = () => {
-        // const topicEdit = {}
-        // topicEdit.title = this.state.title
-        // topicEdit.content = this.state.content
         this.state.dataTopic.forEach((value, key) => {
             if (value.id === this.state.topicNeedEdit.id) {
                 value.title = this.state.title
@@ -79,6 +77,15 @@ class MyTopic extends Component {
         }
     }
 
+    topicNeedEdit = (topicNeedEdit) => {
+        this.setState({
+            topicNeedEdit: topicNeedEdit,
+            contentButton: "Save Edit",
+            title: topicNeedEdit.title,
+            content: topicNeedEdit.content
+        });
+    }
+
     deleteTopic  = (idNeedDelete) => {
         const verify = window.confirm("Bạn có chắc chắn muốn xoá phần tử " + idNeedDelete)
         if (verify === true) {
@@ -87,7 +94,6 @@ class MyTopic extends Component {
         } else {
             return null
         }
-        
     }
     
     render() {

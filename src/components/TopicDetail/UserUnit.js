@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './../TopicDetail/style.css'
 
 class UserUnit extends Component {
     render() {
@@ -10,9 +11,10 @@ class UserUnit extends Component {
                     </div>
                 </td>
                 <td className="userName">
-                    <p>{this.props.name.first + " " + this.props.name.last}</p>
+                    <p>{this.props.firstName + " " + this.props.lastName}</p>
+                    <i>{this.props.email}</i>
                 </td>
-                <td className="iconClose"><i className="fa fa-window-close" aria-hidden="true"></i></td>
+                <td onClick = {this.props.deleteUser} className="iconClose"><i className="fa fa-window-close" aria-hidden="true"></i></td>
             </tr>
         );
     }

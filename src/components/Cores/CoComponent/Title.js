@@ -23,13 +23,13 @@ class Title extends Component {
                     <div className="col-3">
                     <div className="btn-group float-right">
                         <CustomButton
-                        handleClick={() => this.props.topicNeedEdit()} 
+                        handleClick={() => this.props.objectNeedEdit()} 
                         className={" btn btn-warning "+this.props.classNameHidden} 
                         datatoggle="modal" datatarget="#modelId" 
                         style={styleButtonEdit} 
                         content={<i className="fa fa-edit"> Sửa</i>}/>
                         <CustomButton
-                        handleClick={() => this.props.deleteTopic()}
+                        handleClick={() => this.props.delete()}
                         className={"btn btn-danger "+ this.props.classNameHidden} 
                         style={styleButtonDelete} 
                         content={<i className="fa fa-trash">Xóa</i>}/>

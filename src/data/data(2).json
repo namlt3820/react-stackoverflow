@@ -139,6 +139,20 @@
       "reputation": 65,
       "aboutMe": "Minim tempor elit commodo dolor dolore.",
       "password": "aliquip"
+    },
+    {
+      "id": "0eb784d4-ad8c-4a97-84bd-add5e740d1d",
+      "name": {
+        "first": "Ngo",
+        "last": "Nhat"
+      },
+      "company": "EQUICOM",
+      "email": "ngonhat95@gmail.com",
+      "registered": "Wednesday, February 10, 2016 1:51 PM",
+      "picture": "http://lorempixel.com/300/300",
+      "reputation": 65,
+      "aboutMe": "Minim tempor elit commodo dolor dolore.",
+      "password": "aliquip"
     }
   ],
   "tags": [
@@ -2493,13 +2507,6 @@
         }
       ],
       "participants": [
-        {
-          "name": {
-            "first": "Gabriela",
-            "last": "Paul"
-          },
-          "id": "2764749d-fd65-4650-8146-b87524b2749f"
-        },
         {
           "name": {
             "first": "Lesley",

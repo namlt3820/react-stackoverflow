@@ -3,6 +3,8 @@ import data from './../data/data(2).json'
 import './../components/QuestionDetails/style.css'
 import QuestionComment from './../components/QuestionDetails/QuestionComment';
 import QuestionInPageDetail from './../components/QuestionDetails/QuestionInPageDetail';
+import LayoutMain from "../layout/LayoutMain";
+import Loading from "../components/Cores/loading";
 
 class QuestionDetail extends Component {
 constructor(props) {
@@ -23,10 +25,11 @@ mappingData = () => this.state.dataQuestion.questions.map((value, key) => {
     
 
     render() {
+        const header = {}
         return (
-            <div>
-                {this.mappingData()}
-            </div>
+            <LayoutMain header={header}>
+            {this.mappingData()}
+            </LayoutMain>
         );
     }
 }

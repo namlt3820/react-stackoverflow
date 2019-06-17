@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import './../components/MyQuestion/style.css'
 import QuestionList from '../components/MyQuestion/QuestionList';
+import LayoutMain from "../layout/LayoutMain";
+import Loading from "../components/Cores/loading";
 
 class MyQuestion extends Component {
     render() {
+        const header = {}
         return (
-            <div>
-                <QuestionList/>
-            </div>
+            <LayoutMain header={header}>
+            <QuestionList/>
+            </LayoutMain>
         );
     }
 }

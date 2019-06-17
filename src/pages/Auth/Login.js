@@ -13,7 +13,6 @@ class Login extends Component {
     super(props);
     this.state = {
       loading: false,
-      disable: false,
       fields: {
         name: "",
         email: ""

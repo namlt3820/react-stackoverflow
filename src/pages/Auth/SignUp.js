@@ -1,70 +1,117 @@
 import React, { Component } from "react";
-import CustomButton from "../../components/Cores/button/CustomButton";
+import CustomButton from "../../components/Cores/button/CustomButton_v2";
 import Facebook from "../../components/Social/FaceBook";
 import GoogleLogin from "../../components/Social/Google";
 import Lable from "../../components/Cores/lable/Lable";
-import Input from "../../components/Cores/input/Input";
+import Input from "../../components/Cores/input/Input_v2";
+import { isRequired, isEmail } from "../../components/Cores/input/validation";
+import LayoutAuth from "../../layout/LayoutAuth";
 import "./style.css";
 
 class SignUp extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: false,
-            firstname: "",
-            lastname: "",
-            email: "",
-            password: "",
-            errors: {}
-        };
-        this.handleClick = this.handleClick.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    }
-    handleClick() {
-        this.setState({
-            loading: true
-        });
-        setTimeout(() => {
-            this.setState({ loading: false });
-        }, 3000);
-    }
-    handleChange(e) {
-        e.preventDefault();
-        const { name, value } = e.target;
-        this.setState({ [name]: value });
-    }
-    render() {
-        let { loading, firstname, lastname, email, password } = this.state;
-        const { match } = this.props;
-        const formSignUp = [
-            { lable: "First Name", type: "text", name: "firstname", value: firstname },
-            { lable: "Last Name", type: "text", name: "lastname", value: lastname },
-            { lable: "Email", type: "email", name: "email", value: email },
-            { lable: "Password", type: "password", name: "password", value: password }
-        ];
-        return (
-            <div className="auth-page">
-                <div className="social">
-                    <GoogleLogin content="Google" match={match} />
-                    <Facebook />
-                </div>
-                <div className="signup">
-                    {formSignUp.map((item, index) => (
-                        <div className="mb-3" key={index}>
-                            <Lable lable={item.lable} />
-                            <Input
-                                type={item.type}
-                                name={item.name}
-                                value={item.value}
-                                handleChange={this.handleChange}
-                            />
-                        </div>
-                    ))}
-                    <CustomButton content="Sign Up" loading={loading} handleClick={this.handleClick} />
-                </div>
-            </div>
-        );
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+      fields: {
+        firstname: "",
+        lastname: "",
+        email: "",
+        password: ""
+      },
+      fieldErrors: {}
+    };
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleClick() {
+    this.setState({
+      loading: true
+    });
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 3000);
+  }
+  handleChange({ name, value, error }) {
+    const { fields, fieldErrors } = this.state;
+    fields[name] = value;
+    fieldErrors[name] = error;
+    this.setState({ fields, fieldErrors });
+  }
+  validate = () => {
+    const { fields, fieldErrors } = this.state,
+      errMessages = Object.keys(fieldErrors).filter(k => fieldErrors[k]);
+    if (!fields.email || !fields.password || errMessages.length) return true;
+    return false;
+  };
+  render() {
+    let {
+      loading,
+      fields: { firstname, lastname, email, password }
+    } = this.state;
+    const { match } = this.props;
+    const formSignUp = [
+      {
+        lable: "First Name",
+        type: "text",
+        name: "firstname",
+        value: firstname,
+        validate: [isRequired("First Name Required")]
+      },
+      {
+        lable: "Last Name",
+        type: "text",
+        name: "lastname",
+        value: lastname,
+        validate: [isRequired("Last Name Required")]
+      },
+      {
+        lable: "Email",
+        type: "email",
+        name: "email",
+        value: email,
+        validate: [isRequired("Email Required"), isEmail("Invalid Email")]
+      },
+      {
+        lable: "Password",
+        type: "password",
+        name: "password",
+        value: password,
+        validate: [isRequired("Password Required")]
+      }
+    ];
+    const header = {};
+    return (
+      <LayoutAuth header={header}>
+        <div className="auth-page">
+          <div className="social">
+            <GoogleLogin content="Google" match={match} />
+            <Facebook />
+          </div>
+          <div className="signup">
+            {formSignUp.map((item, index) => (
+              <div className="mb-3" key={index}>
+                <Lable lable={item.lable} />
+                <Input
+                  type={item.type}
+                  name={item.name}
+                  value={item.value}
+                  handleChange={this.handleChange}
+                  validate={item.validate}
+                />
+              </div>
+            ))}
+            <CustomButton
+              content="Sign Up"
+              handleClick={this.handleClick}
+              loading={loading}
+              disabled={this.validate()}
+            />
+          </div>
+        </div>
+      </LayoutAuth>
+    );
+  }
 }
 
 export default SignUp;

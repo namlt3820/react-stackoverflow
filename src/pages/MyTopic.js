@@ -3,6 +3,8 @@ import data from './../data/data(2).json'
 import './../components/MyTopic/style.css'
 import CreateForm from './../components/MyTopic/CreateForm';
 import TopicListDetail from './../components/MyTopic/TopicListDetail';
+import LayoutMain from "../layout/LayoutMain";
+import Loading from "../components/Cores/loading";
 
 class MyTopic extends Component {
     constructor(props) {
@@ -89,7 +91,9 @@ class MyTopic extends Component {
     }
     
     render() {
+        const header = {}
         return (
+            <LayoutMain header={header}>
             <div className="container-fluid">
                 <div className="row">
                     <TopicListDetail
@@ -106,6 +110,7 @@ class MyTopic extends Component {
                     />
                 </div>
             </div>
+            </LayoutMain>
         );
     }
 }

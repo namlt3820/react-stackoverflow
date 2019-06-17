@@ -3,6 +3,8 @@ import data from './../data/data(2).json'
 import './../components/TopicDetail/style.css'
 import UserList from './../components/TopicDetail/UserList';
 import TopicDetailList from '../components/TopicDetail/TopicDetailList';
+import LayoutMain from "../layout/LayoutMain";
+import Loading from "../components/Cores/loading";
 
 class TopicDetail extends Component {
     constructor(props) {
@@ -22,12 +24,15 @@ class TopicDetail extends Component {
     })
     
     render() {
+        const header = {}
         return (
+            <LayoutMain header={header}>
             <div className="container-fluid">
                 <div className="row">
                     {this.mappingData()}
                 </div>
             </div>
+            </LayoutMain>
         );
     }
 }

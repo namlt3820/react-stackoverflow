@@ -1,7 +1,4 @@
 import React from "react";
-import LayoutMain from "./layout/LayoutMain";
-import LayoutAuth from "./layout/LayoutAuth";
-
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { routers, routersAuth } from "./routers";
 import "./App.css";

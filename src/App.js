@@ -6,13 +6,11 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { routers, routersAuth } from "./routers";
 import "./App.css";
 
-const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
+const AppRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props => (
-      <Layout>
         <Component {...props} />
-      </Layout>
     )}
   />
 );
@@ -26,7 +24,6 @@ function App() {
             <AppRoute
               exact
               path={router.path}
-              layout={LayoutMain}
               component={router.component}
               key={index}
             />
@@ -37,7 +34,6 @@ function App() {
             <AppRoute
               exact
               path={auth.path}
-              layout={LayoutAuth}
               component={auth.component}
               key={index}
             />

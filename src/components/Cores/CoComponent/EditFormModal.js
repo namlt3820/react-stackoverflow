@@ -35,20 +35,3 @@ class EditFormModal extends Component {
 }
 
 export default EditFormModal;
-
-
-{/* <form>
-                <div className="form-group">
-                  <label>Ảnh</label>
-                  <input onChange={(event) => this.isChange(event)} type="text" defaultValue={this.props.objDataEdit.blog_background} className="form-control" name="blog_background" id="true" aria-describedby="helpId" placeholder="Nhập link ảnh bài đăng" />
-                </div>
-                <div className="form-group">
-                  <label>Tiêu Đề</label>
-                  <input onChange={(event) => this.isChange(event)} type="text" defaultValue={this.props.objDataEdit.blog_title} className="form-control" name="blog_title" id="true" aria-describedby="helpId" placeholder="Nhập tên bài đăng" />
-                </div>
-                <div className="form-group">
-                  <label>Nội Dung Câu Chuyện</label>
-                  <textarea onChange={(event) => this.isChange(event)} defaultValue={this.props.objDataEdit.blog_content} className="form-control" name="blog_content" rows={5} placeholder="Nhập nội dung bài đăng"/>
-                </div>
-                <button onClick={() => this.handleClickEditSave()} type="button" className="btn btn-block btn-info">Lưu Thay Đổi</button>
-              </form> */}

@@ -11,8 +11,8 @@ class CustomButton extends Component {
           loading={loading}
           type="primary"
           style={style}
-          datatoggle={datatoggle}
-          datatarget={datatarget}
+          data-toggle={datatoggle}
+          data-target={datatarget}
           disabled={disabled}
         >
           {/* Component Parent passing prop handleClick for Component Child */}

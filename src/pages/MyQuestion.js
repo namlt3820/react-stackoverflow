@@ -5,8 +5,8 @@ import LayoutMain from '../layout/LayoutMain';
 import Loading from '../components/Cores/loading';
 import client from '../services/client';
 
-const PER_PAGE = 10;
 
+const PER_PAGE = 10;
 class MyQuestion extends Component {
     state = {
         loading: true
@@ -45,9 +45,7 @@ class MyQuestion extends Component {
                 {this.state.loading ? (
                     <Loading />
                     ) : (
-                    
                         <QuestionList/>
-                   
                     )}
                     
                 </div>

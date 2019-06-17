@@ -58,7 +58,7 @@ class Header extends Component {
                 Tags
               </NavLink>
             </li>
-            <li className="nav-item dropdown">
+            {/* <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
                 href="/"
@@ -78,7 +78,7 @@ class Header extends Component {
                   Topics Update
                 </NavLink>
               </div>
-            </li>
+            </li> */}
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"

@@ -2,6 +2,7 @@ import validator from 'validator'
 
 const isRequired = message => value => validator.isEmpty(value) ? message : ''
 const isEmail = message => value => validator.isEmail(value) ? '' : message
+const isNumber = message => value => value === '' ? '' : ((validator.isNumeric(value) ? '' : message))
 
 const combineValidations = arr => value => {
   let result = ''
@@ -12,4 +13,4 @@ const combineValidations = arr => value => {
   return result
 }
 
-export { isRequired, isEmail, combineValidations }
+export { isRequired, isEmail, isNumber, combineValidations }

@@ -6,27 +6,26 @@ import QuestionContentAsk from "./../components/AskQuestion/QuestionContentAsk";
 import QuestionTags from "./../components/AskQuestion/QuestionTags";
 import CreateButtonQuestion from "./../components/AskQuestion/CreateButtonQuestion";
 import LayoutMain from "../layout/LayoutMain";
-import Loading from "../components/Cores/loading";
 
 class AskQuestion extends Component {
-  render() {
-    const header = {}
-    return (
-     <LayoutMain header={header}>
-     <div className="container-fluid">
-        <div className="row">
-          <div className="col-12 mt-2">
-            <SelectedTopic />
-            <QuestionTitleAsk />
-            <QuestionContentAsk />
-            <QuestionTags />
-          </div>
-        </div>
-        <CreateButtonQuestion />
-      </div>
-     </LayoutMain>
-    );
-  }
+    render() {
+        const header = {};
+        return (
+            <LayoutMain header={header}>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-12 mt-2">
+                            <SelectedTopic />
+                            <QuestionTitleAsk />
+                            <QuestionContentAsk />
+                            <QuestionTags />
+                        </div>
+                    </div>
+                    <CreateButtonQuestion />
+                </div>
+            </LayoutMain>
+        );
+    }
 }
 
 export default AskQuestion;

@@ -28,9 +28,26 @@ const searchTag = ({ limit, title }) => {
   return result;
 };
 
+
+const load = ({ limit, offset, mode }) => ({
+  data: db.tags.slice(offset, offset + limit),
+  meta: {
+    pageCount: Math.ceil(db.tags.length / limit)
+  }
+});
+
+const search = ({ limit, title }) => {
+  var result = {meta: {}};
+  result.data = db.tags.filter(tag => tag.title === title);
+  result.meta.pageCount = Math.ceil(result.data.length / limit)
+  return result;
+};
+
 export default {
   loadQuestions,
   searchQuestion,
   loadTags,
-  searchTag
+  searchTag,
+  load,
+  search
 };

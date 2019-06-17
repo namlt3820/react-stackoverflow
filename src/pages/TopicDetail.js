@@ -3,11 +3,17 @@ import data from './../data/data(2).json'
 import './../components/TopicDetail/style.css'
 import UserList from './../components/TopicDetail/UserList';
 import TopicDetailList from '../components/TopicDetail/TopicDetailList';
+import LayoutMain from '../layout/LayoutMain.js';
+import Loading from '../components/Cores/loading.js';
+import client from '../services/client.js';
+
+const PER_PAGE = 10;
 
 class TopicDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loading: true,
             data: data,
             dataQuestions: data.questions,
             dataTopics: data.topics,
@@ -15,10 +21,34 @@ class TopicDetail extends Component {
             title: '',
             content: '',
             userAdd: '',
-            topicParticipants: []
+            topicParticipants: [],
+            searchValue: ''
         }
     }
 
+
+
+    load = () => {
+        const { offset, mode } = this.state;
+        return new Promise((resolve, reject) => {
+          this.setState({ loading: true });
+          setTimeout(() => {
+            resolve(client.load({ limit: PER_PAGE, offset, mode }));
+          }, 1000);
+        }).then(response => {
+          this.setState({
+            loading: false,
+            questions: response.data,
+            pageCount: response.meta.pageCount
+          });
+        });
+      };
+
+      componentDidMount() {
+        this.load();
+      }
+
+      
     componentWillMount(){
         this.state.dataTopics.map((value, key) => {
             if (value.id === this.props.match.params.id){
@@ -85,15 +115,19 @@ class TopicDetail extends Component {
     mappingData = () => this.state.dataTopics.map((value, key) => {
         if (value.id === this.props.match.params.id) {
             return <div className="row" key={key}>
-                <TopicDetailList 
-                topicDetail={value}
-                dataQuestions={this.state.dataQuestions}
-                questionNeedEdit={(questionNeedEdit) => this.questionNeedEdit(questionNeedEdit)}
-                title={this.state.title}
-                content={this.state.content}
-                isChange={(event) => this.isChange(event)}
-                editQuestion={() => this.editQuestion()}
-                deleteQuestion={(idNeedDelete) => this.deleteQuestion(idNeedDelete)}/>
+                    {this.state.loading ? (
+                    <Loading />
+                    ) : (
+                        <TopicDetailList 
+                            topicDetail={value}
+                            dataQuestions={this.state.dataQuestions}
+                            questionNeedEdit={(questionNeedEdit) => this.questionNeedEdit(questionNeedEdit)}
+                            title={this.state.title}
+                            content={this.state.content}
+                            isChange={(event) => this.isChange(event)}
+                            editQuestion={() => this.editQuestion()}
+                            deleteQuestion={(idNeedDelete) => this.deleteQuestion(idNeedDelete)}/>
+                    )}
                 <UserList 
                 topicParticipants={this.state.topicParticipants}
                 dataUser={this.state.data.users}
@@ -104,13 +138,38 @@ class TopicDetail extends Component {
         } else {return null;}
     })
 
+    onInputChange  = (value) => {
+        this.setState({searchValue: value});
+    }
+
+    onSearchClick  = () => {
+        
+    }
+
     render() {
+        const header = {
+            placeholder: "Search topic: title, content...",
+            searchValue: this.state.searchValue,
+            onInputChange: this.onInputChange,
+            onSearchClick: this.onSearchClick
+          };
+
+        //   let resultSearch = []
+        //   this.state.dataTopic.forEach((value, key) => {
+        //     if (value.title.indexOf(this.state.searchValue) !== -1) {
+        //         resultSearch.push(value)
+        //         console.log('resultSearch', resultSearch)
+               
+        //     }
+        // })
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    {this.mappingData()}
+           <LayoutMain header={header}>
+                <div className="container-fluid">
+                    <div className="row">
+                        {this.mappingData()}
+                    </div>
                 </div>
-            </div>
+           </LayoutMain>
         );
     }
 }

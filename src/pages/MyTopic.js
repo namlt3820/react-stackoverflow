@@ -3,30 +3,45 @@ import data from './../data/data(2).json'
 import './../components/MyTopic/style.css'
 import CreateForm from './../components/MyTopic/CreateForm';
 import TopicListDetail from './../components/MyTopic/TopicListDetail';
+import LayoutMain from '../layout/LayoutMain.js';
+import Loading from '../components/Cores/loading.js';
+import client from '../services/client.js';
+
+const PER_PAGE = 10;
 
 class MyTopic extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         dataTopic: data.topics,
-    //         statusForm: true,
-    //         title: '',
-    //         content: '',
-    //         topicNeedEdit: {},
-    //         contentButton: "Create New Topic",
-    //         handleClick:  () => {}
-    //     }
-    // }
     
     state = {
+        loading: true,
         dataTopic: data.topics,
         statusForm: true,
         title: '',
         content: '',
         topicNeedEdit: {},
         contentButton: "Create New Topic",
-        handleClick:  () => {}
+        handleClick:  () => {},
+        searchValue: ''
     }
+
+    load = () => {
+        const { offset, mode } = this.state;
+        return new Promise((resolve, reject) => {
+          this.setState({ loading: true });
+          setTimeout(() => {
+            resolve(client.loadTags({ limit: PER_PAGE, offset, mode }));
+          }, 1000);
+        }).then(response => {
+          this.setState({
+            loading: false,
+            topics: response.data,
+            pageCount: response.meta.pageCount
+          });
+        });
+      };
+
+      componentDidMount() {
+        this.load();
+      }
 
     isChange = (event) => {
         const { name, value } = event.target
@@ -93,16 +108,44 @@ class MyTopic extends Component {
             return null
         }
     }
+
+    onInputChange = (value) => {
+        this.setState({searchValue: value});
+    }
     
     render() {
+        const { loading } = this.state
+        const header = {
+            placeholder: "Search topic: title, content...",
+            searchValue: this.state.searchValue,
+            onInputChange: this.onInputChange,
+            // onSearchClick: this.onSearchClick
+          };
+          let resultSearch = []
+          this.state.dataTopic.forEach((value, key) => {
+            if (value.title.indexOf(this.state.searchValue) !== -1) {
+                resultSearch.push(value)
+                console.log('resultSearch', resultSearch)
+               
+            }
+        })
         return (
-            <div className="container-fluid">
+            <LayoutMain header={header}>
+                <div className="container-fluid">
                 <div className="row">
-                    <TopicListDetail
-                    dataTopic={this.state.dataTopic}
-                    topicNeedEdit={(topicNeedEdit) => this.topicNeedEdit(topicNeedEdit)}
-                    deleteTopic={(idNeedDelete) => this.deleteTopic(idNeedDelete)}
-                    />
+                <div className="col-12 col-lg-9 col-xl-8 mt-2">
+                {loading ? (
+                    <Loading />
+                    ) : (
+                    
+                        <TopicListDetail
+                            dataTopic={resultSearch}
+                            topicNeedEdit={(topicNeedEdit) => this.topicNeedEdit(topicNeedEdit)}
+                            deleteTopic={(idNeedDelete) => this.deleteTopic(idNeedDelete)}
+                        />
+                   
+                    )}
+                     </div>
                     <CreateForm
                     title={this.state.title}
                     content={this.state.content}
@@ -112,6 +155,7 @@ class MyTopic extends Component {
                     />
                 </div>
             </div>
+            </LayoutMain>
         );
     }
 }

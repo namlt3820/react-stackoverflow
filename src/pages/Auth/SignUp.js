@@ -6,18 +6,16 @@ import Lable from "../../components/Cores/lable/Lable";
 import Input from "../../components/Cores/input/Input_v2";
 import { isRequired, isEmail } from "../../components/Cores/input/validation";
 import LayoutAuth from "../../layout/LayoutAuth";
-import User from "../../services/user.service";
 import "./style.css";
 
-const user = new User();
 class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loading: false,
             fields: {
-                firstName: "",
-                lastName: "",
+                firstname: "",
+                lastname: "",
                 email: "",
                 password: ""
             },
@@ -30,23 +28,9 @@ class SignUp extends Component {
         this.setState({
             loading: true
         });
-        // setTimeout(() => {
-        //     this.setState({ loading: false });
-        // }, 3000);
-        const { email, password, firstName, lastName } = this.state.fields;
-        const params = {
-            email: email,
-            password: password,
-            firstName: firstName,
-            lastName: lastName
-        };
-        user.signup(params)
-            .then(res => {
-                console.log("res", res);
-            })
-            .catch(error => {
-                console.log("error", error);
-            });
+        setTimeout(() => {
+            this.setState({ loading: false });
+        }, 3000);
     }
     handleChange({ name, value, error }) {
         const { fields, fieldErrors } = this.state;
@@ -61,24 +45,24 @@ class SignUp extends Component {
         return false;
     };
     render() {
-        const {
+        let {
             loading,
-            fields: { firstName, lastName, email, password }
+            fields: { firstname, lastname, email, password }
         } = this.state;
         const { match } = this.props;
         const formSignUp = [
             {
                 lable: "First Name",
                 type: "text",
-                name: "firstName",
-                value: firstName,
+                name: "firstname",
+                value: firstname,
                 validate: [isRequired("First Name Required")]
             },
             {
                 lable: "Last Name",
                 type: "text",
-                name: "lastName",
-                value: lastName,
+                name: "lastname",
+                value: lastname,
                 validate: [isRequired("Last Name Required")]
             },
             {

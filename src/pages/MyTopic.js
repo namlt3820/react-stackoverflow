@@ -3,6 +3,7 @@ import data from "./../data/data(2).json";
 import "./../components/MyTopic/style.css";
 import CreateForm from "./../components/MyTopic/CreateForm";
 import TopicListDetail from "./../components/MyTopic/TopicListDetail";
+import LayoutMain from "../layout/LayoutMain";
 
 class MyTopic extends Component {
     // constructor(props) {
@@ -95,23 +96,26 @@ class MyTopic extends Component {
     };
 
     render() {
+        const header = {};
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    <TopicListDetail
-                        dataTopic={this.state.dataTopic}
-                        topicNeedEdit={topicNeedEdit => this.topicNeedEdit(topicNeedEdit)}
-                        deleteTopic={idNeedDelete => this.deleteTopic(idNeedDelete)}
-                    />
-                    <CreateForm
-                        title={this.state.title}
-                        content={this.state.content}
-                        contentButton={this.state.contentButton}
-                        isChange={event => this.isChange(event)}
-                        handleClick={() => this.Click()}
-                    />
+            <LayoutMain header={header}>
+                <div className="container-fluid">
+                    <div className="row">
+                        <TopicListDetail
+                            dataTopic={this.state.dataTopic}
+                            topicNeedEdit={topicNeedEdit => this.topicNeedEdit(topicNeedEdit)}
+                            deleteTopic={idNeedDelete => this.deleteTopic(idNeedDelete)}
+                        />
+                        <CreateForm
+                            title={this.state.title}
+                            content={this.state.content}
+                            contentButton={this.state.contentButton}
+                            isChange={event => this.isChange(event)}
+                            handleClick={() => this.Click()}
+                        />
+                    </div>
                 </div>
-            </div>
+            </LayoutMain>
         );
     }
 }

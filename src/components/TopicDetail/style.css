@@ -48,7 +48,7 @@
     height: 70px;
   }
   .table td.userName{
-    padding-top: 25px;
+    padding-top: 10px;
     padding-left: 20px;
   }
   
@@ -67,6 +67,14 @@
     top: 8px;
   }
   .table td.iconClose:hover{cursor: pointer;}
+
+  p{margin-bottom: 0}
+
+  td.userName>p{
+    font-size: 16px;
+    font-weight: 500;
+    font-style: bold;
+  }
   
   @media (max-width: 1024px){
     .avaUser{

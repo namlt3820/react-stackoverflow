@@ -4,8 +4,6 @@ import Title from '../Cores/CoComponent/Title';
 import Content from '../Cores/CoComponent/Content';
 
 class TopicDetailUnit extends Component {
-
-    
     styleURL = (str) => {
         // Chuyển hết sang chữ thường
         str = str.toLowerCase();     
@@ -29,12 +27,17 @@ class TopicDetailUnit extends Component {
         return str;
     }
 
-    mappingData = () => this.props.data.questions.map((question, index) => {
+    mappingData = () => this.props.dataQuestions.map((question, index) => {
         return this.props.topicDetail.questions.map((value, key) => {
             if (question.id === value.id) {
                 return <div className="card mt-2 mb-2 list-group-item-hover" key={key}>
-                    <Title navLink={"/topic-detail/" + this.styleURL(question.title)+ "." + question.id + ".html"} title={question.title}/>
-                    <Content content={question.content}/>
+                    <Title
+                    navLink={"/topic-detail/" + this.styleURL(question.title)+ "." + question.id + ".html"} 
+                    title={question.title}
+                    objectNeedEdit={(questionNeedEdit) => this.props.questionNeedEdit(question)}
+                    delete={(idNeedDelete) => this.props.deleteQuestion(question.id)}/>
+                    <Content 
+                    content={question.content}/>
                     <TopicDetailFooter
                     createdAt={question.createdAt}
                     comment={question.comment}
@@ -48,8 +51,6 @@ class TopicDetailUnit extends Component {
     })
 
     render() {
-        console.log('this.props.topicDetail.questions', this.props.topicDetail.questions)
-        console.log('this.props.data.questions', this.props.data.questions)
         return (
             <div>
                 {this.mappingData()}

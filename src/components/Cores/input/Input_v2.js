@@ -22,7 +22,7 @@ export default class Input extends Component {
                     className="form-control"
                     type={type}
                     name={name}
-                    // value={value}
+                    value={value}
                     onChange={this.onChange}
                     placeholder={placeholder}
                     defaultValue={defaultValue}

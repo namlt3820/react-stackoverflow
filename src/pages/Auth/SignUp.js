@@ -6,6 +6,8 @@ import Lable from "../../components/Cores/lable/Lable";
 import Input from "../../components/Cores/input/Input_v2";
 import { isRequired, isEmail } from "../../components/Cores/input/validation";
 import LayoutAuth from "../../layout/LayoutAuth";
+import { signUp } from "../../store/actions/userAction";
+import { connect } from "react-redux";
 import "./style.css";
 
 class SignUp extends Component {
@@ -14,8 +16,8 @@ class SignUp extends Component {
         this.state = {
             loading: false,
             fields: {
-                firstname: "",
-                lastname: "",
+                firstName: "",
+                lastName: "",
                 email: "",
                 password: ""
             },
@@ -25,12 +27,18 @@ class SignUp extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
     handleClick() {
-        this.setState({
-            loading: true
-        });
-        setTimeout(() => {
-            this.setState({ loading: false });
-        }, 3000);
+        // this.setState({
+        //     loading: true
+        // });
+        const { email, password, firstName, lastName } = this.state.fields;
+        const { signUp } = this.props;
+        const params = {
+            email: email,
+            password: password,
+            firstName: firstName,
+            lastName: lastName
+        };
+        signUp(params);
     }
     handleChange({ name, value, error }) {
         const { fields, fieldErrors } = this.state;
@@ -47,22 +55,22 @@ class SignUp extends Component {
     render() {
         let {
             loading,
-            fields: { firstname, lastname, email, password }
+            fields: { firstName, lastName, email, password }
         } = this.state;
         const { match } = this.props;
         const formSignUp = [
             {
                 lable: "First Name",
                 type: "text",
-                name: "firstname",
-                value: firstname,
+                name: "firstName",
+                value: firstName,
                 validate: [isRequired("First Name Required")]
             },
             {
                 lable: "Last Name",
                 type: "text",
-                name: "lastname",
-                value: lastname,
+                name: "lastName",
+                value: lastName,
                 validate: [isRequired("Last Name Required")]
             },
             {
@@ -114,4 +122,7 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+export default connect(
+    null,
+    { signUp }
+)(SignUp);

@@ -9,12 +9,17 @@ export const login = (data, history) => dispatch => {
         .then(respone => {
             if (respone && respone.status === 200) {
                 const { access_token } = respone.data.data;
-                localStorage.setItem("jwt", access_token);
-                setAuthHeaders(access_token);
+                localStorage.setItem("access_token", access_token);
                 history.push("/");
             }
         })
         .catch(error => {
             console.log("error", error);
         });
+};
+
+export const logout = () => {
+    // localStorage.removeItem("jwt");
+    // setAuthHeaders(null);
+    // window.location.href("/login");
 };

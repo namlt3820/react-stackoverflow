@@ -15,8 +15,8 @@ class MyTopic extends Component {
         loading: true,
         dataTopic: data.topics,
         statusForm: true,
-        title: '',
-        content: '',
+        title: "",
+        content: "",
         topicNeedEdit: {},
         contentButton: "Create New Topic",
         handleClick:  () => {},
@@ -48,64 +48,64 @@ class MyTopic extends Component {
         this.setState({
             [name]: value
         });
-    }
+    };
 
     newTopic = () => {
-        if (this.state.title === '' || this.state.content === '') {
-            alert('Bạn Chưa Nhập Đủ Trường')
+        if (this.state.title === "" || this.state.content === "") {
+            alert("Bạn Chưa Nhập Đủ Trường");
         } else {
-            const topicNew = {}
-            topicNew.id = "1"
-            topicNew.createdAt = "Wednesday, June 5, 2019 12:14 PM"
-            topicNew.title = this.state.title
-            topicNew.content = this.state.content
-            this.state.dataTopic.unshift(topicNew)
+            const topicNew = {};
+            topicNew.id = "1";
+            topicNew.createdAt = "Wednesday, June 5, 2019 12:14 PM";
+            topicNew.title = this.state.title;
+            topicNew.content = this.state.content;
+            this.state.dataTopic.unshift(topicNew);
             this.setState({
                 dataTopic: this.state.dataTopic,
-                title: '',
-                content: ''
+                title: "",
+                content: ""
             });
         }
-    }
+    };
 
-    editTopic  = () => {
+    editTopic = () => {
         this.state.dataTopic.forEach((value, key) => {
             if (value.id === this.state.topicNeedEdit.id) {
-                value.title = this.state.title
-                value.content = this.state.content
+                value.title = this.state.title;
+                value.content = this.state.content;
             }
-        })
+        });
         this.setState({
             contentButton: "Create New Topic",
-            title: '',
-            content: ''
+            title: "",
+            content: ""
         });
-    }
+    };
 
     Click = () => {
         if (this.state.contentButton === "Create New Topic") {
-            this.setState({handleClick: this.newTopic()});
-        } else if (this.state.contentButton === "Save Edit"){
-            this.setState({handleClick: this.editTopic()});
+            this.setState({ handleClick: this.newTopic() });
+        } else if (this.state.contentButton === "Save Edit") {
+            this.setState({ handleClick: this.editTopic() });
         }
-    }
+    };
 
-    topicNeedEdit = (topicNeedEdit) => {
+    topicNeedEdit = topicNeedEdit => {
         this.setState({
             topicNeedEdit: topicNeedEdit,
             contentButton: "Save Edit",
             title: topicNeedEdit.title,
             content: topicNeedEdit.content
         });
-    }
+    };
 
-    deleteTopic  = (idNeedDelete) => {
-        const verify = window.confirm("Bạn có chắc chắn muốn xoá phần tử " + idNeedDelete)
+    deleteTopic = idNeedDelete => {
+        const verify = window.confirm("Bạn có chắc chắn muốn xoá phần tử " + idNeedDelete);
         if (verify === true) {
-            const dataTemp = this.state.dataTopic.filter(item => item.id !== idNeedDelete)
-            this.setState({dataTopic: dataTemp});
+            const dataTemp = this.state.dataTopic.filter(item => item.id !== idNeedDelete);
+            this.setState({ dataTopic: dataTemp });
         } else {
-            return null
+            return null;
         }
     }
 

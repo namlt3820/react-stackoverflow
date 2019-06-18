@@ -3,6 +3,7 @@ import Lable from "../../components/Cores/lable/Lable";
 import Input from "../../components/Cores/input/Input";
 import CustomButton from "../../components/Cores/button/CustomButton";
 import "./style.css";
+import LayoutAuth from "../../layout/LayoutAuth";
 
 class ActiveCode extends Component {
     constructor(props) {
@@ -30,7 +31,9 @@ class ActiveCode extends Component {
     }
     render() {
         const { loading, code } = this.state;
+        const header = {}
         return (
+            <LayoutAuth header={header}>
             <div className="auth-page">
                 <div className="active">
                     <div className="mb-3">
@@ -40,6 +43,7 @@ class ActiveCode extends Component {
                     <CustomButton content="Active" loading={loading} handleClick={this.handleClick} />
                 </div>
             </div>
+            </LayoutAuth>
         );
     }
 }

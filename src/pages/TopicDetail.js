@@ -51,66 +51,67 @@ class TopicDetail extends Component {
       
     componentWillMount(){
         this.state.dataTopics.map((value, key) => {
-            if (value.id === this.props.match.params.id){
-                this.setState({topicParticipants: value.participants});
-            }})
-    }
-
-    isChange = (event) => {
-        const { name, value } = event.target
-        this.setState({
-            [name]: value
+            if (value.id === this.props.match.params.id) {
+                this.setState({ topicParticipants: value.participants });
+            }
         });
     }
 
-    questionNeedEdit = (questionNeedEdit) => {
+    isChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    questionNeedEdit = questionNeedEdit => {
         this.setState({
             questionNeedEdit: questionNeedEdit,
             title: questionNeedEdit.title,
             content: questionNeedEdit.content
         });
-    }
+    };
 
     editQuestion = () => {
         this.state.dataQuestions.forEach((value, key) => {
             if (value.id === this.state.questionNeedEdit.id) {
-                value.title = this.state.title
-                value.content = this.state.content
+                value.title = this.state.title;
+                value.content = this.state.content;
             }
-        })
-        this.setState({dataQuestions: this.state.dataQuestions});
-    }
+        });
+        this.setState({ dataQuestions: this.state.dataQuestions });
+    };
 
-    deleteQuestion  = (idNeedDelete) => {
-        const verify = window.confirm("Bạn có chắc chắn muốn xoá phần tử " + idNeedDelete)
+    deleteQuestion = idNeedDelete => {
+        const verify = window.confirm("Bạn có chắc chắn muốn xoá phần tử " + idNeedDelete);
         if (verify === true) {
-            const dataTemp = this.state.dataQuestions.filter(item => item.id !== idNeedDelete)
-            this.setState({dataQuestions: dataTemp});
+            const dataTemp = this.state.dataQuestions.filter(item => item.id !== idNeedDelete);
+            this.setState({ dataQuestions: dataTemp });
         } else {
-           return null; 
+            return null;
         }
-    }
+    };
 
-    deleteUser  = (idNeedDelete) => {
-        const verify = window.confirm("Bạn có chắc chắn muốn xoá user " + idNeedDelete)
-            if (verify === true) {
-                const dataTemp = this.state.topicParticipants.filter(item => item.id !== idNeedDelete)
-                this.setState({topicParticipants: dataTemp});
-            } else {
-               return null; 
-            }
-    }
+    deleteUser = idNeedDelete => {
+        const verify = window.confirm("Bạn có chắc chắn muốn xoá user " + idNeedDelete);
+        if (verify === true) {
+            const dataTemp = this.state.topicParticipants.filter(item => item.id !== idNeedDelete);
+            this.setState({ topicParticipants: dataTemp });
+        } else {
+            return null;
+        }
+    };
 
-    addUser  = (userAdd) => {
+    addUser = userAdd => {
         this.state.data.users.map((value, key) => {
             if (value.email === userAdd) {
-                this.state.topicParticipants.push(value)
-                this.setState({topicParticipants: this.state.topicParticipants});
+                this.state.topicParticipants.push(value);
+                this.setState({ topicParticipants: this.state.topicParticipants });
             } else {
-                alert("User không tồn tại") 
+                alert("User không tồn tại");
             }
-        })
-    }
+        });
+    };
 
     mappingData = () => this.state.dataTopics.map((value, key) => {
         if (value.id === this.props.match.params.id) {

@@ -3,6 +3,7 @@ import Lable from "../../components/Cores/lable/Lable";
 import Input from "../../components/Cores/input/Input";
 import CustomButton from "../../components/Cores/button/CustomButton";
 import "./style.css";
+import LayoutAuth from "../../layout/LayoutAuth";
 
 class ChangePassWord extends Component {
     constructor(props) {
@@ -36,7 +37,9 @@ class ChangePassWord extends Component {
             { lable: "New Password", type: "password", name: "newPassword", value: newPassword },
             { lable: "Confirm Password", type: "password", name: "confirmPassword", value: confirmPassword }
         ];
+        const header = {}
         return (
+            <LayoutAuth header={header}>
             <div className="auth-page">
                 <div className="change-password">
                     {formChange.map((item, index) => (
@@ -53,6 +56,7 @@ class ChangePassWord extends Component {
                     <CustomButton content="Change Password" handleClick={this.handleClick} loading={loading} />
                 </div>
             </div>
+            </LayoutAuth>
         );
     }
 }

@@ -16,7 +16,8 @@ const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
     function(config) {
-        if (window.localStorage.jwt) config.headers.Authorization = window.localStorage.jwt;
+        config.headers["x-access-token"] = window.localStorage.access_token;
+        if (window.localStorage.access_token) config.headers["x-access-token"] = window.localStorage.access_token;
         return config;
     },
     function(error) {

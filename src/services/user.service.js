@@ -4,7 +4,11 @@ export default class User extends Base {
     constructor() {
         super("users");
     }
-    signup(params) {
+    signUp(params) {
         return this.post(params);
+    }
+    getProfile() {
+        this.path = "users/profile";
+        return this.get();
     }
 }

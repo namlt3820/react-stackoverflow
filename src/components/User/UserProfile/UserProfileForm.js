@@ -3,7 +3,7 @@ import { Row, Col } from "antd";
 import Button from "../../Cores/button/CustomButton_v2";
 import Input from "../../Cores/input/Input_v2";
 import Label from "../../Cores/lable/Lable";
-import { isRequired, isEmail, isNumber } from "../../Cores/input/validation";
+import { isRequired, isNumber } from "../../Cores/input/validation";
 
 class ButtonImageUpload extends Component {
   fileInput = null;
@@ -93,7 +93,6 @@ class UserProfileForm extends Component {
       company,
       age,
       aboutMe,
-      email,
       picture,
       newImgData
     } = this.state.fields;
@@ -143,16 +142,7 @@ class UserProfileForm extends Component {
                   handleChange={this.handleChange}
                 />
                 <UserProfileField
-                  container="col-md-4"
-                  label="Email"
-                  type="text"
-                  name="email"
-                  value={email}
-                  validate={[isRequired("Email Required"), isEmail("Email Invalid")]}
-                  handleChange={this.handleChange}
-                />
-                <UserProfileField
-                  container="col-md-4"
+                  container="col-md-6"
                   label="Company"
                   type="text"
                   name="company"
@@ -160,7 +150,7 @@ class UserProfileForm extends Component {
                   handleChange={this.handleChange}
                 />
                 <UserProfileField
-                  container="col-md-4"
+                  container="col-md-6"
                   label="Location"
                   type="text"
                   name="location"

@@ -3,16 +3,6 @@ import { SET_CURRENT_USER } from "../constants";
 
 const user = new User();
 
-export const signUp = (data, history) => dispatch => {
-    user.signUp(data)
-        .then(respone => {
-            console.log();
-        })
-        .catch(error => {
-            console.log("error", error);
-        });
-};
-
 export const getCurrentUser = () => dispatch => {
     user.getProfile()
         .then(res => {

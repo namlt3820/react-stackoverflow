@@ -2,68 +2,66 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import CustomButton from "../components/Cores/button/CustomButton_v2";
 import CustomInput from "../components/Cores/input/Input_v2";
-import User from "../services/user.service";
-import { getCurrentUser } from "../store/actions/userAction";
 import { connect } from "react-redux";
 import "./style.css";
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-    componentDidMount() {
-        const { getCurrentUser } = this.props;
-        getCurrentUser();
-    }
-    handleChange = ({ value }) => {
-        this.props.onInputChange(value);
-    };
-    render() {
-        const { placeholder, searchValue, onSearchClick } = this.props;
-        return (
-            <nav className="navbar navbar-expand-lg navbar-light bg-light px-4">
-                <NavLink className="navbar-brand text-info mr-5" to="/">
-                    Q / A
-                </NavLink>
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#mainNavBar"
-                    aria-controls="mainNavBar"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon" />
-                </button>
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  componentDidMount() {}
+  handleChange = ({ value }) => {
+    this.props.onInputChange(value);
+  };
+  render() {
+    const { placeholder, searchValue, onSearchClick, user } = this.props;
+    console.log(user)
+    return (
+      <nav className="navbar navbar-expand-lg navbar-light bg-light px-4">
+        <NavLink className="navbar-brand text-info mr-5" to="/">
+          Q / A
+        </NavLink>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#mainNavBar"
+          aria-controls="mainNavBar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
 
-                <div className="collapse navbar-collapse" id="mainNavBar">
-                    <ul className="navbar-nav w-100">
-                        <div className="mr-auto d-flex align-items-center">
-                            <form className="form-inline my-2 my-lg-0">
-                                <div className="search d-flex mr-2">
-                                    <CustomInput
-                                        type="search"
-                                        name="search"
-                                        placeholder={placeholder}
-                                        value={searchValue}
-                                        handleChange={this.handleChange}
-                                    />
-                                </div>
-                                <div className="mr-2">
-                                    <CustomButton content="Search" handleClick={onSearchClick} />
-                                </div>
-                            </form>
-                            <CustomButton content={<NavLink to="/ask-question">Ask Question</NavLink>} />
-                        </div>
+        <div className="collapse navbar-collapse" id="mainNavBar">
+          <ul className="navbar-nav w-100">
+            <div className="mr-auto d-flex align-items-center">
+              <form className="form-inline my-2 my-lg-0">
+                <div className="search d-flex mr-2">
+                  <CustomInput
+                    type="search"
+                    name="search"
+                    placeholder={placeholder}
+                    value={searchValue}
+                    handleChange={this.handleChange}
+                  />
+                </div>
+                <div className="mr-2">
+                  <CustomButton content="Search" handleClick={onSearchClick} />
+                </div>
+              </form>
+              <CustomButton
+                content={<NavLink to="/ask-question">Ask Question</NavLink>}
+              />
+            </div>
 
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/tags">
-                                Tags
-                            </NavLink>
-                        </li>
-                        {/* <li className="nav-item dropdown">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/tags">
+                Tags
+              </NavLink>
+            </li>
+            {/* <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
                 href="/"
@@ -84,50 +82,54 @@ class Header extends Component {
                 </NavLink>
               </div>
             </li> */}
-                        <li className="nav-item dropdown">
-                            <a
-                                className="nav-link dropdown-toggle"
-                                href="/"
-                                id="navbarUserDropdown"
-                                role="button"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                User
-                            </a>
-                            <div className="dropdown-menu" aria-labelledby="navbarUserDropdown">
-                                <NavLink className="dropdown-item" to="/my-topics">
-                                    My Topics
-                                </NavLink>
-                                <NavLink className="dropdown-item" to="/my-questions">
-                                    My Questions
-                                </NavLink>
-                                <NavLink className="dropdown-item" to="/my-profile">
-                                    My Profile
-                                </NavLink>
-                                <NavLink className="dropdown-item" to="/change-password">
-                                    Change Password
-                                </NavLink>
-                            </div>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/login">
-                                Login
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/register">
-                                Register
-                            </NavLink>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        );
-    }
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="/"
+                id="navbarUserDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                User
+              </a>
+              <div
+                className="dropdown-menu"
+                aria-labelledby="navbarUserDropdown"
+              >
+                <NavLink className="dropdown-item" to="/my-topics">
+                  My Topics
+                </NavLink>
+                <NavLink className="dropdown-item" to="/my-questions">
+                  My Questions
+                </NavLink>
+                <NavLink className="dropdown-item" to="/my-profile">
+                  My Profile
+                </NavLink>
+                <NavLink className="dropdown-item" to="/change-password">
+                  Change Password
+                </NavLink>
+              </div>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/login">
+                Login
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/register">
+                Register
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    );
+  }
 }
-export default connect(
-    null,
-    { getCurrentUser }
-)(Header);
+
+const mapStateToProps = state => ({
+  user: state.user
+});
+export default connect(mapStateToProps)(Header);

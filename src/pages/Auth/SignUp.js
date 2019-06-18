@@ -4,13 +4,14 @@ import Facebook from "../../components/Social/FaceBook";
 import GoogleLogin from "../../components/Social/Google";
 import Lable from "../../components/Cores/lable/Lable";
 import Input from "../../components/Cores/input/Input_v2";
-import { isRequired, isEmail } from "../../components/Cores/input/validation";
+import { isRequired, isEmail, isLongerThanSix } from "../../components/Cores/input/validation";
 import LayoutAuth from "../../layout/LayoutAuth";
-import { signUp } from "../../store/actions/userAction";
-import { connect } from "react-redux";
+import User from "../../services/user.service";
 import "./style.css";
 
-class SignUp extends Component {
+const user = new User()
+
+export default class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -27,18 +28,14 @@ class SignUp extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
     handleClick() {
-        // this.setState({
-        //     loading: true
-        // });
         const { email, password, firstName, lastName } = this.state.fields;
-        const { signUp } = this.props;
         const params = {
             email: email,
             password: password,
             firstName: firstName,
             lastName: lastName
         };
-        signUp(params);
+        user.signUp(params);
     }
     handleChange({ name, value, error }) {
         const { fields, fieldErrors } = this.state;
@@ -85,7 +82,7 @@ class SignUp extends Component {
                 type: "password",
                 name: "password",
                 value: password,
-                validate: [isRequired("Password Required")]
+                validate: [isRequired("Password Required"), isLongerThanSix("Password must be longer than 6 characters.")]
             }
         ];
         const header = {};
@@ -121,8 +118,3 @@ class SignUp extends Component {
         );
     }
 }
-
-export default connect(
-    null,
-    { signUp }
-)(SignUp);

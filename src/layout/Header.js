@@ -2,18 +2,21 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import CustomButton from "../components/Cores/button/CustomButton_v2";
 import CustomInput from "../components/Cores/input/Input_v2";
+import { connect } from "react-redux";
 import "./style.css";
 
 class Header extends Component {
-  handleChange = ({value}) => {
-    this.props.onInputChange(value)
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
+  componentDidMount() {}
+  handleChange = ({ value }) => {
+    this.props.onInputChange(value);
+  };
   render() {
-    const {
-      placeholder,
-      searchValue,
-      onSearchClick
-    } = this.props;
+    const { placeholder, searchValue, onSearchClick, user } = this.props;
+    console.log(user)
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light px-4">
         <NavLink className="navbar-brand text-info mr-5" to="/">
@@ -58,7 +61,7 @@ class Header extends Component {
                 Tags
               </NavLink>
             </li>
-            <li className="nav-item dropdown">
+            {/* <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
                 href="/"
@@ -78,7 +81,7 @@ class Header extends Component {
                   Topics Update
                 </NavLink>
               </div>
-            </li>
+            </li> */}
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -125,4 +128,8 @@ class Header extends Component {
     );
   }
 }
-export default Header;
+
+const mapStateToProps = state => ({
+  user: state.user
+});
+export default connect(mapStateToProps)(Header);

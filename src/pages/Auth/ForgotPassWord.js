@@ -3,6 +3,7 @@ import Lable from "../../components/Cores/lable/Lable";
 import Input from "../../components/Cores/input/Input";
 import CustomButton from "../../components/Cores/button/CustomButton";
 import "./style.css";
+import LayoutAuth from "../../layout/LayoutAuth";
 
 class ForgotPassWord extends Component {
     constructor(props) {
@@ -30,7 +31,9 @@ class ForgotPassWord extends Component {
     }
     render() {
         const { email, loading } = this.state;
+        const header = {}
         return (
+            <LayoutAuth header={header}>
             <div className="auth-page">
                 <div className="forgot-password">
                     <div className="mb-3">
@@ -40,6 +43,7 @@ class ForgotPassWord extends Component {
                     <CustomButton content="Send recovery email" handleClick={this.handleClick} loading={loading} />
                 </div>
             </div>
+            </LayoutAuth>
         );
     }
 }

@@ -3,3 +3,59 @@
         min-width: 600px;
     }
 }
+body {
+    background-color: rgb(239, 240, 241);
+}
+.auth-page {
+    /* height: 600px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.auth-page .login,
+.auth-page .active,
+.auth-page .signup,
+.auth-page .forgot-password,
+.auth-page .change-password {
+    padding: 20px;
+    background: #f8f9fa;
+}
+.auth-page .social {
+    margin-bottom: 50px;
+}
+.auth-page .btn-social {
+    margin-bottom: 10px;
+}
+.auth-page .social .btn {
+    width: 340px;
+    font-size: 13px;
+}
+.auth-page .social .btn-fb {
+    background: #314a85;
+    color: #ffffff;
+}
+.auth-page .social .btn-gg {
+    background: #f7f7f7;
+    color: rgba(0, 0, 0, 0.5);
+}
+.auth-page .input-group-prepend {
+    padding: 5px;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.auth-page .mb-3 .form-control {
+    width: 300px;
+}
+.auth-page .btn-auth .btn {
+    width: 300px;
+    height: 38px;
+    background: #0069d9;
+    color: #ffffff;
+}
+.auth-page .label-auth {
+    color: #130e0e;
+    line-height: 16px;
+    font-size: 15px;
+    font-weight: 700;
+}

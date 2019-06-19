@@ -10,9 +10,8 @@ import client from '../services/client.js';
 const PER_PAGE = 10;
 
 class TopicDetail extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+
+        state = {
             loading: true,
             data: data,
             dataQuestions: data.questions,
@@ -24,9 +23,7 @@ class TopicDetail extends Component {
             topicParticipants: [],
             searchValue: ''
         }
-    }
-
-
+    
 
     load = () => {
         const { offset, mode } = this.state;
@@ -48,7 +45,6 @@ class TopicDetail extends Component {
         this.load();
       }
 
-      
     componentWillMount(){
         this.state.dataTopics.map((value, key) => {
             if (value.id === this.props.match.params.id) {
@@ -139,15 +135,9 @@ class TopicDetail extends Component {
         } else {return null;}
     })
 
-    onInputChange  = (value) => {
-        this.setState({searchValue: value});
-    }
-
-    onSearchClick  = () => {
-        
-    }
-
     render() {
+        console.log('this.state.topicParticipants', this.state.topicParticipants)
+        console.log('this.state.data.users', this.state.data.users)
         const header = {
             placeholder: "Search topic: title, content...",
             searchValue: this.state.searchValue,
@@ -155,14 +145,6 @@ class TopicDetail extends Component {
             onSearchClick: this.onSearchClick
           };
 
-        //   let resultSearch = []
-        //   this.state.dataTopic.forEach((value, key) => {
-        //     if (value.title.indexOf(this.state.searchValue) !== -1) {
-        //         resultSearch.push(value)
-        //         console.log('resultSearch', resultSearch)
-               
-        //     }
-        // })
         return (
            <LayoutMain header={header}>
                 <div className="container-fluid">

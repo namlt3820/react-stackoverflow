@@ -123,10 +123,8 @@ class MyTopic extends Component {
           };
           let resultSearch = []
           this.state.dataTopic.forEach((value, key) => {
-            if (value.title.indexOf(this.state.searchValue) !== -1) {
+            if (value.title.indexOf(this.state.searchValue) !== -1 || value.content.indexOf(this.state.searchValue) !== -1) {
                 resultSearch.push(value)
-                console.log('resultSearch', resultSearch)
-               
             }
         })
         return (

@@ -10,9 +10,8 @@ import client from '../services/client.js';
 const PER_PAGE = 10;
 
 class TopicDetail extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+
+        state = {
             loading: true,
             data: data,
             dataQuestions: data.questions,
@@ -24,9 +23,7 @@ class TopicDetail extends Component {
             topicParticipants: [],
             searchValue: ''
         }
-    }
-
-
+    
 
     load = () => {
         const { offset, mode } = this.state;
@@ -48,12 +45,12 @@ class TopicDetail extends Component {
         this.load();
       }
 
-      
     componentWillMount(){
         this.state.dataTopics.map((value, key) => {
             if (value.id === this.props.match.params.id){
                 this.setState({topicParticipants: value.participants});
             }})
+       
     }
 
     isChange = (event) => {
@@ -93,23 +90,42 @@ class TopicDetail extends Component {
 
     deleteUser  = (idNeedDelete) => {
         const verify = window.confirm("Bạn có chắc chắn muốn xoá user " + idNeedDelete)
-            if (verify === true) {
-                const dataTemp = this.state.topicParticipants.filter(item => item.id !== idNeedDelete)
-                this.setState({topicParticipants: dataTemp});
-            } else {
-               return null; 
-            }
+        if (verify === true) {
+            const dataTemp = this.state.topicParticipants.filter(item => item.id !== idNeedDelete)
+            this.setState({topicParticipants: dataTemp});
+        } else {
+            return null; 
+        }
     }
 
     addUser  = (userAdd) => {
-        this.state.data.users.map((value, key) => {
-            if (value.email === userAdd) {
-                this.state.topicParticipants.push(value)
-                this.setState({topicParticipants: this.state.topicParticipants});
-            } else {
-                alert("User không tồn tại") 
+        // this.state.data.users.map((value, key) => {
+        //     if (value.email === userAdd) {
+        //         this.state.topicParticipants.push(value)
+        //         this.setState({topicParticipants: this.state.topicParticipants});
+        //     } else {
+        //         alert("User không tồn tại") 
+        //     }
+        // })
+    }
+
+    onInputChange  = (value) => {
+        this.setState({searchValue: value});
+    }
+
+    onSearchClick  = () => {
+        const resultSearch = []
+        this.state.dataQuestions.forEach((value, key) => {
+            if (value.title.indexOf(this.state.searchValue) !== -1 || value.content.indexOf(this.state.searchValue) !== -1)  {
+                resultSearch.push(value)
             }
         })
+        console.log('resultSearch', resultSearch)
+        console.log('this.state.searchValue', this.state.searchValue)
+        this.setState({
+            dataQuestions: resultSearch,
+            searchValue: ''
+        });
     }
 
     mappingData = () => this.state.dataTopics.map((value, key) => {
@@ -138,15 +154,9 @@ class TopicDetail extends Component {
         } else {return null;}
     })
 
-    onInputChange  = (value) => {
-        this.setState({searchValue: value});
-    }
-
-    onSearchClick  = () => {
-        
-    }
-
     render() {
+        console.log('this.state.topicParticipants', this.state.topicParticipants)
+        console.log('this.state.data.users', this.state.data.users)
         const header = {
             placeholder: "Search topic: title, content...",
             searchValue: this.state.searchValue,
@@ -154,14 +164,6 @@ class TopicDetail extends Component {
             onSearchClick: this.onSearchClick
           };
 
-        //   let resultSearch = []
-        //   this.state.dataTopic.forEach((value, key) => {
-        //     if (value.title.indexOf(this.state.searchValue) !== -1) {
-        //         resultSearch.push(value)
-        //         console.log('resultSearch', resultSearch)
-               
-        //     }
-        // })
         return (
            <LayoutMain header={header}>
                 <div className="container-fluid">

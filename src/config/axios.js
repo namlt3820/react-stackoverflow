@@ -7,7 +7,7 @@ import store from "../store/index";
 let config = {
     baseURL: process.env.REACT_APP_API_URL || "",
     validateStatus: function(status) {
-        return (status >= 200 && status < 300) || status === 400; // default
+        return (status >= 200 && status < 500)  // default
     }
     // timeout: 60 * 1000, // Timeout
     // withCredentials: true, // Check cross-site Access-Control
@@ -16,7 +16,6 @@ const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
     function(config) {
-        config.headers["x-access-token"] = window.localStorage.access_token;
         if (window.localStorage.access_token) config.headers["x-access-token"] = window.localStorage.access_token;
         return config;
     },
@@ -32,14 +31,7 @@ _axios.interceptors.response.use(
         return response;
     },
     function(error) {
-        // Do something with response error
-        // Do something with request error
-        if (error.response && error.response.status === 401) {
-            store.dispatch("logout");
-        } else {
-            //store.dispatch("common/setStateErrorRequest");
-        }
-        return Promise.reject(error);
+        console.log('error')
     }
 );
 export default _axios;

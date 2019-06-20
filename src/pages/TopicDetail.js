@@ -1,30 +1,55 @@
-import React, { Component } from "react";
-import data from "./../data/data(2).json";
-import "./../components/TopicDetail/style.css";
-import UserList from "./../components/TopicDetail/UserList";
-import TopicDetailList from "../components/TopicDetail/TopicDetailList";
-import LayoutMain from "../layout/LayoutMain";
+import React, { Component } from 'react';
+import data from './../data/data(2).json'
+import './../components/TopicDetail/style.css'
+import UserList from './../components/TopicDetail/UserList';
+import TopicDetailList from '../components/TopicDetail/TopicDetailList';
+import LayoutMain from '../layout/LayoutMain.js';
+import Loading from '../components/Cores/loading.js';
+import client from '../services/client.js';
+
+const PER_PAGE = 10;
 
 class TopicDetail extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+
+        state = {
+            loading: true,
             data: data,
             dataQuestions: data.questions,
             dataTopics: data.topics,
             questionNeedEdit: {},
-            title: "",
-            content: "",
-            userAdd: "",
-            topicParticipants: []
-        };
-    }
+            title: '',
+            content: '',
+            userAdd: '',
+            topicParticipants: [],
+            searchValue: ''
+        }
+    
 
-    componentWillMount() {
+    load = () => {
+        const { offset, mode } = this.state;
+        return new Promise((resolve, reject) => {
+          this.setState({ loading: true });
+          setTimeout(() => {
+            resolve(client.load({ limit: PER_PAGE, offset, mode }));
+          }, 1000);
+        }).then(response => {
+          this.setState({
+            loading: false,
+            questions: response.data,
+            pageCount: response.meta.pageCount
+          });
+        });
+      };
+
+      componentDidMount() {
+        this.load();
+      }
+
+    componentWillMount(){
         this.state.dataTopics.map((value, key) => {
             if (value.id === this.props.match.params.id) {
                 this.setState({ topicParticipants: value.participants });
-            }
+            } else {return null;}
         });
     }
 
@@ -84,43 +109,48 @@ class TopicDetail extends Component {
         });
     };
 
-    mappingData = () =>
-        this.state.dataTopics.map((value, key) => {
-            if (value.id === this.props.match.params.id) {
-                return (
-                    <div className="row" key={key}>
-                        <TopicDetailList
+    mappingData = () => this.state.dataTopics.map((value, key) => {
+        if (value.id === this.props.match.params.id) {
+            return <div className="row" key={key}>
+                    {this.state.loading ? (
+                    <Loading />
+                    ) : (
+                        <TopicDetailList 
                             topicDetail={value}
                             dataQuestions={this.state.dataQuestions}
-                            questionNeedEdit={questionNeedEdit => this.questionNeedEdit(questionNeedEdit)}
+                            questionNeedEdit={(questionNeedEdit) => this.questionNeedEdit(questionNeedEdit)}
                             title={this.state.title}
                             content={this.state.content}
-                            isChange={event => this.isChange(event)}
+                            isChange={(event) => this.isChange(event)}
                             editQuestion={() => this.editQuestion()}
-                            deleteQuestion={idNeedDelete => this.deleteQuestion(idNeedDelete)}
-                        />
-                        <UserList
-                            topicParticipants={this.state.topicParticipants}
-                            dataUser={this.state.data.users}
-                            deleteUser={idNeedDelete => this.deleteUser(idNeedDelete)}
-                            isChange={event => this.isChange(event)}
-                            addUser={userAdd => this.addUser(userAdd)}
-                        />
-                    </div>
-                );
-            } else {
-                return null;
-            }
-        });
+                            deleteQuestion={(idNeedDelete) => this.deleteQuestion(idNeedDelete)}/>
+                    )}
+                <UserList 
+                topicParticipants={this.state.topicParticipants}
+                dataUser={this.state.data.users}
+                deleteUser={(idNeedDelete) => this.deleteUser(idNeedDelete)}
+                isChange={(event) => this.isChange(event)}
+                addUser={(userAdd) => this.addUser(userAdd)}/>
+            </div>
+        } else {return null;}
+    })
 
     render() {
-        const header = {};
+        const header = {
+            placeholder: "Search topic: title, content...",
+            searchValue: this.state.searchValue,
+            onInputChange: this.onInputChange,
+            onSearchClick: this.onSearchClick
+          };
+
         return (
-            <LayoutMain header={header}>
+           <LayoutMain header={header}>
                 <div className="container-fluid">
-                    <div className="row">{this.mappingData()}</div>
+                    <div className="row">
+                        {this.mappingData()}
+                    </div>
                 </div>
-            </LayoutMain>
+           </LayoutMain>
         );
     }
 }

@@ -34,12 +34,12 @@ class TopicItem extends Component {
         return (
                 <div className="card mt-2 mb-2 list-group-item-hover">
                     <Title
-                    navLink={"/my-topics/" + this.styleURL(this.props.topicItem.title)+ "." + this.props.topicItem.id + ".html"}
-                    title={this.props.topicItem.title}
+                    navLink={"/my-topics/" + this.styleURL(this.props.topicItem.name)+ "." + this.props.topicItem.id + ".html"}
+                    title={this.props.topicItem.name}
                     objectNeedEdit={() => this.props.topicNeedEdit()}
                     delete={() => this.props.deleteTopic()}/>
                     <Content
-                    content={this.props.topicItem.content}/>
+                    content={this.props.topicItem.desc}/>
                     <TopicFooter
                     className="btn-group w-100"
                     createdAt={this.props.topicItem.createdAt}/>

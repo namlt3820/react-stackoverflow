@@ -66,7 +66,7 @@ export const routersAuth = [
         component: ForgotPassWord
     },
     {
-        path: "/active",
+        path: "/users/active",
         component: ActiveCode
     },
     {

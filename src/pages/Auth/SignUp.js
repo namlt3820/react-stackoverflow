@@ -27,8 +27,7 @@ export default class SignUp extends Component {
         email: "",
         password: ""
       },
-      fieldErrors: {
-      },
+      fieldErrors: {},
       apiError: false,
       redirect: false
     };
@@ -47,26 +46,26 @@ export default class SignUp extends Component {
     this.setState({ loading: true });
     user.signUp(params).then(response => {
       if (response.status === 201) signup.setState({ redirect: true });
-      if (response.status === 409) signup.setState({ apiError: 'This email is already existed!' })
+      if (response.status === 409)
+        signup.setState({ apiError: "This email is already existed."});
     });
+    this.setState({loading: false })
   }
   handleChange({ name, value, error }) {
-    let { fields, fieldErrors, apiError, loading } = this.state;
+    let { fields, fieldErrors, apiError } = this.state;
     fields[name] = value;
     fieldErrors[name] = error;
     if (apiError !== false) {
-        apiError = false
-        loading = false
-        this.setState({ fields, fieldErrors, apiError, loading });
+      apiError = false;
+      this.setState({ fields, fieldErrors, apiError });
     } else {
-        this.setState({ fields, fieldErrors });
+      this.setState({ fields, fieldErrors });
     }
-
   }
   validate = () => {
     const { fields, fieldErrors } = this.state,
       errMessages = Object.keys(fieldErrors).filter(k => fieldErrors[k]);
-    if (!fields.email || !fields.password || errMessages.length) return true;
+    if (!fields.email || !fields.password || errMessages.length)  return true;
     return false;
   };
   render() {
@@ -114,8 +113,14 @@ export default class SignUp extends Component {
     const header = {};
 
     var result = redirect ? (
-      <Redirect to="/active" />
-    ) : <LayoutAuth header={header}>
+      <Redirect
+        to={{
+          pathname: "/users/active",
+          state: { email: email }
+        }}
+      />
+    ) : (
+      <LayoutAuth header={header}>
         <div className="auth-page">
           <div className="social">
             <GoogleLogin content="Google" match={match} />
@@ -144,7 +149,7 @@ export default class SignUp extends Component {
           </div>
         </div>
       </LayoutAuth>
-    ;
+    );
     return result;
   }
 }

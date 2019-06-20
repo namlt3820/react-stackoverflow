@@ -10,7 +10,7 @@ export default class Input extends Component {
     if (newProps.apiError) {
       this.setState({ value: newProps.value, error: newProps.apiError });
     } else {
-     this.setState({value: newProps.value}) 
+     this.setState({value: newProps.value, error: false}) 
     }
   }
   onChange = e => {

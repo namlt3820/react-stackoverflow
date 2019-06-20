@@ -11,4 +11,12 @@ export default class User extends Base {
         this.path = "users/profile";
         return this.get();
     }
+    getActiveCode(params) {
+        this.path = "users/active"
+        return this.post(params)
+    }
+    resendActiveCode(params) {
+        this.path = "users/active/resend-code"
+        return this.post(params)
+    }
 }

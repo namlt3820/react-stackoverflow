@@ -1,51 +1,131 @@
 import React, { Component } from "react";
 import Lable from "../../components/Cores/lable/Lable";
-import Input from "../../components/Cores/input/Input";
+import Input from "../../components/Cores/input/Input_v2";
 import CustomButton from "../../components/Cores/button/CustomButton";
 import "./style.css";
 import LayoutAuth from "../../layout/LayoutAuth";
+import User from "../../services/user.service";
+
+const user = new User();
 
 class ActiveCode extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: false,
-            code: "",
-            errors: {}
+  state = {
+    loading: {
+      active: false,
+      resend: false
+    },
+    code: "",
+    errors: {},
+    apiError: false
+  };
+  handleChange = ({ name, value, error }) => {
+    this.setState({ [name]: value, apiError: false });
+  };
+  handleClick = e => {
+    const button = e.target.textContent.toLowerCase(),
+      activeCode = this,
+      { email } = this.props.location.state;
+    let params = {};
+
+    switch (button) {
+      case "active":
+        params = {
+          email,
+          code: this.state.code
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-    }
-    handleChange(e) {
-        e.preventDefault();
-        const { name, value } = e.target;
-        this.setState({ [name]: value });
-    }
-    handleClick() {
         this.setState({
-            loading: true
+          loading: {
+            [button]: true
+          }
         });
-        setTimeout(() => {
-            this.setState({ loading: false });
-        }, 3000);
+        user
+          .getActiveCode(params)
+          .then(res => {
+            console.log('active')
+            activeCode.setState({
+              loading: {
+                [button]: false
+              }
+            });
+            return res;
+          })
+          .then(res => {
+            if (res.status === 400) {
+              activeCode.setState({ apiError: "Invalid Active Code" });
+            } else if (res.status === 204) {
+              window.location.href = "/login"
+            }
+          });
+          break
+
+      case "resend":
+        params = { email };
+        this.setState({
+          loading: {
+            [button]: true
+          }
+        });
+        user.resendActiveCode(params).then(res => {
+          console.log('resend')
+          activeCode.setState({
+            loading: {
+              [button]: false
+            },
+            code: '',
+            apiError: false
+          });
+          return res;
+        });
+        break
     }
-    render() {
-        const { loading, code } = this.state;
-        const header = {}
-        return (
-            <LayoutAuth header={header}>
-            <div className="auth-page">
-                <div className="active">
-                    <div className="mb-3">
-                        <Lable lable="Active Code" />
-                        <Input type="text" name="code" value={code} handleChange={this.handleChange} />
-                    </div>
-                    <CustomButton content="Active" loading={loading} handleClick={this.handleClick} />
-                </div>
+  };
+
+  render() {
+    const {
+      loading: { active, resend },
+      code,
+      apiError
+    } = this.state;
+    const header = {};
+    return (
+      <LayoutAuth header={header}>
+        <div className="auth-page">
+          <div className="active">
+            <div className="mb-3" style={{width: '300px'}}>
+              <Lable lable="Active Code" />
+              <Input
+                type="text"
+                name="code"
+                value={code}
+                handleChange={this.handleChange}
+                apiError={apiError}
+              />
             </div>
-            </LayoutAuth>
-        );
-    }
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col pl-0">
+                  <CustomButton
+                    content="Resend"
+                    loading={resend}
+                    handleClick={this.handleClick}
+                    style={{ width: "100%" }}
+                  />
+                </div>
+                <div className="col pr-0">
+                  <CustomButton
+                    content="Active"
+                    loading={active}
+                    handleClick={this.handleClick}
+                    style={{ width: "100%" }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </LayoutAuth>
+    );
+  }
 }
 
 export default ActiveCode;

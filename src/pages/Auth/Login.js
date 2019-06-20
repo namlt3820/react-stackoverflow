@@ -8,6 +8,7 @@ import { isRequired, isEmail } from "../../components/Cores/input/validation";
 import LayoutAuth from "../../layout/LayoutAuth";
 import { login } from "../../store/actions/authAction";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import "./style.css";
 
@@ -21,7 +22,8 @@ class Login extends Component {
                 email: "",
                 password: ""
             },
-            fieldErrors: {}
+            fieldErrors: {},
+            redirect: false
         };
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -33,7 +35,7 @@ class Login extends Component {
             email: email,
             password: password
         };
-        login(params, history);
+       login(params, history);
     }
     handleChange({ name, value, error }) {
         const { fields, fieldErrors } = this.state;

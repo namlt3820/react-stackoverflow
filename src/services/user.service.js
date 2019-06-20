@@ -5,7 +5,7 @@ export default class User extends Base {
         super("users");
     }
     signUp(params) {
-        return this.post(params);
+        return this.post(params)
     }
     getProfile() {
         this.path = "users/profile";

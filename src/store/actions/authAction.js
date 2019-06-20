@@ -20,7 +20,6 @@ export const login = (data, history) => dispatch => {
 };
 
 export const logout = () => {
-    // localStorage.removeItem("jwt");
-    // setAuthHeaders(null);
-    // window.location.href("/login");
+    localStorage.removeItem("access_token");
+    window.location.reload()
 };

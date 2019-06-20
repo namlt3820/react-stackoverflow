@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import CustomButton from "../components/Cores/button/CustomButton_v2";
 import CustomInput from "../components/Cores/input/Input_v2";
 import { connect } from "react-redux";
+import { logout } from "../store/actions/authAction";
 import "./style.css";
 
 class Header extends Component {
@@ -14,9 +15,12 @@ class Header extends Component {
   handleChange = ({ value }) => {
     this.props.onInputChange(value);
   };
+  logout = () => {
+    logout();
+    window.location.href = "/";
+  }
   render() {
     const { placeholder, searchValue, onSearchClick, user } = this.props;
-    console.log(user)
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light px-4">
         <NavLink className="navbar-brand text-info mr-5" to="/">
@@ -82,46 +86,63 @@ class Header extends Component {
                 </NavLink>
               </div>
             </li> */}
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="/"
-                id="navbarUserDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                User
-              </a>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="navbarUserDropdown"
-              >
-                <NavLink className="dropdown-item" to="/my-topics">
-                  My Topics
+            {this.props.user ? (
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="/"
+                  id="navbarUserDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  {`Hi, ${this.props.user.firstName}`}
+                </a>
+                <div
+                  className="dropdown-menu dropdown-menu-right"
+                  aria-labelledby="navbarUserDropdown"
+                >
+                  <NavLink className="dropdown-item" to="/my-topics">
+                    My Topics
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/my-questions">
+                    My Questions
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/my-profile">
+                    My Profile
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/change-password">
+                    Change Password
+                  </NavLink>
+                </div>
+              </li>
+            ) : null}
+
+            {this.props.user ? (
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  onClick={this.logout}
+                  activeClassName=""
+                >
+                  Logout
                 </NavLink>
-                <NavLink className="dropdown-item" to="/my-questions">
-                  My Questions
-                </NavLink>
-                <NavLink className="dropdown-item" to="/my-profile">
-                  My Profile
-                </NavLink>
-                <NavLink className="dropdown-item" to="/change-password">
-                  Change Password
-                </NavLink>
+              </li>
+            ) : (
+              <div className="d-flex">
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/login">
+                    Login
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/register">
+                    Register
+                  </NavLink>
+                </li>
               </div>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/login">
-                Login
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/register">
-                Register
-              </NavLink>
-            </li>
+            )}
           </ul>
         </div>
       </nav>
@@ -130,6 +151,6 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.users.user ? state.users.user.data : null
 });
 export default connect(mapStateToProps)(Header);

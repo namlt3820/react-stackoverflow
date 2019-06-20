@@ -7,7 +7,11 @@ export default class Input extends Component {
     error: false
   };
   componentWillReceiveProps(newProps) {
-    this.setState({ value: newProps.value });
+    if (newProps.apiError) {
+      this.setState({ value: newProps.value, error: newProps.apiError });
+    } else {
+     this.setState({value: newProps.value}) 
+    }
   }
   onChange = e => {
     const { handleChange, validate, name } = this.props,

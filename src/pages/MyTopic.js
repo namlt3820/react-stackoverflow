@@ -42,7 +42,7 @@ class MyTopic extends Component {
           this.setState({ loading: true });
           setTimeout(() => {
             resolve(client.loadTags({ limit: PER_PAGE, offset, mode }));
-          }, 1000);
+          }, 1);
         }).then(response => {
           this.setState({
             loading: false,

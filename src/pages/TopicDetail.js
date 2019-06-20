@@ -49,7 +49,7 @@ class TopicDetail extends Component {
         this.state.dataTopics.map((value, key) => {
             if (value.id === this.props.match.params.id) {
                 this.setState({ topicParticipants: value.participants });
-            }
+            } else {return null;}
         });
     }
 
@@ -136,8 +136,6 @@ class TopicDetail extends Component {
     })
 
     render() {
-        console.log('this.state.topicParticipants', this.state.topicParticipants)
-        console.log('this.state.data.users', this.state.data.users)
         const header = {
             placeholder: "Search topic: title, content...",
             searchValue: this.state.searchValue,

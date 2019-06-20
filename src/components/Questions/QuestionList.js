@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import QuestionItem from "./QuestionItem";
 class QuestionList extends Component {
     render() {
-        const listQuestion = this.props.list;
+        const { list } = this.props;
         return (
             <div className="n__question-list">
-                {listQuestion.map((question) => {
-                    return <QuestionItem question={question} key={question.id} />;
+                {list.map(question => {
+                    return <QuestionItem question={question} key={question._id} />;
                 })}
             </div>
         );

@@ -13,7 +13,6 @@ import MyQuestion from "../pages/MyQuestion";
 import QuestionDetail from "../pages/QuestionDetail";
 import AskQuestion from "../pages/AskQuestion";
 
-
 export const routers = [
     {
         path: "/",

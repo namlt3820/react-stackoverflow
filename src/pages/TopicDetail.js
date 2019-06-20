@@ -47,17 +47,10 @@ class TopicDetail extends Component {
 
     componentWillMount(){
         this.state.dataTopics.map((value, key) => {
-<<<<<<< HEAD
-            if (value.id === this.props.match.params.id){
-                this.setState({topicParticipants: value.participants});
-            }})
-       
-=======
             if (value.id === this.props.match.params.id) {
                 this.setState({ topicParticipants: value.participants });
-            }
+            } else {return null;}
         });
->>>>>>> d56384079276c632bcda1cbbbd3fe2c809ed6129
     }
 
     isChange = event => {
@@ -95,47 +88,6 @@ class TopicDetail extends Component {
         }
     };
 
-<<<<<<< HEAD
-    deleteUser  = (idNeedDelete) => {
-        const verify = window.confirm("Bạn có chắc chắn muốn xoá user " + idNeedDelete)
-        if (verify === true) {
-            const dataTemp = this.state.topicParticipants.filter(item => item.id !== idNeedDelete)
-            this.setState({topicParticipants: dataTemp});
-        } else {
-            return null; 
-        }
-    }
-
-    addUser  = (userAdd) => {
-        // this.state.data.users.map((value, key) => {
-        //     if (value.email === userAdd) {
-        //         this.state.topicParticipants.push(value)
-        //         this.setState({topicParticipants: this.state.topicParticipants});
-        //     } else {
-        //         alert("User không tồn tại") 
-        //     }
-        // })
-    }
-
-    onInputChange  = (value) => {
-        this.setState({searchValue: value});
-    }
-
-    onSearchClick  = () => {
-        const resultSearch = []
-        this.state.dataQuestions.forEach((value, key) => {
-            if (value.title.indexOf(this.state.searchValue) !== -1 || value.content.indexOf(this.state.searchValue) !== -1)  {
-                resultSearch.push(value)
-            }
-        })
-        console.log('resultSearch', resultSearch)
-        console.log('this.state.searchValue', this.state.searchValue)
-        this.setState({
-            dataQuestions: resultSearch,
-            searchValue: ''
-        });
-    }
-=======
     deleteUser = idNeedDelete => {
         const verify = window.confirm("Bạn có chắc chắn muốn xoá user " + idNeedDelete);
         if (verify === true) {
@@ -156,7 +108,6 @@ class TopicDetail extends Component {
             }
         });
     };
->>>>>>> d56384079276c632bcda1cbbbd3fe2c809ed6129
 
     mappingData = () => this.state.dataTopics.map((value, key) => {
         if (value.id === this.props.match.params.id) {
@@ -185,8 +136,6 @@ class TopicDetail extends Component {
     })
 
     render() {
-        console.log('this.state.topicParticipants', this.state.topicParticipants)
-        console.log('this.state.data.users', this.state.data.users)
         const header = {
             placeholder: "Search topic: title, content...",
             searchValue: this.state.searchValue,

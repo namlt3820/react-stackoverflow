@@ -1,5 +1,5 @@
 import Authenticate from "../../services/authenticate.service";
-import setAuthHeaders from "../../helpers/setAuthHeaders";
+import {getCurrentUser} from './userAction'
 
 const authen = new Authenticate();
 
@@ -10,6 +10,7 @@ export const login = (data, history) => dispatch => {
             if (respone && respone.status === 200) {
                 const { access_token } = respone.data.data;
                 localStorage.setItem("access_token", access_token);
+                dispatch(getCurrentUser())
                 history.push("/");
             }
         })

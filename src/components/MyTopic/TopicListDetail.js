@@ -3,12 +3,12 @@ import TopicUnit from './TopicUnit';
 
 class TopicListDetail extends Component {
     
-    mappingData = () => this.props.dataTopic.map((value, key) => (
+    mappingData = () => this.props.dataTopics.map((value, key) => (
             <TopicUnit
             key={key}
             topicItem={value}
             topicNeedEdit={(topicNeedEdit) => this.props.topicNeedEdit(value)}
-            deleteTopic={(idNeedDelete) => this.props.deleteTopic(value.id)}
+            deleteTopic={(idNeedDelete) => this.props.deleteTopic(value._id)}
             />
         )
     )

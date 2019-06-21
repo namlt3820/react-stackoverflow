@@ -24,7 +24,7 @@ class Title extends Component {
                     <div className="btn-group float-right">
                         <CustomButton
                         handleClick={() => this.props.objectNeedEdit()} 
-                        className={" btn btn-warning "+this.props.classNameHidden} 
+                        className={" btn btn-warning " + this.props.classNameHidden} 
                         datatoggle="modal" datatarget="#modelId" 
                         style={styleButtonEdit} 
                         content={<i className="fa fa-edit"> Sửa</i>}/>

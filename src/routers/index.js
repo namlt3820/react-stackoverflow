@@ -31,19 +31,19 @@ export const routers = [
         component: MyTopic
     },
     {
-        path: "/my-topics/:slug.:id.html",
+        path: "/my-topics/:slug.:_id.html",
         component: TopicDetail
     },
     {
-        path: "/my-questions",
+        path: "/questions/my-questions",
         component: MyQuestion
     },
     {
-        path: "/my-question/:slug.:id.html",
+        path: "/my-question/:slug.:_id.html",
         component: QuestionDetail
     },
     {
-        path: "/topic-detail/:slug.:id.html",
+        path: "/topic-detail/:slug.:_id.html",
         component: QuestionDetail
     },
     {

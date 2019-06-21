@@ -5,7 +5,7 @@ import TopicDetailFooter from '../TopicDetail/TopicDetailFooter';
 
 class QuestionUnit extends Component {
 
-    mappingTags = () => this.props.questionItem.tags.map((value, key) => (<a key={key} className="link-tag" href="true">{value.title}</a>))
+    mappingTags = () => this.props.questionItem.tags.map((value, key) => (<a key={key} className="link-tag" href="true">{value.name}</a>))
 
     styleURL = (str) => {
         // Chuyển hết sang chữ thường
@@ -36,14 +36,17 @@ class QuestionUnit extends Component {
                 <div className="card mt-2 mb-2 list-group-item-hover">
                 <Title 
                 navLink={"/my-question/" + this.styleURL(this.props.questionItem.title)+ "." + this.props.questionItem.id + ".html"}
-                title={this.props.questionItem.title}/>
+                title={this.props.questionItem.title}
+                objectNeedEdit={(objectNeedEdit) => this.props.objectNeedEdit(objectNeedEdit)}
+                delete={(idNeedDelete) => this.props.DeleteQuestion(idNeedDelete)}
+                />
                 <Content content={this.props.questionItem.content}/>
                 <TopicDetailFooter
                 createdAt={this.props.questionItem.createdAt}
-                comment={this.props.questionItem.comment}
-                views={this.props.questionItem.views}
-                votes={this.props.questionItem.votes}
-                author={this.props.questionItem.creator.name}
+                comment={this.props.questionItem.answerCount}
+                views={this.props.questionItem.answerCount}
+                votes={this.props.questionItem.voteCount}
+                author={this.props.questionItem.creator.firstName + ' ' + this.props.questionItem.creator.lastName}
                 mappingTags={this.mappingTags()}/>
                 </div>
             </div>

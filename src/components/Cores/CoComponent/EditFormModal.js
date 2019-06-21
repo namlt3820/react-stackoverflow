@@ -13,7 +13,7 @@ class EditFormModal extends Component {
                     </button>
                   </div>
                   <div className="modal-body">
-                    <div>
+                    <form>
                     <div className="form-group">
                       <label className="text-center">Title Question</label>
                       <input onChange={(event) => this.props.isChange(event)} value={this.props.title} className="form-control" name="title" rows={9} type="text" />
@@ -22,7 +22,7 @@ class EditFormModal extends Component {
                       <label className="text-center">Content Question</label>
                       <textarea onChange={(event) => this.props.isChange(event)} value={this.props.content} className="form-control" name="content" rows={9} />
                     </div>
-                    </div>
+                    </form>
                   </div>
                   <div className="modal-footer">
                     <button onClick={this.props.onClick} type="button" className="btn btn-block btn-outline-primary" data-dismiss="modal">Lưu Thay Đổi</button>

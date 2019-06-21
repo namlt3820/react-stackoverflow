@@ -5,7 +5,7 @@ import TableUser from './TableUser';
 class UserList extends Component {
     render() {
         return (
-            <div className="col-12 col-lg-3 col-xl-4 list-user mt-2">
+            <div>
                 <TableUser
                 topicParticipants={this.props.topicParticipants}
                 deleteUser={(idNeedDelete) => this.props.deleteUser(idNeedDelete)}
@@ -14,6 +14,7 @@ class UserList extends Component {
                 isChange={(event) => this.props.isChange(event)}
                 addUser={(userAdd) => this.props.addUser(userAdd)}/>
             </div>
+               
         );
     }
 }

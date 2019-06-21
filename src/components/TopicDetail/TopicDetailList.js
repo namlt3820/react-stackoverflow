@@ -6,7 +6,7 @@ class TopicDetailList extends Component {
 
     render() {
         return (
-            <div className="col">
+            <div>
                 <TopicDetailUnit 
                 topicDetail={this.props.topicDetail} 
                 dataQuestions={this.props.dataQuestions}
@@ -18,6 +18,7 @@ class TopicDetailList extends Component {
                 isChange={(event) => this.props.isChange(event)}
                 onClick={this.props.editQuestion}/>
             </div>
+                
         );
     }
 }

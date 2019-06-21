@@ -19,5 +19,3 @@ export default class Topics extends Base {
         return this.delete(id);
     }
 }
-
-// ?sort=-createdAt,name,desc

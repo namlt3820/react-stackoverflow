@@ -12,4 +12,18 @@ export default class Questions extends Base {
         }
         return this.get();
     }
+  getQuestions(params) {
+    this.path = `questions/my-questions?sort=-createdAt,name,desc`
+    return this.get(params);
+  }
+  postQuestion(body) {
+    this.path = `questions?sort=-createdAt,name,desc`
+    return this.post(body);
+  }
+  patchQuestions(id, param) {
+    return this.patch(id, param);
+  }
+  deleQuestions(id) {
+      return this.delete(id);
+  }
 }

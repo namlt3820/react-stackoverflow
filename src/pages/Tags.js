@@ -13,8 +13,8 @@ const tags = new TagsService();
 
 const TagsRow = ({ taglist }) => (
   <Row gutter={16} style={{ marginTop: "-1rem" }}>
-    {taglist.map(tag => (
-      <Tag tag={tag} key={tag.id} />
+    {taglist.map((tag) => (
+      <Tag tag={tag} key={tag._id} />
     ))}
   </Row>
 );

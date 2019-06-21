@@ -1,7 +1,7 @@
 import ReactPaginate from "react-paginate";
 import React from "react";
 
-const Pagination = ({ pageCount, onPageClick }) => (
+const Pagination = ({ pageCount, onPageClick, forcePage }) => (
   <ReactPaginate
     previousLabel={"<<"}
     nextLabel={">>"}
@@ -17,6 +17,7 @@ const Pagination = ({ pageCount, onPageClick }) => (
     activeClassName={"active"}
     onPageChange={onPageClick}
     pageCount={pageCount}
+    forcePage={forcePage}
   />
 );
 

@@ -16,7 +16,7 @@ class Header extends Component {
         this.props.onInputChange(value);
     };
     render() {
-        const { placeholder, searchValue, onSearchClick, user, logout } = this.props;
+        const { placeholder, searchValue, onSearchClick, logout } = this.props;
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light px-4">
                 <NavLink className="navbar-brand text-info mr-5" to="/">
@@ -97,7 +97,7 @@ class Header extends Component {
                                     <NavLink className="dropdown-item" to="/my-topics">
                                         My Topics
                                     </NavLink>
-                                    <NavLink className="dropdown-item" to="/my-questions">
+                                    <NavLink className="dropdown-item" to="/questions/my-questions">
                                         My Questions
                                     </NavLink>
                                     <NavLink className="dropdown-item" to="/my-profile">

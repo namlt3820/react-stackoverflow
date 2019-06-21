@@ -11,7 +11,7 @@ class TopicDetailFooter extends Component {
                 <i className="fa fa-calendar" aria-hidden="true"> {createdAt} </i>
                 <i className="fa fa-comments ml-4" aria-hidden="true"> {comment}</i>
                 <i className="fa fa-eye ml-4" aria-hidden="true"> {views} </i>
-                <i className="fa fa-thumbs-up ml-4" aria-hidden="true"> {votes} </i>
+                <i className="fa fa-arrow-up ml-4" aria-hidden="true"> {votes} </i>
                 <a className="text-right" style={{color: '#212529ba'}} href="true">
                     <i className="fa fa-user text-right" aria-hidden="true" style={{position: 'absolute', right: 0}}> {author} </i>
                 </a>

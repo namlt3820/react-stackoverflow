@@ -27,7 +27,6 @@ class SearchUser extends Component {
             className="btn-info h-100"
             handleClick={(userAdd) => this.props.addUser(this.state.addUser)}/>
             </div>
-            
         )
     }
 }

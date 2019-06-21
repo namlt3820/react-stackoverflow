@@ -25,9 +25,10 @@ export default class Input extends Component {
         handleChange({ name, value, error });
     };
     render() {
-        const { type, name, value, placeholder } = this.props;
+        const { type, name, value, placeholder, label } = this.props;
         return (
             <div className="w-100">
+                <label className="text-center">{label}</label>
                 <input
                     className="form-control w-100"
                     type={type}

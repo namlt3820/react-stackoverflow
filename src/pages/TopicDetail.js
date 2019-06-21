@@ -125,17 +125,13 @@ class TopicDetail extends Component {
                             editQuestion={() => this.editQuestion()}
                             deleteQuestion={(idNeedDelete) => this.deleteQuestion(idNeedDelete)}/>
                     )}
-                <UserList 
-                topicParticipants={this.state.topicParticipants}
-                dataUser={this.state.data.users}
-                deleteUser={(idNeedDelete) => this.deleteUser(idNeedDelete)}
-                isChange={(event) => this.isChange(event)}
-                addUser={(userAdd) => this.addUser(userAdd)}/>
+                
             </div>
         } else {return null;}
     })
 
     render() {
+        console.log('111111111111111')
         const header = {
             placeholder: "Search topic: title, content...",
             searchValue: this.state.searchValue,
@@ -147,7 +143,19 @@ class TopicDetail extends Component {
            <LayoutMain header={header}>
                 <div className="container-fluid">
                     <div className="row">
-                        {this.mappingData()}
+                    <div className="col-12 col-lg-9 col-xl-8">
+                    {this.mappingData()}
+                    </div>
+                        
+                        <div className="col-12 col-lg-3 col-xl-4 list-user mt-2">
+                        <UserList 
+                            topicParticipants={this.state.topicParticipants}
+                            dataUser={this.state.data.users}
+                            deleteUser={(idNeedDelete) => this.deleteUser(idNeedDelete)}
+                            isChange={(event) => this.isChange(event)}
+                            addUser={(userAdd) => this.addUser(userAdd)}
+                        />
+                        </div>
                     </div>
                 </div>
            </LayoutMain>

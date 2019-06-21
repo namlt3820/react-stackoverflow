@@ -7,16 +7,6 @@ import LayoutMain from '../layout/LayoutMain.js';
 import Loading from '../components/Cores/loading.js';
 import client from '../services/client.js';
 import Topics from '../services/topic.service.js';
-import Topics_2 from '../services/topic.service.2.js';
-
-// createdAt: "2019-06-13T06:31:33.935Z"
-// creator: {_id: "5d01b2766bf24e6c57f799fa", firstName: "Dien", lastName: "Duong"}
-// desc: "ThinkPad topic"
-// memberCount: 1
-// name: "ThinkPad"
-// questionCount: 0
-// _id: "5d01edc5cea3f818208e0c8a"
-
 
 const PER_PAGE = 10;
 
@@ -68,13 +58,13 @@ class MyTopic extends Component {
     }
 
     patchTopic = (id, param) => {
-        const editTopic = new Topics_2();
+        const editTopic = new Topics();
         editTopic
             .patchTopic(id, param)
             .then(respone => console.log('respone', respone))
     }
     deleTopic = (id) => {
-        const trashTopic = new Topics_2();
+        const trashTopic = new Topics();
         trashTopic
             .deleTopic(id)
             .then(respone => console.log('respone', respone))
@@ -114,7 +104,6 @@ class MyTopic extends Component {
     editTopic = () => {
         this.state.dataTopics.forEach((value, key) => {
             if (value._id === this.state.topicNeedEdit._id) {
-                
                 value.name = this.state.title;
                 value.desc = this.state.content;
                 const topicEdited = {}

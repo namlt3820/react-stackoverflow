@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Auth/Login";
 import SignUp from "../pages/Auth/SignUp";
 import ForgotPassWord from "../pages/Auth/ForgotPassWord";
+import UpdatePassword from "../pages/Auth/UpdatePassword";
 import ActiveCode from "../pages/Auth/ActiveCode";
 import ChangePassWord from "../pages/Auth/ChangePassWord";
 import TagList from "../pages/Tags";
@@ -72,5 +73,6 @@ export const routersAuth = [
     {
         path: "/change-password",
         component: ChangePassWord
-    }
+    },
+    { path: "/update-password", component: UpdatePassword }
 ];

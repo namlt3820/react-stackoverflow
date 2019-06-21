@@ -1,20 +1,20 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { routers, routersAuth } from "./routers";
 import "./App.css";
 import { connect } from "react-redux";
-import {getCurrentUser} from './store/actions/userAction'
+import { getCurrentUser } from "./store/actions/userAction";
 
 const AppRoute = ({ component: Component, ...rest }) => <Route {...rest} render={props => <Component {...props} />} />;
 
 class App extends Component {
     componentDidMount() {
-        const {dispatch} = this.props
+        const { dispatch } = this.props;
         window.onload = function() {
             if (window.localStorage["access_token"]) {
-                dispatch(getCurrentUser())
+                dispatch(getCurrentUser());
             }
-        }
+        };
     }
     render() {
         return (

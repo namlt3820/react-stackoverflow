@@ -6,6 +6,7 @@ const user = new User();
 export const getCurrentUser = () => dispatch => {
     user.getProfile()
         .then(res => {
+            console.log('user profile')
             dispatch(setCurrentUser(res.data));
         })
         .catch(error => {

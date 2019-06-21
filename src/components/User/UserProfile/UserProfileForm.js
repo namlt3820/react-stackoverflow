@@ -19,7 +19,7 @@ class ButtonImageUpload extends Component {
           style={{ marginTop: 20 }}
           handleClick={this.selectFile}
           content={
-            this.props.newImgData ? "Select again" : "Select user propfile"
+            this.props.newImgData ? "Select again" : "Select user picture"
           }
         />
         <input
@@ -60,12 +60,12 @@ class UserProfileForm extends Component {
     fields: {
       firstName: `${this.props.user.name.first}`,
       lastName: `${this.props.user.name.last}`,
-      age: `${this.props.user.age}`,
+      age: `${this.props.user.age || ''}`,
       email: `${this.props.user.email}`,
       company: `${this.props.user.company}`,
       location: `${this.props.user.location}`,
       aboutMe: `${this.props.user.aboutMe}`,
-      picture: `${this.props.user.picture}`,
+      picture: `http://lorempixel.com/300/300`,
       newImgData: ""
     },
     fieldErrors: {}
@@ -84,6 +84,11 @@ class UserProfileForm extends Component {
     fields[name] = value;
     fieldErrors[name] = error;
     this.setState({ fields, fieldErrors });
+  }
+  updateUserProfile = () => {
+    let {firstName, lastName, age, company, location, aboutMe} = this.state.fields
+    age = Number(age)
+    this.props.changeUserProfile({firstName, lastName, age, company, location, aboutMe})
   }
   render() {
     const {
@@ -170,7 +175,7 @@ class UserProfileForm extends Component {
                 <Button content="Cancel" handleClick={closeEditForm} />
                 <Button
                   content="Confirm"
-                  handleClick={changeUserProfile}
+                  handleClick={this.updateUserProfile}
                   style={{
                     marginLeft: 50,
                     backgroundColor: "rgb(76, 165, 165)",

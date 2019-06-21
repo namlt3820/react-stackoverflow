@@ -17,7 +17,7 @@ class TagFilter extends Component {
           <div className="col" />
           <div className="col">{this.props.paginate}</div>
           <div className="col d-flex justify-content-end">
-            {["Popular", "A-Z", "Followed"].map((item, idx) => (
+            {["A-Z", "Z-A"].map((item, idx) => (
               <CustomButton
                 key={idx}
                 content={item}

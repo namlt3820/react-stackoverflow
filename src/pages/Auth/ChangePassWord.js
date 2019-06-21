@@ -46,14 +46,16 @@ class ChangePassWord extends Component {
         }
     }
     handleChange({ name, value, error }) {
-        let { fieldErrors, apiError } = this.state;
-        fieldErrors[name] = error;
+        let { fieldErrors, apiError, fields } = this.state
+        fieldErrors[name] = error
+        fields[name] = value
         if (apiError !== false) {
             apiError = false;
             this.setState({ email: value, fieldErrors, apiError });
         } else {
             this.setState({ email: value, fieldErrors });
         }
+
     }
     validate = () => {
         const { fields, fieldErrors } = this.state,
@@ -62,7 +64,8 @@ class ChangePassWord extends Component {
         return false;
     };
     render() {
-        const { loading, currentPassword, newPassword, apiError } = this.state;
+        const { loading, apiError } = this.state;
+        const { currentPassword, newPassword } = this.state.fields
         const formChange = [
             {
                 lable: "Current Password",

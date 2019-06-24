@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import QuestionList from "../components/Questions/QuestionList";
 import Loading from "../components/Cores/loading";
 import LayoutMain from "../layout/LayoutMain";
-import client from "../services/client";
 import Pagination from "../components/Cores/pagination";
 import Questions from "../services/questions.service";
 const PER_PAGE = 10;
@@ -12,17 +11,20 @@ class Home extends Component {
     state = {
         loading: false,
         questions: [],
-        offset: 0,
         pageCount: 0,
         searchValue: ""
     };
     componentDidMount() {
-        this.getQuestionsList();
+        const params = {
+            limit: PER_PAGE,
+            offset: 0
+        };
+        this.getQuestionsList(params);
     }
-    getQuestionsList(offset, limit) {
+    getQuestionsList(params) {
         this.setState({ loading: true });
         questions
-            .getQuestionList(offset, limit)
+            .getQuestionList(params)
             .then(res => {
                 this.setState({
                     loading: false,
@@ -39,24 +41,22 @@ class Home extends Component {
         const selected = data.selected;
         const offset = selected * PER_PAGE;
         this.setState({ offset }, () => {
-            this.getQuestionsList(offset, PER_PAGE);
+            const params = {
+                limit: PER_PAGE,
+                offset: offset
+            };
+            this.getQuestionsList(params);
         });
     };
 
     onSearchClick = () => {
         const { searchValue } = this.state;
-        return new Promise((resolve, reject) => {
-            this.setState({ loading: true });
-            setTimeout(() => {
-                resolve(client.searchQuestion({ limit: PER_PAGE, title: searchValue }));
-            }, 1000);
-        }).then(response => {
-            this.setState({
-                loading: false,
-                questions: response.data,
-                pageCount: response.meta.pageCount
-            });
-        });
+        const params = {
+            limit: PER_PAGE,
+            offset: 0,
+            keyword: searchValue
+        };
+        this.getQuestionsList(params);
     };
 
     onInputChange = value => {

@@ -6,14 +6,13 @@ import LayoutMain from "../layout/LayoutMain";
 import Loading from "../components/Cores/loading";
 import Pagination from "../components/Cores/pagination";
 import client from "../services/client";
-import TagsService from "../services/tags.service";
+import tags from "../services/tags.service";
 
 const PER_PAGE = 10;
-const tags = new TagsService();
 
 const TagsRow = ({ taglist }) => (
   <Row gutter={16} style={{ marginTop: "-1rem" }}>
-    {taglist.map((tag) => (
+    {taglist.map(tag => (
       <Tag tag={tag} key={tag._id} />
     ))}
   </Row>
@@ -29,21 +28,6 @@ class Tags extends Component {
     mode: "name",
     forcePage: false
   };
-  // loadTags = () => {
-  //   const { offset, mode } = this.state;
-  //   return new Promise((resolve, reject) => {
-  //     this.setState({ loading: true });
-  //     setTimeout(() => {
-  //       resolve(client.loadTags({ limit: PER_PAGE, offset, mode }));
-  //     }, 1000);
-  //   }).then(response => {
-  //     this.setState({
-  //       loading: false,
-  //       tags: response.data,
-  //       pageCount: response.meta.pageCount
-  //     });
-  //   });
-  // };
   onInputChange = value => {
     this.setState({ searchValue: value });
   };
@@ -69,8 +53,16 @@ class Tags extends Component {
   };
   getTagList = (sort = "name", offset = 0, limit = PER_PAGE) => {
     this.setState({ loading: true });
+
+    let params = {};
+    if (!!offset || !!limit || !!sort) {
+      params = { sort, limit, offset };
+    } else {
+      params = { limit: PER_PAGE, offset: 0 };
+    }
+    
     tags
-      .getTagList(sort, offset, limit)
+      .get(params)
       .then(res => {
         this.setState({
           loading: false,

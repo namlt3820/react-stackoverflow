@@ -1,5 +1,5 @@
 import Authenticate from "../../services/authenticate.service";
-import { getCurrentUser } from "./userAction";
+// import { getCurrentUser } from "./userAction";
 
 const authen = new Authenticate();
 
@@ -11,7 +11,7 @@ export const login = (data, history) => dispatch => {
                 if (res.status === 200) {
                     const { access_token } = res.data.data;
                     localStorage.setItem("access_token", access_token);
-                    dispatch(getCurrentUser());
+                    // dispatch(getCurrentUser());
                     history.push("/");
                 } else if (res.status === 401) {
                     if (res.data.code === "user_not_active") {

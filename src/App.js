@@ -10,11 +10,9 @@ const AppRoute = ({ component: Component, ...rest }) => <Route {...rest} render=
 class App extends Component {
     componentDidMount() {
         const { dispatch } = this.props;
-        window.onload = function() {
-            if (window.localStorage["access_token"]) {
-                dispatch(getCurrentUser());
-            }
-        };
+        if (window.localStorage["access_token"]) {
+            dispatch(getCurrentUser());
+        }
     }
     render() {
         return (

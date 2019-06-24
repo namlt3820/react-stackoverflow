@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import FaceBookLogin from "react-facebook-login";
 import CustomIcon from "../../components/Cores/button/CustomIcon";
 import config from "../../config/configSocial";
+import { loginFb } from "../../store/actions/socialAction";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 class FaceBook extends Component {
     state = {
         isLoggedIn: false,
@@ -10,14 +13,28 @@ class FaceBook extends Component {
         email: "",
         picture: ""
     };
+    loginFb() {
+        const { email, name } = this.state;
+        const { loginFb } = this.props;
+        const params = {
+            email: email,
+            firstName: name
+        };
+        loginFb(params);
+    }
     handleCallBack = respone => {
-        this.setState({
-            isLoggedIn: true,
-            userID: respone.userID,
-            name: respone.name,
-            email: respone.email,
-            picture: respone.picture.data.url
-        });
+        this.setState(
+            {
+                isLoggedIn: true,
+                userID: respone.userID,
+                name: respone.name,
+                email: respone.email,
+                picture: respone.picture.data.url
+            },
+            () => {
+                this.loginFb();
+            }
+        );
     };
     handleClick = () => {};
     render() {
@@ -42,4 +59,7 @@ class FaceBook extends Component {
     }
 }
 
-export default FaceBook;
+export default connect(
+    null,
+    { loginFb }
+)(FaceBook);

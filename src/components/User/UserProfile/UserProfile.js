@@ -11,7 +11,7 @@ class UserProfile extends Component {
             age,
             reputation,
             aboutMe,
-            picture,
+            picture="http://lorempixel.com/300/300",
             email,
             company
         } = this.props.user;

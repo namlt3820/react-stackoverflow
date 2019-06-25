@@ -108,7 +108,7 @@ class Header extends Component {
                   <NavLink className="dropdown-item" to="/my-topics">
                     My Topics
                   </NavLink>
-                  <NavLink className="dropdown-item" to="/my-questions">
+                  <NavLink className="dropdown-item" to="/questions/my-questions">
                     My Questions
                   </NavLink>
                   <NavLink className="dropdown-item" to="/my-profile">

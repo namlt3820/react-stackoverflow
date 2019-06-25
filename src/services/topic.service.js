@@ -5,11 +5,10 @@ export default class Topics extends Base {
         super("topics");
     }
     getTopics(params) {
-        this.path = `topics?sort=-createdAt,name,desc`
         return this.get(params);
     }
     postTopic(body) {
-        this.path = `topics?sort=-createdAt,name,desc`
+        this.path = `topics?sort=-createdAt,name,desc`;
         return this.post(body);
     }
     patchTopic(id, param) {

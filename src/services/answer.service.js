@@ -4,9 +4,7 @@ export default class Answer extends Base {
     constructor() {
         super("/question-answers");
     }
-    getAnswer(recordID, params) {
-        this.path = `question-answers/` + recordID
-        console.log('recordID', recordID)
+    getAnswer(params) {
         return this.get(params);
     }
     postAnswer(body) {

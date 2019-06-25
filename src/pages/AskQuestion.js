@@ -86,8 +86,6 @@ class AskQuestion extends Component {
         this.setState({[name]: value});
     }
 
-    
-
     returnListSuggest  = () => {
         if (this.state.topic !== '') {
             const resultSearch = [];

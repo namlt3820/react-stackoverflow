@@ -6,6 +6,7 @@ import QuestionInPageDetail from "./../components/QuestionDetails/QuestionInPage
 import LayoutMain from "../layout/LayoutMain";
 import Questions from "../services/questions.service.js";
 import Answer from "../services/answer.service.js";
+import voteQuestion from "../services/voteQuestion.service.js";
 
 class QuestionDetail extends Component {
     constructor(props) {
@@ -14,7 +15,8 @@ class QuestionDetail extends Component {
             dataQuestion: data,
             dataQuestions: [],
             dataAnswer: [],
-            answerContent: ""
+            answerContent: "",
+            statusVoteQuestion: true
         };
     }
 
@@ -26,10 +28,10 @@ class QuestionDetail extends Component {
                   this.setState({dataQuestions: respone.data.data.items});})
     };
 
-    getAnswer = (recordID) => {
+    getAnswer = () => {
         const answer = new Answer();
             answer
-                .getAnswer(recordID)
+                .getAnswer()
                 .then(respone => {console.log('respone',respone.data.data.items )
                   this.setState({dataAnswer: respone.data.data.items});})
     }
@@ -40,9 +42,14 @@ class QuestionDetail extends Component {
                 .postAnswer(body)
     }
 
+    postVoteQuestion = (questionsId, body) => {
+        voteQuestion
+            .postVoteQuestion(questionsId, body)
+    }
+
     componentDidMount() {
         this.getQuestions()
-        this.getAnswer(this.props.match.params._id)
+        this.getAnswer()
     }
     
 
@@ -51,41 +58,61 @@ class QuestionDetail extends Component {
         this.setState({[name]: value})
     }
 
-    handleClick  = () => {
+    handleClickReply  = () => {
         const objAnswer = {}
         objAnswer.question = this.props.match.params._id
         objAnswer.content = this.state.answerContent
-        console.log('objAnswer', objAnswer)
         this.postAnswer(objAnswer)
+    }
+
+    handleClickVoteQuestion  = () => {
+        if (this.state.statusVoteQuestion === true) {
+            this.postVoteQuestion(this.props.match.params._id)
+            this.setState({statusVoteQuestion: false})
+        } else if(this.state.statusVoteQuestion === false) {
+            this.setState({statusVoteQuestion: true})
+        }
     }
 
     mappingData = () =>
         this.state.dataQuestions.map((value, key) => {
             if (value._id === this.props.match.params._id) {
-                console.log('value', value)
                 return (
-                    <div key={key}>
-                        <QuestionInPageDetail 
-                        questionDetail={value} 
-                        handleChange={(event) => this.handleChange(event)}
-                        handleClick={this.handleClick}
-                        />
-                        <QuestionComment 
-                        answersQuestion={value} 
-                        handleChange={(event) => this.handleChange(event)}
-                        handleClick={this.handleClick}
-                        />
-                    </div>
+                    <QuestionInPageDetail 
+                    key={key}
+                    questionDetail={value} 
+                    handleChange={(event) => this.handleChange(event)}
+                    handleClick={this.handleClick}
+                    handleClickVoteQuestion={this.handleClickVoteQuestion}
+                    />
                 );
             } else {
                 return null;
             }
         });
 
+    mappingAnswer = () => 
+        this.state.dataAnswer.map((value, key) => {
+            // if (value.question._id === this.props.match.params._id) {
+                return <QuestionComment 
+                key={key}
+                answersQuestion={value} 
+                handleChange={(event) => this.handleChange(event)}
+                handleClick={this.handleClickReply}
+                />
+            // } else {
+            //     return null;
+            // }
+            
+        })
+
     render() {
         console.log('this.state.dataAnswer', this.state.dataAnswer)
         const header = {};
-        return <LayoutMain header={header}>{this.mappingData()}</LayoutMain>;
+        return <LayoutMain header={header}>
+            {this.mappingData()}
+            {this.mappingAnswer()}
+        </LayoutMain>;
     }
 }
 

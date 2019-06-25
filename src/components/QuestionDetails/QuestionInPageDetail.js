@@ -7,7 +7,6 @@ import TopicDetailFooter from '../TopicDetail/TopicDetailFooter';
 class QuestionInPageDetail extends Component {
     
     render() {
-        console.log('this.props.questionDetail', this.props.questionDetail)
         return (
             <div>
                 <div className="container-fluid">
@@ -29,6 +28,7 @@ class QuestionInPageDetail extends Component {
                                 <LikeReplay 
                                     handleChange={(event) => this.props.handleChange(event)}
                                     handleClick={this.props.handleClick}
+                                    handleClickVote={this.props.handleClickVoteQuestion}
                                 />
                                 </div>
                         </div>

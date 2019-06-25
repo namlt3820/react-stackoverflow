@@ -164,12 +164,7 @@ class MyTopic extends Component {
             onInputChange: this.onInputChange,
             onSearchClick: this.onSearchClick
         };
-        //   let resultSearch = []
-        //   this.state.dataTopics.forEach((value, key) => {
-        //     if (value.title.indexOf(this.state.searchValue) !== -1 || value.content.indexOf(this.state.searchValue) !== -1) {
-        //         resultSearch.push(value)
-        //     }
-        // })
+
         return (
             <LayoutMain header={header}>
                 <div className="container-fluid">

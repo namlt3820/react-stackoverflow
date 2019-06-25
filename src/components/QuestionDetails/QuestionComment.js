@@ -14,6 +14,7 @@ class QuestionComment extends Component {
                                 numLike={this.props.answersQuestion.voteCount}
                                 handleChange={(event) => this.props.handleChange(event)}
                                 handleClick={this.props.handleClick}
+                               
                                 // numReply={this.props.answersQuestion.answerCount}
                                 />
                                 {/* <ul type="none">

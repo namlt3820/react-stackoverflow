@@ -31,6 +31,7 @@ class QuestionUnit extends Component {
     }
 
     render() {
+        console.log('this.props.questionItem', this.props.questionItem)
         return (
             <div>
                 <div className="card mt-2 mb-2 list-group-item-hover">

@@ -49,7 +49,8 @@ class QuestionList extends Component {
     }
 
     mappingData = () => this.state.dataQuestions.map((value, key) => (<QuestionUnit 
-                                                                        key={key} questionItem={value}
+                                                                        key={key} 
+                                                                        questionItem={value}
                                                                         objectNeedEdit={(objectNeedEdit) => this.objectNeedEdit(value)}
                                                                         DeleteQuestion={(idNeedDelete) => this.DeleteQuestion(value._id)}
                                                                         />))

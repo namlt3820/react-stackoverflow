@@ -36,7 +36,7 @@ class QuestionUnit extends Component {
             <div>
                 <div className="card mt-2 mb-2 list-group-item-hover">
                 <Title 
-                navLink={"/my-question/" + this.styleURL(this.props.questionItem.title)+ "." + this.props.questionItem.id + ".html"}
+                navLink={"/my-question/" + this.styleURL(this.props.questionItem.title)+ "." + this.props.questionItem._id + ".html"}
                 title={this.props.questionItem.title}
                 objectNeedEdit={(objectNeedEdit) => this.props.objectNeedEdit(objectNeedEdit)}
                 delete={(idNeedDelete) => this.props.DeleteQuestion(idNeedDelete)}

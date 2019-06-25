@@ -21,12 +21,15 @@ class QuestionInPageDetail extends Component {
                                 <Content content={this.props.questionDetail.content}/>
                                 <TopicDetailFooter 
                                 createdAt={this.props.questionDetail.createdAt}
-                                comment={this.props.questionDetail.comment}
-                                views={this.props.questionDetail.views}
-                                votes={this.props.questionDetail.votes}
-                                author={this.props.questionDetail.creator.name}/>
+                                comment={this.props.questionDetail.answerCount}
+                                // views={this.props.questionDetail.views}
+                                votes={this.props.questionDetail.voteCount}
+                                author={this.props.questionDetail.creator.firstName + " " + this.props.questionDetail.creator.lastName}/>
                                 <hr className="non-margin" />
-                                <LikeReplay />
+                                <LikeReplay 
+                                    handleChange={(event) => this.props.handleChange(event)}
+                                    handleClick={this.props.handleClick}
+                                />
                                 </div>
                         </div>
                     </div>

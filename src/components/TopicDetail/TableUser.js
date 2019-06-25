@@ -4,18 +4,15 @@ import UserUnit from './UserUnit';
 class TableUser extends Component {
 
     mappingData = () => 
-        this.props.dataUser.map((user, key) => {
-            return this.props.topicParticipants.map((value, key) => {
-                if (user.id === value.id) {
-                    return <UserUnit 
-                            key={key} 
-                            firstName={user.name.first} 
-                            lastName={user.name.last} 
-                            email={user.email}
-                            deleteUser={(idNeedDelete) => this.props.deleteUser(value.id)}
-                            />
-                }
-            })
+        this.props.topicParticipants.map((value, key) => {
+            console.log('value', value)
+            return <UserUnit 
+            key={key} 
+            firstName={value.firstName} 
+            lastName={value.lastName} 
+            email={value.email}
+            deleteUser={(idNeedDelete) => this.props.deleteUser(value._id)}
+            />
         })
     
     render() {

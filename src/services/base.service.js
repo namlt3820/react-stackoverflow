@@ -18,4 +18,7 @@ export default class Base {
     delete(id) {
         return axios.delete(this.path + '/' + id);
     }
+    removeMember(body) {
+        return axios.delete(this.path, {data: body})
+    }
 }

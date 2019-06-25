@@ -9,10 +9,11 @@ class UserList extends Component {
                 <TableUser
                 topicParticipants={this.props.topicParticipants}
                 deleteUser={(idNeedDelete) => this.props.deleteUser(idNeedDelete)}
-                dataUser={this.props.dataUser}/>
+                dataUser={this.props.dataUser}
+                />
                 <SearchUser
-                isChange={(event) => this.props.isChange(event)}
-                addUser={(userAdd) => this.props.addUser(userAdd)}/>
+                onInputChange={this.props.onInputChange}
+                addUser={this.props.addUser}/>
             </div>
                
         );

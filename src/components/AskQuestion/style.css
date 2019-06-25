@@ -10,4 +10,5 @@
   .form-group .edit-text .fa-hover:visited{
     background-color: #0000001c;
   }
+  .list-group-item-action:hover{cursor: pointer;}
   

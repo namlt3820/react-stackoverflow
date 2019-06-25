@@ -11,7 +11,8 @@ class TopicDetailList extends Component {
                 topicDetail={this.props.topicDetail} 
                 dataQuestions={this.props.dataQuestions}
                 questionNeedEdit={(questionNeedEdit) => this.props.questionNeedEdit(questionNeedEdit)}
-                deleteQuestion={(idNeedDelete) => this.props.deleteQuestion(idNeedDelete)}/>
+                deleteQuestion={(idNeedDelete) => this.props.deleteQuestion(idNeedDelete)}
+                />
                 <EditFormModal
                 title={this.props.title}
                 content={this.props.content}

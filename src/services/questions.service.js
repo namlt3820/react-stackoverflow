@@ -4,14 +4,14 @@ export default class Questions extends Base {
     constructor() {
         super("questions");
     }
-    getQuestionList(offset, limit) {
-        if (!!offset || !!limit) {
-            this.path = `questions?limit=${limit}&offset=${offset}`;
-        } else {
-            this.path = `questions?limit=10&offset=0`;
-        }
-        return this.get();
-    }
+  getQuestionList(offset, limit) {
+      if (!!offset || !!limit) {
+          this.path = `questions?limit=${limit}&offset=${offset}`;
+      } else {
+          this.path = `questions?limit=10&offset=0`;
+      }
+      return this.get();
+  }
   getQuestions(params) {
     this.path = `questions/my-questions?sort=-createdAt,name,desc`
     return this.get(params);

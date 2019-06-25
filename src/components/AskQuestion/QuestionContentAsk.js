@@ -23,7 +23,7 @@ class QuestionContentAsk extends Component {
                 <button type="button" className="btn fa-hover"><i className="fa fa-link" aria-hidden="true" /></button>
                 <button type="button" className="btn fa-hover"><i className="fa fa-picture-o" aria-hidden="true" /></button>
             </div>
-            <textarea  onChange = {(event) => this.props.isChange(event)} className="form-control" name="content" rows={9} />
+            <textarea  onChange = {(event) => this.props.isChange(event)} value={this.props.content} className="form-control" name="content" rows={9} />
             </div>
         );
     }

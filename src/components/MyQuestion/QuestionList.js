@@ -37,10 +37,10 @@ class QuestionList extends Component {
             .patchQuestions(id, param)
             .then(respone => console.log('respone', respone))
     }
-    deleQuestion = (id) => {
+    deleQuestions = (id) => {
         const trashQuestion = new Questions();
         trashQuestion
-            .deleQuestion(id)
+            .deleQuestions(id)
             .then(respone => console.log('respone', respone))
     }
 
@@ -51,7 +51,7 @@ class QuestionList extends Component {
     mappingData = () => this.state.dataQuestions.map((value, key) => (<QuestionUnit 
                                                                         key={key} questionItem={value}
                                                                         objectNeedEdit={(objectNeedEdit) => this.objectNeedEdit(value)}
-                                                                        DeleteQuestion={(idNeedDelete) => this.DeleteQuestion(idNeedDelete)}
+                                                                        DeleteQuestion={(idNeedDelete) => this.DeleteQuestion(value._id)}
                                                                         />))
  
     isChange = (event) => {
@@ -69,8 +69,26 @@ class QuestionList extends Component {
         });
     }
 
+    // const verify = window.confirm("Bạn có chắc chắn muốn xoá phần tử " + idNeedDelete);
+    // if (verify === true) {
+    //     this.deleTopic(idNeedDelete)
+    //     const dataTemp = this.state.dataTopics.filter(item => item._id !== idNeedDelete);
+    //     this.setState({ dataTopics: dataTemp });
+    // } else {
+    //     return null;
+    // }
+
+
     DeleteQuestion  = (idNeedDelete) => {
-        console.log('idNeedDelete', idNeedDelete)
+        const verify = window.confirm("Bạn có chắc chắn muốn xoá phần tử " + idNeedDelete);
+        if (verify === true) {
+            this.deleQuestions(idNeedDelete)
+            const dataTemp = this.state.dataQuestions.filter(item => item._id !== idNeedDelete);
+            this.setState({ dataQuestions: dataTemp });
+        } else {
+            return null;
+        }
+        
     }
 
     handleClick  = () => {

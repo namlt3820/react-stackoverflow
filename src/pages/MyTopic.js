@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import data from './../data/data(2).json'
 import './../components/MyTopic/style.css'
 import CreateForm from './../components/MyTopic/CreateForm';
 import TopicListDetail from './../components/MyTopic/TopicListDetail';
@@ -15,7 +14,6 @@ class MyTopic extends Component {
     state = {
         data: null,
         loading: true,
-        dataTopic: data.topics,
         dataTopics: [],
         statusForm: true,
         title: "",
@@ -128,7 +126,6 @@ class MyTopic extends Component {
     };
 
     topicNeedEdit = topicNeedEdit => {
-        console.log('topicNeedEdit', topicNeedEdit)
         this.setState({
             topicNeedEdit: topicNeedEdit,
             contentButton: "Save Edit",
@@ -138,7 +135,6 @@ class MyTopic extends Component {
     };
 
     deleteTopic = idNeedDelete => {
-        console.log('idNeedDelete', idNeedDelete)
         const verify = window.confirm("Bạn có chắc chắn muốn xoá phần tử " + idNeedDelete);
         if (verify === true) {
             this.deleTopic(idNeedDelete)
@@ -154,7 +150,6 @@ class MyTopic extends Component {
     }
     
     render() {
-       console.log('this.state.dataTopics', this.state.dataTopics)
         const { loading } = this.state
         const header = {
             placeholder: "Search topic: title, content...",
@@ -162,12 +157,12 @@ class MyTopic extends Component {
             onInputChange: this.onInputChange,
             // onSearchClick: this.onSearchClick
           };
-          let resultSearch = []
-          this.state.dataTopic.forEach((value, key) => {
-            if (value.title.indexOf(this.state.searchValue) !== -1 || value.content.indexOf(this.state.searchValue) !== -1) {
-                resultSearch.push(value)
-            }
-        })
+        //   let resultSearch = []
+        //   this.state.dataTopics.forEach((value, key) => {
+        //     if (value.title.indexOf(this.state.searchValue) !== -1 || value.content.indexOf(this.state.searchValue) !== -1) {
+        //         resultSearch.push(value)
+        //     }
+        // })
         return (
             <LayoutMain header={header}>
                 <div className="container-fluid">

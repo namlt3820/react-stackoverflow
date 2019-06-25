@@ -5,7 +5,6 @@ import CustomButton from '../Cores/button/CustomButton_v2';
 class CreateForm extends Component {
     
     render() {
-        console.log('this.props.content', this.props.content)
         return (
             <div className="col-12 col-lg-3 col-xl-4 list-user mt-2">
                     <form>

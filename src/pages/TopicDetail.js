@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import data from './../data/data(2).json'
 import './../components/TopicDetail/style.css'
 import UserList from './../components/TopicDetail/UserList';
 import TopicDetailList from '../components/TopicDetail/TopicDetailList';
 import LayoutMain from '../layout/LayoutMain.js';
 import Loading from '../components/Cores/loading.js';
 import client from '../services/client.js';
+import TopicsDetails from '../services/topic-detail.service.js';
+import Topics from '../services/topic.service.js';
+import Questions from '../services/questions.service';
+
 
 const PER_PAGE = 10;
 
@@ -13,15 +16,16 @@ class TopicDetail extends Component {
 
         state = {
             loading: true,
-            data: data,
-            dataQuestions: data.questions,
-            dataTopics: data.topics,
+            dataQuestions: [],
+            dataTopics: [],
             questionNeedEdit: {},
             title: '',
             content: '',
             userAdd: '',
             topicParticipants: [],
-            searchValue: ''
+            searchValue: '',
+            addUser: '',
+            listUser: []
         }
     
 
@@ -41,16 +45,69 @@ class TopicDetail extends Component {
         });
       };
 
-      componentDidMount() {
-        this.load();
-      }
+    getTopicsDetail = (idTopic) => {
+    const topics = new TopicsDetails();
+        topics
+            .getTopicsDetail(idTopic)
+            .then(respone => {
+                this.setState({dataQuestions: respone.data.data.items});
+        })
+    };
 
-    componentWillMount(){
-        this.state.dataTopics.map((value, key) => {
-            if (value.id === this.props.match.params.id) {
-                this.setState({ topicParticipants: value.participants });
-            } else {return null;}
-        });
+    getTopics = () => {
+        const topics = new Topics();
+          topics
+              .getTopics()
+              .then(respone => {
+                  this.setState({dataTopics: respone.data.data.items});
+        })
+    };
+
+    getMemberInTopic = (topicID) => {
+        const topicsMember = new TopicsDetails();
+          topicsMember
+              .getMemberInTopic(topicID)
+              .then(respone => {
+                this.setState({topicParticipants: respone.data.data.items});
+                console.log('this.state.topicParticipants', this.state.topicParticipants)
+        })
+    };
+
+    postMemberInTopic = (topicId, body) => {
+        const addMember = new TopicsDetails();
+        addMember
+            .postMemberInTopic(topicId, body)
+            .then(respone => {
+                console.log('respone', respone)
+            })
+    }
+
+    patchQuestions = (id, param) => {
+        const updateQuestion = new Questions();
+        updateQuestion
+            .patchQuestions(id, param)
+            .then(respone => 
+                console.log('respone', respone)
+            )
+    }
+
+    deleQuestions = (id) => {
+        const deleteQuestion = new Questions();
+        deleteQuestion
+            .deleQuestions(id)
+    }
+
+    deleteMember = (topicId, body) => {
+        const deleteMembers = new TopicsDetails();
+        deleteMembers
+            .deleteMember(topicId, body)
+    }
+
+    componentDidMount() {
+        this.load();
+        this.getTopicsDetail(this.props.match.params._id)
+        this.getMemberInTopic(this.props.match.params._id)
+        this.getTopics()
     }
 
     isChange = event => {
@@ -59,6 +116,10 @@ class TopicDetail extends Component {
             [name]: value
         });
     };
+
+    onInputChange = ({ name, value }) => {
+        this.setState({ [name]: value });
+    }
 
     questionNeedEdit = questionNeedEdit => {
         this.setState({
@@ -70,18 +131,23 @@ class TopicDetail extends Component {
 
     editQuestion = () => {
         this.state.dataQuestions.forEach((value, key) => {
-            if (value.id === this.state.questionNeedEdit.id) {
+            if (value._id === this.state.questionNeedEdit._id) {
                 value.title = this.state.title;
                 value.content = this.state.content;
             }
         });
+        const questionEdited = {}
+        questionEdited.title = this.state.title
+        questionEdited.content = this.state.content
+        this.patchQuestions(this.state.questionNeedEdit._id, questionEdited)
         this.setState({ dataQuestions: this.state.dataQuestions });
     };
 
     deleteQuestion = idNeedDelete => {
         const verify = window.confirm("Bạn có chắc chắn muốn xoá phần tử " + idNeedDelete);
         if (verify === true) {
-            const dataTemp = this.state.dataQuestions.filter(item => item.id !== idNeedDelete);
+            this.deleQuestions(idNeedDelete)
+            const dataTemp = this.state.dataQuestions.filter(item => item._id !== idNeedDelete);
             this.setState({ dataQuestions: dataTemp });
         } else {
             return null;
@@ -89,29 +155,32 @@ class TopicDetail extends Component {
     };
 
     deleteUser = idNeedDelete => {
+        console.log('idNeedDelete', idNeedDelete)
         const verify = window.confirm("Bạn có chắc chắn muốn xoá user " + idNeedDelete);
         if (verify === true) {
-            const dataTemp = this.state.topicParticipants.filter(item => item.id !== idNeedDelete);
+            const params = {
+                users: [idNeedDelete]
+            }
+            console.log('objMemberDelete', params)
+            this.deleteMember(this.props.match.params._id, params)
+            const dataTemp = this.state.topicParticipants.filter(item => item._id !== idNeedDelete);
             this.setState({ topicParticipants: dataTemp });
         } else {
             return null;
         }
     };
 
-    addUser = userAdd => {
-        this.state.data.users.map((value, key) => {
-            if (value.email === userAdd) {
-                this.state.topicParticipants.push(value);
-                this.setState({ topicParticipants: this.state.topicParticipants });
-            } else {
-                alert("User không tồn tại");
-            }
-        });
+    addUser = () => {
+        const userAdd = {}
+        userAdd.email = this.state.addUser
+        this.state.topicParticipants.push(userAdd)
+        this.setState({topicParticipants: this.state.topicParticipants})
+        this.postMemberInTopic(this.props.match.params._id, userAdd)
     };
 
     mappingData = () => this.state.dataTopics.map((value, key) => {
-        if (value.id === this.props.match.params.id) {
-            return <div className="row" key={key}>
+        if (value._id === this.props.match.params._id) {
+            return <div key={key}>
                     {this.state.loading ? (
                     <Loading />
                     ) : (
@@ -123,7 +192,8 @@ class TopicDetail extends Component {
                             content={this.state.content}
                             isChange={(event) => this.isChange(event)}
                             editQuestion={() => this.editQuestion()}
-                            deleteQuestion={(idNeedDelete) => this.deleteQuestion(idNeedDelete)}/>
+                            deleteQuestion={(idNeedDelete) => this.deleteQuestion(idNeedDelete)}
+                            />
                     )}
                 
             </div>
@@ -131,7 +201,6 @@ class TopicDetail extends Component {
     })
 
     render() {
-        console.log('111111111111111')
         const header = {
             placeholder: "Search topic: title, content...",
             searchValue: this.state.searchValue,
@@ -146,14 +215,13 @@ class TopicDetail extends Component {
                     <div className="col-12 col-lg-9 col-xl-8">
                     {this.mappingData()}
                     </div>
-                        
                         <div className="col-12 col-lg-3 col-xl-4 list-user mt-2">
                         <UserList 
                             topicParticipants={this.state.topicParticipants}
-                            dataUser={this.state.data.users}
+                            // dataUser={this.state.data.users}
                             deleteUser={(idNeedDelete) => this.deleteUser(idNeedDelete)}
-                            isChange={(event) => this.isChange(event)}
-                            addUser={(userAdd) => this.addUser(userAdd)}
+                            onInputChange={this.onInputChange}
+                            addUser={this.addUser}
                         />
                         </div>
                     </div>

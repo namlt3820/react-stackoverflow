@@ -18,7 +18,12 @@ class QuestionCommentItem extends Component {
                             <p>{contentCmt}</p>
                         </div>
                         <hr className="non-margin" />
-                        <LikeReplay numLike={numLike} numReply={numReply}/>
+                        <LikeReplay 
+                        numLike={numLike} 
+                        numReply={numReply}
+                        handleChange={(event) => this.props.handleChange(event)}
+                        handleClick={this.props.handleClick}
+                        /> 
                 </div>
                 </li>
         );

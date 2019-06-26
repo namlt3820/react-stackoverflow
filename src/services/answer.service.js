@@ -1,19 +1,26 @@
 import Base from "./base.service.js";
 
-export default class Answer extends Base {
+class Answer extends Base {
     constructor() {
         super("/question-answers");
     }
-    getAnswer(params) {
+    getAnswer(idQuestion,params) {
+        this.path = `question-answers?question=`+idQuestion
         return this.get(params);
     }
     postAnswer(body) {
         return this.post(body);
     }
-    // patchTopic(id, param) {
-    //     return this.patch(id, param);
-    // }
-    // deleTopic(id) {
-    //     return this.delete(id);
-    // }
+    deleteAnswer(idRecord) {
+        console.log('idRecord', idRecord)
+        this.path = `question-answers/`+idRecord
+        return this.delete_v2(idRecord)
+    }
+    editAnswer(id, param) {
+        this.path = `question-answers/`
+        return this.patch(id, param)
+    }
 }
+
+const answer = new Answer();
+export default answer;

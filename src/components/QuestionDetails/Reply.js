@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class Reply extends Component {
     render() {
+      const { titleCommentBox, contentButton } = this.props
         return (
             <div className="modal fade" id="modelId" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
               <div className="modal-dialog" role="document">
@@ -20,7 +21,7 @@ class Reply extends Component {
                     </form>
                   </div>
                   <div className="modal-footer">
-                    <button onClick={this.props.handleClick} type="button" className="btn btn-block btn-outline-primary" data-dismiss="modal">Send</button>
+                    <button onClick={this.props.handleClickSend} type="button" className="btn btn-block btn-outline-primary" data-dismiss="modal">{contentButton}</button>
                   </div>
                 </div>
               </div>

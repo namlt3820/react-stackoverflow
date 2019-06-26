@@ -19,14 +19,15 @@ class QuestionInPageDetail extends Component {
                                 title={this.props.questionDetail.title}/>
                                 <Content content={this.props.questionDetail.content}/>
                                 <TopicDetailFooter 
+                                fa_comment={<i className="fa fa-comments ml-4" aria-hidden="true"> {this.props.questionDetail.answerCount}</i>}
                                 createdAt={this.props.questionDetail.createdAt}
-                                comment={this.props.questionDetail.answerCount}
+                                // comment={this.props.questionDetail.answerCount}
                                 // views={this.props.questionDetail.views}
                                 votes={this.props.questionDetail.voteCount}
                                 author={this.props.questionDetail.creator.firstName + " " + this.props.questionDetail.creator.lastName}/>
                                 <hr className="non-margin" />
                                 <LikeReplay 
-                                    handleChange={(event) => this.props.handleChange(event)}
+                                    background_color={this.props.background_color}
                                     handleClick={this.props.handleClick}
                                     handleClickVote={this.props.handleClickVoteQuestion}
                                 />

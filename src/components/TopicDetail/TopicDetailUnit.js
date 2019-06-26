@@ -44,13 +44,11 @@ class TopicDetailUnit extends Component {
         views={question.views}
         votes={question.voteCount}
         author={question.creator.firstName + " " + question.creator.lastName}
-        mappingTags={question.tags.map((value, key) => (<a key={key} className="link-tag" href="true">{value.title}</a>))}/>
+        mappingTags={question.tags.map((value, key) => (<a key={key} className="link-tag" href="true">{value.name}</a>))}/>
     </div>
     })
 
     render() {
-        console.log('this.props.dataQuestions', this.props.dataQuestions)
-        console.log('this.props.topicDetail', this.props.topicDetail)
         return (
             <div>
                 {this.mappingData()}

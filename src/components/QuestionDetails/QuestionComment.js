@@ -9,20 +9,15 @@ class QuestionComment extends Component {
                     <div className="col-12">
                             <ol type="none" style={{ padding: 0 }}>
                                 <QuestionCommentItem
+                                answersQuestion={this.props.answersQuestion}
                                 nameCmt={this.props.answersQuestion.creator.firstName + " " + this.props.answersQuestion.creator.lastName}
                                 contentCmt={this.props.answersQuestion.content}
                                 numLike={this.props.answersQuestion.voteCount}
                                 handleChange={(event) => this.props.handleChange(event)}
-                                handleClick={this.props.handleClick}
-                               
-                                // numReply={this.props.answersQuestion.answerCount}
+                                handleClickDelete={this.props.handleClickDeleteAnswer}
+                                objectNeedEdit={this.props.answerNeedEdit}
+                                handleClickVoteAnswer={this.props.handleClickVoteAnswer}
                                 />
-                                {/* <ul type="none">
-                                    <QuestionCommentItem
-                                    nameCmt={this.props.answersQuestion.creator.firstName + " " + this.props.answersQuestion.creator.lastName}
-                                    contentCmt={this.props.answersQuestion.content}
-                                    numLike={this.props.answersQuestion.votes}/>
-                                </ul> */}
                             </ol>
                     </div>
                 </div>

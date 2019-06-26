@@ -5,8 +5,10 @@ import QuestionComment from "./../components/QuestionDetails/QuestionComment";
 import QuestionInPageDetail from "./../components/QuestionDetails/QuestionInPageDetail";
 import LayoutMain from "../layout/LayoutMain";
 import Questions from "../services/questions.service.js";
-import Answer from "../services/answer.service.js";
+import answer from "../services/answer.service.js";
 import voteQuestion from "../services/voteQuestion.service.js";
+import Reply from "../components/QuestionDetails/Reply.js";
+import voteAnswer from "../services/voteAnswer.service.js";
 
 class QuestionDetail extends Component {
     constructor(props) {
@@ -16,7 +18,14 @@ class QuestionDetail extends Component {
             dataQuestions: [],
             dataAnswer: [],
             answerContent: "",
-            statusVoteQuestion: true
+            statusVoteQuestion: false,
+            statusVoteAnswer: false,
+            voteAnswerCount: '',
+            background_color: "notVote",
+            // contentAnswerNeedEdit: "",
+            // titleCommentBox: '',
+            contentButton: "Send Answer",
+            idAnswer: ""
         };
     }
 
@@ -28,17 +37,15 @@ class QuestionDetail extends Component {
                   this.setState({dataQuestions: respone.data.data.items});})
     };
 
-    getAnswer = () => {
-        const answer = new Answer();
+    getAnswer = (idQuestion) => {
             answer
-                .getAnswer()
+                .getAnswer(idQuestion)
                 .then(respone => {console.log('respone',respone.data.data.items )
                   this.setState({dataAnswer: respone.data.data.items});})
     }
 
     postAnswer = (body) => {
-        const answerPost = new Answer();
-            answerPost
+            answer
                 .postAnswer(body)
     }
 
@@ -46,13 +53,40 @@ class QuestionDetail extends Component {
         voteQuestion
             .postVoteQuestion(questionsId, body)
     }
-
-    componentDidMount() {
-        this.getQuestions()
-        this.getAnswer()
+    deleteVoteQuestion = (questionsId) => {
+        voteQuestion
+            .deleteVoteQuestion(questionsId)
+    }
+    deleteAnswer = (id, body) => {
+        answer
+            .deleteAnswer(id, body)
+    }
+    editAnswer = (id, param) => {
+        answer
+            .editAnswer(id, param)
+    }
+    postVoteAnswer = (recordId, body) => {
+        voteAnswer
+            .postVoteAnswer(recordId, body)
+    }
+ 
+    
+    componentWillMount() {
+        // this.state.dataAnswer.map((value, key) => {
+        //     console.log('value', value)
+        //     this.setState({
+        //         voteAnswerCount: value.voteCount
+        //     })
+        // })
+        
     }
     
-
+    componentDidMount() {
+        this.getQuestions()
+        this.getAnswer(this.props.match.params._id)
+        console.log('this.state.dataAnswer', this.state.dataAnswer)
+    }
+    
     handleChange  = (event) => {
         const { name, value } = event.target
         this.setState({[name]: value})
@@ -63,15 +97,67 @@ class QuestionDetail extends Component {
         objAnswer.question = this.props.match.params._id
         objAnswer.content = this.state.answerContent
         this.postAnswer(objAnswer)
+        this.setState({answerContent: ''})
     }
 
     handleClickVoteQuestion  = () => {
         if (this.state.statusVoteQuestion === true) {
             this.postVoteQuestion(this.props.match.params._id)
-            this.setState({statusVoteQuestion: false})
+            this.setState({
+                statusVoteQuestion: false,
+                background_color: "voted"
+            })
         } else if(this.state.statusVoteQuestion === false) {
-            this.setState({statusVoteQuestion: true})
+            this.deleteVoteQuestion(this.props.match.params._id)
+            this.setState({
+                statusVoteQuestion: true,
+                background_color: "notVote"
+            })
         }
+    }
+
+    handleClickDeleteAnswer  = (idAnswerNeedDelete) => {
+        const verify = window.confirm('Bạn có chắc chắn muốn xoá comment!!!')
+        if (verify === true) {
+            this.deleteAnswer(idAnswerNeedDelete)
+            const dataTemp = this.state.dataAnswer.filter((item) => item._id !== idAnswerNeedDelete)
+            this.setState({dataAnswer: dataTemp})
+        } else {
+            return null;
+        }
+    }
+
+    answerNeedEdit  = (answerNeedEdit) => {
+        this.setState({
+            answerContent: answerNeedEdit.content,
+            contentButton: "Save Answer",
+            idAnswer: answerNeedEdit._id
+        })
+    }
+
+    handleEditAnswer  = () => {
+        const objectAnswerEdited = {}
+        objectAnswerEdited.content = this.state.answerContent
+        this.editAnswer(this.state.idAnswer, objectAnswerEdited)
+        this.state.dataAnswer.forEach((item) => {
+            if (item._id === this.state.idAnswer) {
+                item.content = this.state.answerContent
+            }
+        })
+        this.setState({contentButton: "Send Answer"})
+    }
+
+    handleClick  = () => {
+        if (this.state.contentButton === "Send Answer") {
+            this.handleClickReply()
+        } else if (this.state.contentButton === "Save Answer") {
+            this.handleEditAnswer()
+        }
+    }
+
+    handleClickVoteAnswer  = (idAnswerNeedVote) => {
+        console.log('idAnswerNeedVote', idAnswerNeedVote)
+        this.postVoteAnswer(idAnswerNeedVote)
     }
 
     mappingData = () =>
@@ -84,34 +170,40 @@ class QuestionDetail extends Component {
                     handleChange={(event) => this.handleChange(event)}
                     handleClick={this.handleClick}
                     handleClickVoteQuestion={this.handleClickVoteQuestion}
+                    background_color={this.state.background_color}
                     />
                 );
             } else {
                 return null;
             }
         });
-
+        
     mappingAnswer = () => 
-        this.state.dataAnswer.map((value, key) => {
-            // if (value.question._id === this.props.match.params._id) {
-                return <QuestionComment 
+        this.state.dataAnswer.map((value, key) => (
+            <QuestionComment 
                 key={key}
                 answersQuestion={value} 
                 handleChange={(event) => this.handleChange(event)}
-                handleClick={this.handleClickReply}
-                />
-            // } else {
-            //     return null;
-            // }
-            
-        })
-
+                handleClickDeleteAnswer={() => this.handleClickDeleteAnswer(value._id)}
+                answerNeedEdit={() => this.answerNeedEdit(value)}
+                handleClickVoteAnswer={() => this.handleClickVoteAnswer(value._id)}
+            />
+        ))
+    
+    
     render() {
-        console.log('this.state.dataAnswer', this.state.dataAnswer)
+        console.log('this.state.voteAnswerCount', this.state.voteAnswerCount)
         const header = {};
         return <LayoutMain header={header}>
             {this.mappingData()}
             {this.mappingAnswer()}
+            <Reply
+                content = {this.state.answerContent}
+                handleChange={(event) => this.handleChange(event)}
+                handleClickSend={this.handleClick}
+                titleCommentBox={this.state.titleCommentBox}
+                contentButton={this.state.contentButton}
+            />
         </LayoutMain>;
     }
 }

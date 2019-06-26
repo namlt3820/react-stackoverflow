@@ -5,11 +5,14 @@ class VoteQuestion extends Base{
         super('questions');
     }
     postVoteQuestion = (questionsId, body) => {
-        console.log('questionsId', questionsId)
         this.path = 'questions/'+questionsId+'/votes'
         return this.post(body);
-    }   
+    }
+    deleteVoteQuestion = (questionsId) => {
+        this.path = 'questions/'+questionsId+'/votes'
+        return this.delete_v2();
+    }
 }
 
-const voteQuestion = new VoteQuestion;
+const voteQuestion = new VoteQuestion();
 export default voteQuestion;

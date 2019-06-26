@@ -21,4 +21,10 @@ export default class Base {
     removeMember(body) {
         return axios.delete(this.path, {data: body})
     }
+    delete_v2() {
+        return axios.delete(this.path)
+    }
+    // deleteVote(id) {
+    //     return axios.delete(this.path + '/' + id);
+    // }
 }

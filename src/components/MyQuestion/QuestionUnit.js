@@ -31,7 +31,6 @@ class QuestionUnit extends Component {
     }
 
     render() {
-        console.log('this.props.questionItem', this.props.questionItem)
         return (
             <div>
                 <div className="card mt-2 mb-2 list-group-item-hover">
@@ -43,8 +42,8 @@ class QuestionUnit extends Component {
                 />
                 <Content content={this.props.questionItem.content}/>
                 <TopicDetailFooter
+                fa_comment={<i className="fa fa-comments ml-4" aria-hidden="true"> {this.props.questionItem.answerCount}</i>}
                 createdAt={this.props.questionItem.createdAt}
-                comment={this.props.questionItem.answerCount}
                 views={this.props.questionItem.answerCount}
                 votes={this.props.questionItem.voteCount}
                 author={this.props.questionItem.creator.firstName + ' ' + this.props.questionItem.creator.lastName}

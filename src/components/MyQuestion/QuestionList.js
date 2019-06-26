@@ -24,13 +24,6 @@ class QuestionList extends Component {
                   this.setState({dataQuestions: respone.data.data.items});})
     };
 
-    // postQuestion = (data) => {
-    //     const newQuestions = new Questions();
-    //     newQuestions
-    //         .postQuestion(data)
-    //         .then(respone => console.log('respone', respone))
-    // }
-
     patchQuestions = (id, param) => {
         const editQuestion = new Questions();
         editQuestion
@@ -51,8 +44,8 @@ class QuestionList extends Component {
     mappingData = () => this.state.dataQuestions.map((value, key) => (<QuestionUnit 
                                                                         key={key} 
                                                                         questionItem={value}
-                                                                        objectNeedEdit={(objectNeedEdit) => this.objectNeedEdit(value)}
-                                                                        DeleteQuestion={(idNeedDelete) => this.DeleteQuestion(value._id)}
+                                                                        objectNeedEdit={() => this.objectNeedEdit(value)}
+                                                                        DeleteQuestion={() => this.DeleteQuestion(value._id)}
                                                                         />))
  
     isChange = (event) => {
@@ -100,14 +93,12 @@ class QuestionList extends Component {
                 const QuestionEdited = {}
                 QuestionEdited.title = this.state.title
                 QuestionEdited.content = this.state.content
-                console.log('QuestionEdited', QuestionEdited)
                 this.patchQuestions(this.state.objectNeedEdit._id, QuestionEdited)
-            }
+            }else{return null;}
             this.setState({title: '', content: ''})
         })
     }
     render() {
-        console.log('1111111')
         return (
             <div>
                 {this.mappingData()}

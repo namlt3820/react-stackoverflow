@@ -24,3 +24,5 @@
       outline: none;
   }
   .contentComment{padding: 5px 5px 0px 15px}
+  .NotVote{background-color: #fff;}
+  .voted{background-color: red;}

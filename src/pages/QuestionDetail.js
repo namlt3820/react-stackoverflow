@@ -31,10 +31,9 @@ class QuestionDetail extends Component {
 
     getQuestions = () => {
         const questions = new Questions();
-          questions
-              .getQuestions()
-              .then(respone => {console.log('respone',respone.data.data.items )
-                  this.setState({dataQuestions: respone.data.data.items});})
+        questions.getQuestions().then(respone => {
+            this.setState({ dataQuestions: respone.data.data.items });
+        });
     };
 
     getAnswer = (idQuestion) => {
@@ -48,7 +47,6 @@ class QuestionDetail extends Component {
             answer
                 .postAnswer(body)
     }
-
     postVoteQuestion = (questionsId, body) => {
         voteQuestion
             .postVoteQuestion(questionsId, body)
@@ -159,7 +157,6 @@ class QuestionDetail extends Component {
         console.log('idAnswerNeedVote', idAnswerNeedVote)
         this.postVoteAnswer(idAnswerNeedVote)
     }
-
     mappingData = () =>
         this.state.dataQuestions.map((value, key) => {
             if (value._id === this.props.match.params._id) {
@@ -171,7 +168,7 @@ class QuestionDetail extends Component {
                     handleClick={this.handleClick}
                     handleClickVoteQuestion={this.handleClickVoteQuestion}
                     background_color={this.state.background_color}
-                    />
+                    />                
                 );
             } else {
                 return null;
@@ -192,7 +189,6 @@ class QuestionDetail extends Component {
     
     
     render() {
-        console.log('this.state.voteAnswerCount', this.state.voteAnswerCount)
         const header = {};
         return <LayoutMain header={header}>
             {this.mappingData()}

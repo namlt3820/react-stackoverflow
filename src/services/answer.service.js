@@ -6,7 +6,6 @@ class Answer extends Base {
     }
     getAnswer(idQuestion,params) {
         this.path = `question-answers?question=`+idQuestion
-        return this.get(params);
     }
     postAnswer(body) {
         return this.post(body);

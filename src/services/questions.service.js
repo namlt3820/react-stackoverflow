@@ -8,10 +8,7 @@ export default class Questions extends Base {
     getQuestionList(params) {
         return this.get(params);
     }
-    getQuestions(params) {
-        this.path = `questions/my-questions?sort=-createdAt,name,desc`;
-        return this.get(params);
-    }
+
     postQuestion(body) {
         this.path = `questions?sort=-createdAt,name,desc`;
         return this.post(body);
